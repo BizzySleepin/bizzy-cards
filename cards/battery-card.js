@@ -165,5 +165,3 @@ export class batteryCard extends LitElement {
     `
   }
 }
-
-customElements.define('battery-card', batteryCard)
