@@ -338,8 +338,8 @@ class FlowerCard extends LitElement {
   }
 
   render() {
-    console.dir(this.hass)
     const stateObj = this.hass.states[this.config.entity]
+    console.dir(this.hass)
 
     if (!stateObj) {
       console.log('No plant found for entity ' + this.config.entity)
