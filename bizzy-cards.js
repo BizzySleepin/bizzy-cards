@@ -340,7 +340,8 @@ class FlowerCard extends LitElement {
   render() {
     const stateObj = this.hass.states[this.config.entity]
     const moreInfo = (entity) => {
-      fireEvent(this, 'show-more-info', { entity_id: entity })
+      this.hass.bus.async_fire('hass-more-info', { entity_id: entity })
+      //fireEvent(this, 'show-more-info', { entity_id: entity })
     }
 
     if (!stateObj) {
