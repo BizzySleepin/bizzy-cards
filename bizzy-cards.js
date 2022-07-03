@@ -402,8 +402,8 @@ class FlowerCard extends LitElement {
   }
 
   setConfig(config) {
-    if (!config.entities) {
-      throw new Error('You need to define entities')
+    if (!config.entity) {
+      throw new Error('You need to define an entity')
     }
     this.config = config
     this.useBattery = this.config.useBattery
