@@ -193,7 +193,7 @@ class leaksCard extends LitElement {
     const sensor = (item) => {
       return html`
         <div class="inner">
-          <span class="center">${item.attributes.friendly_name.replace(' Leak Sensor Water Leak', '')}</span>
+          <span class="center" @click="${() => moreInfo(item.entity_id)}">${item.attributes.friendly_name.replace(' Leak Sensor Water Leak', '')}</span>
           <span class="circles">
             <div class="circle ${item.attributes.battery > 10 ? '' : ' attention'}">
               <ha-icon icon="mdi:battery${item.attributes.battery === 100 ? '' : '-' + Math.round(item.attributes.battery / 10) * 10}"></ha-icon>
