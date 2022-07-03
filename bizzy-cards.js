@@ -408,6 +408,7 @@ class FlowerCard extends LitElement {
           ${attribute('mdi:water-percent', 'moisture', limits['min_moisture'], limits['max_moisture'])}
           ${this.useBattery ? attribute('mdi:battery-80', 'battery', 10) : attribute('mdi:white-balance-sunny', 'brightness', limits['min_brightness'], limits['max_brightness'])}
         </div>
+        <div>test</div>
       </ha-card>
     `
   }
