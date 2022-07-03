@@ -338,7 +338,7 @@ class FlowerCard extends LitElement {
   }
 
   render() {
-    console.dir(hass)
+    console.dir(this.hass)
     const stateObj = this.hass.states[this.config.entity]
 
     if (!stateObj) {
