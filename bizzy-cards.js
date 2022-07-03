@@ -339,14 +339,21 @@ class FlowerCard extends LitElement {
 
   render() {
     const stateObj = this.hass.states[this.config.entity]
-    const moreInfo = (entity) => {
-      this.hass.bus.async_fire('hass-more-info', { entity_id: entity })
-      //fireEvent(this, 'show-more-info', { entity_id: entity })
-    }
 
     if (!stateObj) {
       console.log('No plant found for entity ' + this.config.entity)
       return html``
+    }
+
+    const moreInfo = (entity) => {
+      const root = document.querySelector('hc-main') || document.querySelector('home-assistant')
+      ev = new Event('hass-more-info', {
+        bubbles: true,
+        cancelable: false,
+        composed: true,
+      })
+      ev.detail = { entityId: entity }
+      root.dispatchEvent(ev)
     }
 
     const species = stateObj.attributes.species
