@@ -1,4 +1,14 @@
 import { LitElement, html, css } from 'https://unpkg.com/lit-element@2.0.1/lit-element.js?module'
+
+const moreInfo = (entity) => {
+  const ev = new Event('hass-more-info', {
+    bubbles: true,
+    cancelable: false,
+    composed: true,
+  })
+  ev.detail = { entityId: entity }
+  document.querySelector('home-assistant').dispatchEvent(ev)
+}
 export class batteryCard extends LitElement {
   static get properties() {
     return {
@@ -345,17 +355,6 @@ class FlowerCard extends LitElement {
       return html``
     }
 
-    const moreInfo = (entity) => {
-      const root = document.querySelector('hc-main') || document.querySelector('home-assistant')
-      const ev = new Event('hass-more-info', {
-        bubbles: true,
-        cancelable: false,
-        composed: true,
-      })
-      ev.detail = { entityId: entity }
-      root.dispatchEvent(ev)
-    }
-
     const species = stateObj.attributes.species
     const limits = stateObj.attributes.limits
 
@@ -408,7 +407,6 @@ class FlowerCard extends LitElement {
           ${attribute('mdi:water-percent', 'moisture', limits['min_moisture'], limits['max_moisture'])}
           ${this.useBattery ? attribute('mdi:battery-80', 'battery', 10) : attribute('mdi:white-balance-sunny', 'brightness', limits['min_brightness'], limits['max_brightness'])}
         </div>
-        <div>test</div>
       </ha-card>
     `
   }
