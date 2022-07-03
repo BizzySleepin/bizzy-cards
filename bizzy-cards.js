@@ -339,7 +339,9 @@ class FlowerCard extends LitElement {
 
   render() {
     const stateObj = this.hass.states[this.config.entity]
-    console.dir(this.hass)
+    const moreInfo = (entity) => {
+      fireEvent(this, 'show-more-info', { entity_id: entity })
+    }
 
     if (!stateObj) {
       console.log('No plant found for entity ' + this.config.entity)
@@ -357,7 +359,7 @@ class FlowerCard extends LitElement {
       if (attr !== 'battery') {
         const pct = 100 * Math.max(0, Math.min(1, (val - min) / (max - min)))
         return html`
-          <div class="attribute tooltip" data-tooltip="${aval ? val + ' ' + unit + ' | ' + min + ' ~ ' + max + ' ' + unit : val}" @click="${() => cardTools.moreInfo(stateObj.attributes.sensors[attr])}">
+          <div class="attribute tooltip" data-tooltip="${aval ? val + ' ' + unit + ' | ' + min + ' ~ ' + max + ' ' + unit : val}" @click="${() => moreInfo(stateObj.attributes.sensors[attr])}">
             <ha-icon .icon="${icon}"></ha-icon>
             <div class="meter red">
               <span class="${aval ? (val < min || val > max ? 'bad' : 'good') : 'unavailable'}" style="width: 100%;"></span>
