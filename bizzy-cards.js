@@ -382,7 +382,7 @@ class FlowerCard extends LitElement {
         `
       } else {
         return html`
-          <div class="attribute tooltip" data-tooltip="${aval ? val + ' ' + unit : val}" @click="${() => cardTools.moreInfo(stateObj.attributes.sensors['battery'])}">
+          <div class="attribute tooltip" data-tooltip="${aval ? val + ' ' + unit : val}" @click="${() => moreInfo(stateObj.attributes.sensors['battery'])}">
             <ha-icon .icon="${icon}"></ha-icon>
             <div class="meter red">
               <span class="${aval ? (val < min ? 'bad' : 'good') : 'unavailable'}" style="width: 100%;"></span>
@@ -397,7 +397,7 @@ class FlowerCard extends LitElement {
 
     return html`
       <ha-card>
-        <div class="header" @click="${() => cardTools.moreInfo(stateObj.entity_id)}">
+        <div class="header" @click="${() => moreInfo(stateObj.entity_id)}">
           <img src="${stateObj.attributes.image}" />
           <span id="name"> ${stateObj.attributes.name} <ha-icon .icon="mdi:${stateObj.state == 'problem' ? 'alert-circle-outline' : ''}"></ha-icon></span>
           <span id="species">${species} </span>
