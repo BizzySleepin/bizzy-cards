@@ -347,7 +347,7 @@ class FlowerCard extends LitElement {
 
     const moreInfo = (entity) => {
       const root = document.querySelector('hc-main') || document.querySelector('home-assistant')
-      ev = new Event('hass-more-info', {
+      const ev = new Event('hass-more-info', {
         bubbles: true,
         cancelable: false,
         composed: true,
