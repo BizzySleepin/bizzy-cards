@@ -424,7 +424,7 @@ class FlowerCard extends LitElement {
   firstUpdated() {
     customElements.whenDefined('action-handler').then(() => {
       const actionHandler = document.body.querySelector('action-handler')
-      actionHandler.bind(this.shadowRoot.querySelector('clickable-div'), { hasHold: true, hasDoubleClick: true })
+      actionHandler.bind(this.shadowRoot.querySelector('#clickable-div'), { hasHold: true, hasDoubleClick: true })
     })
   }
 
