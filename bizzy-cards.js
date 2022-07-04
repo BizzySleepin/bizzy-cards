@@ -1,5 +1,90 @@
 import { LitElement, html, css } from 'https://unpkg.com/lit-element@2.0.1/lit-element.js?module'
 
+export const willyStyles = css`
+  ha-card {
+    margin-top: 32px;
+  }
+  .header {
+    padding-top: 8px;
+    height: 72px;
+  }
+  .header > img {
+    border-radius: 50%;
+    width: 88px;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: -32px;
+    float: left;
+    box-shadow: var(--ha-card-box-shadow, 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2));
+  }
+  #name ha-icon {
+    color: rgb(240, 163, 163);
+  }
+  .label {
+    display: block;
+    width: 100%;
+    height: 20px;
+    text-transform: capitalize;
+    overflow: hidden;
+  }
+  .meter.red {
+    width: 10%;
+  }
+  .meter.green {
+    width: 50%;
+  }
+  .meter > span {
+    grid-row: 1;
+    grid-column: 1;
+    height: 100%;
+  }
+  .meter.battery {
+    width: 61.5%;
+  }
+  .meter > span {
+    grid-row: 1;
+    grid-column: 1;
+    height: 100%;
+  }
+  .divider {
+    height: 1px;
+    background-color: #727272;
+    opacity: 0.25;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+  .tooltip {
+    position: relative;
+  }
+  .tooltip:after {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    content: attr(data-tooltip);
+    padding: 6px 10px;
+    top: 1.4em;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-180%);
+    transform: translateX(-50%) translateY(-180%);
+    background: grey;
+    color: white;
+    white-space: nowrap;
+    z-index: 2;
+    border-radius: 2px;
+    transition: opacity 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), -webkit-transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+    transition: opacity 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+    transition: opacity 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), -webkit-transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+  }
+  .tooltip:hover:after,
+  .tooltip:active:after {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: translateX(-50%) translateY(-200%);
+    transform: translateX(-50%) translateY(-200%);
+  }
+`
+
 const moreInfo = (entity) => {
   const ev = new Event('hass-more-info', {
     bubbles: true,
@@ -67,124 +152,208 @@ export class batteryCard extends LitElement {
   }
 
   static get styles() {
-    return css`
-      ha-card {
-        margin-top: 32px;
-      }
-      .header {
-        padding-top: 8px;
-        height: 72px;
-      }
-      .header > img {
-        border-radius: 50%;
-        width: 88px;
-        margin-left: 16px;
-        margin-right: 16px;
-        margin-top: -32px;
-        float: left;
-        box-shadow: var(--ha-card-box-shadow, 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2));
-      }
-      .header > #name {
-        font-weight: bold;
-        width: 100%;
-        margin-top: 20px;
-        text-transform: capitalize;
-        display: block;
-      }
-      #name ha-icon {
-        color: rgb(240, 163, 163);
-      }
-      .header > #species {
-        text-transform: capitalize;
-        color: #8c96a5;
-        display: block;
-      }
-      .batteries {
-        display: flex;
-        flex-wrap: wrap;
-        width: 100%;
-        padding-bottom: 8px;
-      }
-      .battery {
-        display: block;
-        box-sizing: border-box;
-        width: 50%;
-        padding: 8px 16px;
-        white-space: normal;
-      }
-      .label {
-        display: block;
-        width: 100%;
-        height: 20px;
-        text-transform: capitalize;
-        overflow: hidden;
-      }
-      .meter {
-        display: grid;
-        height: 8px;
-        width: 100%;
-        background-color: #f1f1f1;
-        border-radius: 2px;
-      }
-      .meter > span {
-        grid-row: 1;
-        grid-column: 1;
-        height: 100%;
-      }
-      .meter > .good {
-        background-color: rgba(43, 194, 83, 1);
-        border-radius: 2px;
-      }
-      .meter > .bad {
-        background-color: rgba(240, 163, 163);
-        border-radius: 2px;
-      }
-      .meter > .unavailable {
-        background-color: rgba(158, 158, 158, 1);
-        border-radius: 2px;
-      }
-      .divider {
-        height: 1px;
-        background-color: #727272;
-        opacity: 0.25;
-        margin-left: 8px;
-        margin-right: 8px;
-      }
-      .tooltip {
-        position: relative;
-      }
-      .tooltip:after {
-        opacity: 0;
-        visibility: hidden;
-        position: absolute;
-        content: attr(data-tooltip);
-        padding: 6px 10px;
-        top: 1.4em;
-        left: 50%;
-        -webkit-transform: translateX(-50%) translateY(-180%);
-        transform: translateX(-50%) translateY(-180%);
-        background: grey;
-        color: white;
-        white-space: nowrap;
-        z-index: 2;
-        border-radius: 2px;
-        transition: opacity 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), -webkit-transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
-        transition: opacity 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
-        transition: opacity 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), -webkit-transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
-      }
-      .tooltip:hover:after,
-      .tooltip:active:after {
-        display: block;
-        opacity: 1;
-        visibility: visible;
-        -webkit-transform: translateX(-50%) translateY(-200%);
-        transform: translateX(-50%) translateY(-200%);
-      }
-    `
+    return [
+      willyStyles,
+      css`
+        .batteries {
+          display: flex;
+          flex-wrap: wrap;
+          width: 100%;
+          padding-bottom: 8px;
+        }
+        .battery {
+          display: block;
+          box-sizing: border-box;
+          width: 50%;
+          padding: 8px 16px;
+          white-space: normal;
+        }
+        .header > #name {
+          font-weight: bold;
+          width: 100%;
+          margin-top: 16px;
+          text-transform: capitalize;
+          display: block;
+        }
+        .meter {
+          height: 8px;
+          background-color: #f1f1f1;
+          border-radius: 2px;
+          display: inline-grid;
+          overflow: hidden;
+        }
+        .meter > .good {
+          background-color: rgba(43, 194, 83, 1);
+        }
+        .meter > .bad {
+          background-color: rgba(240, 163, 163);
+        }
+        .meter > .unavailable {
+          background-color: rgba(158, 158, 158, 1);
+        }
+      `,
+    ]
   }
 }
 
 customElements.define('battery-card', batteryCard)
+
+class FlowerCard extends LitElement {
+  static get properties() {
+    return {
+      hass: {},
+      config: {},
+    }
+  }
+
+  render() {
+    const stateObj = this.hass.states[this.config.entity]
+
+    if (!stateObj) {
+      console.log('No plant found for entity ' + this.config.entity)
+      return html``
+    }
+
+    const species = stateObj.attributes.species
+    const limits = stateObj.attributes.limits
+
+    const attribute = (icon, attr, min, max) => {
+      const unit = stateObj.attributes.unit_of_measurement_dict[attr] || '%'
+      const val = stateObj.attributes[attr]
+      const aval = val !== 'unavailable' ? true : false
+
+      if (attr !== 'battery') {
+        const pct = 100 * Math.max(0, Math.min(1, (val - min) / (max - min)))
+        return html`
+          <div
+            class="attribute clickable tooltip"
+            data-tooltip="${aval ? val + ' ' + unit + ' | ' + min + ' ~ ' + max + ' ' + unit : val}"
+            @action=${(ev) => {
+              if (ev.detail.action === 'hold') moreInfo(stateObj.attributes.sensors[attr])
+            }}
+          >
+            <ha-icon .icon="${icon}"></ha-icon>
+            <div class="meter red">
+              <span class="${aval ? (val < min || val > max ? 'bad' : 'good') : 'unavailable'}" style="width: 100%;"></span>
+            </div>
+            <div class="meter green">
+              <span class="${aval ? (val > max ? 'bad' : 'good') : 'unavailable'}" style="width:${aval ? pct : '0'}%;"></span>
+            </div>
+            <div class="meter red">
+              <span class="bad" style="width:${aval ? (val > max ? 100 : 0) : '0'}%;"></span>
+            </div>
+          </div>
+        `
+      } else {
+        return html`
+          <div
+            class="attribute clickable tooltip"
+            data-tooltip="${aval ? val + ' ' + unit : val}"
+            @action=${(ev) => {
+              if (ev.detail.action === 'hold') moreInfo(stateObj.attributes.sensors['battery'])
+            }}
+          >
+            <ha-icon .icon="${icon}"></ha-icon>
+            <div class="meter red">
+              <span class="${aval ? (val < min ? 'bad' : 'good') : 'unavailable'}" style="width: 100%;"></span>
+            </div>
+            <div class="meter battery">
+              <span class="${aval ? 'good' : 'unavailable'}" style="width:${aval ? val - 10 : '0'}%;"></span>
+            </div>
+          </div>
+        `
+      }
+    }
+
+    return html`
+      <ha-card>
+        <div
+          class="header clickable"
+          @action=${(ev) => {
+            if (ev.detail.action === 'tap') moreInfo(stateObj.entity_id)
+          }}
+        >
+          <img src="${stateObj.attributes.image}" />
+          <span id="name"> ${stateObj.attributes.name} <ha-icon .icon="mdi:${stateObj.state == 'problem' ? 'alert-circle-outline' : ''}"></ha-icon></span>
+          <span id="species">${species} </span>
+        </div>
+        <div class="divider"></div>
+        <div class="attributes">${attribute('mdi:thermometer', 'temperature', limits['min_temperature'], limits['max_temperature'])} ${attribute('mdi:leaf', 'conductivity', limits['min_conductivity'], limits['max_conductivity'])}</div>
+        <div class="attributes">
+          ${attribute('mdi:water-percent', 'moisture', limits['min_moisture'], limits['max_moisture'])}
+          ${this.useBattery ? attribute('mdi:battery-80', 'battery', 10) : attribute('mdi:white-balance-sunny', 'brightness', limits['min_brightness'], limits['max_brightness'])}
+        </div>
+      </ha-card>
+    `
+  }
+
+  setConfig(config) {
+    if (!config.entity) {
+      throw new Error('You need to define an entity')
+    }
+    this.config = config
+    this.useBattery = this.config.useBattery
+    this.requestUpdate()
+  }
+
+  firstUpdated() {
+    bindActionHandler(this.shadowRoot.querySelectorAll('.clickable'))
+  }
+
+  static get styles() {
+    return [
+      willyStyles,
+      css`
+        .attributes {
+          white-space: nowrap;
+          padding: 8px;
+        }
+        .attribute ha-icon {
+          float: left;
+          margin-right: 4px;
+        }
+        .attribute {
+          display: inline-block;
+          width: 50%;
+          white-space: normal;
+        }
+        .header > #species {
+          text-transform: capitalize;
+          color: #8c96a5;
+          display: block;
+        }
+        .header > #name {
+          font-weight: bold;
+          width: 100%;
+          margin-top: 20px;
+          text-transform: capitalize;
+          display: block;
+        }
+        .meter {
+          display: grid;
+          height: 8px;
+          width: 100%;
+          background-color: #f1f1f1;
+          border-radius: 2px;
+        }
+        .meter > .good {
+          background-color: rgba(43, 194, 83, 1);
+          border-radius: 2px;
+        }
+        .meter > .bad {
+          background-color: rgba(240, 163, 163);
+          border-radius: 2px;
+        }
+        .meter > .unavailable {
+          background-color: rgba(158, 158, 158, 1);
+          border-radius: 2px;
+        }
+      `,
+    ]
+  }
+}
+
+customElements.define('flower-card', FlowerCard)
 
 class leaksCard extends LitElement {
   static get properties() {
@@ -348,223 +517,3 @@ class leaksCard extends LitElement {
 }
 
 customElements.define('leaks-card', leaksCard)
-class FlowerCard extends LitElement {
-  static get properties() {
-    return {
-      hass: {},
-      config: {},
-    }
-  }
-
-  render() {
-    const stateObj = this.hass.states[this.config.entity]
-
-    if (!stateObj) {
-      console.log('No plant found for entity ' + this.config.entity)
-      return html``
-    }
-
-    const species = stateObj.attributes.species
-    const limits = stateObj.attributes.limits
-
-    const attribute = (icon, attr, min, max) => {
-      const unit = stateObj.attributes.unit_of_measurement_dict[attr] || '%'
-      const val = stateObj.attributes[attr]
-      const aval = val !== 'unavailable' ? true : false
-
-      if (attr !== 'battery') {
-        const pct = 100 * Math.max(0, Math.min(1, (val - min) / (max - min)))
-        return html`
-          <div
-            class="attribute clickable tooltip"
-            data-tooltip="${aval ? val + ' ' + unit + ' | ' + min + ' ~ ' + max + ' ' + unit : val}"
-            @action=${(ev) => {
-              if (ev.detail.action === 'hold') moreInfo(stateObj.attributes.sensors[attr])
-            }}
-          >
-            <ha-icon .icon="${icon}"></ha-icon>
-            <div class="meter red">
-              <span class="${aval ? (val < min || val > max ? 'bad' : 'good') : 'unavailable'}" style="width: 100%;"></span>
-            </div>
-            <div class="meter green">
-              <span class="${aval ? (val > max ? 'bad' : 'good') : 'unavailable'}" style="width:${aval ? pct : '0'}%;"></span>
-            </div>
-            <div class="meter red">
-              <span class="bad" style="width:${aval ? (val > max ? 100 : 0) : '0'}%;"></span>
-            </div>
-          </div>
-        `
-      } else {
-        return html`
-          <div
-            class="attribute clickable tooltip"
-            data-tooltip="${aval ? val + ' ' + unit : val}"
-            @action=${(ev) => {
-              if (ev.detail.action === 'hold') moreInfo(stateObj.attributes.sensors['battery'])
-            }}
-          >
-            <ha-icon .icon="${icon}"></ha-icon>
-            <div class="meter red">
-              <span class="${aval ? (val < min ? 'bad' : 'good') : 'unavailable'}" style="width: 100%;"></span>
-            </div>
-            <div class="meter battery">
-              <span class="${aval ? 'good' : 'unavailable'}" style="width:${aval ? val - 10 : '0'}%;"></span>
-            </div>
-          </div>
-        `
-      }
-    }
-
-    return html`
-      <ha-card>
-        <div
-          class="header clickable"
-          @action=${(ev) => {
-            if (ev.detail.action === 'tap') moreInfo(stateObj.entity_id)
-          }}
-        >
-          <img src="${stateObj.attributes.image}" />
-          <span id="name"> ${stateObj.attributes.name} <ha-icon .icon="mdi:${stateObj.state == 'problem' ? 'alert-circle-outline' : ''}"></ha-icon></span>
-          <span id="species">${species} </span>
-        </div>
-        <div class="divider"></div>
-        <div class="attributes">${attribute('mdi:thermometer', 'temperature', limits['min_temperature'], limits['max_temperature'])} ${attribute('mdi:leaf', 'conductivity', limits['min_conductivity'], limits['max_conductivity'])}</div>
-        <div class="attributes">
-          ${attribute('mdi:water-percent', 'moisture', limits['min_moisture'], limits['max_moisture'])}
-          ${this.useBattery ? attribute('mdi:battery-80', 'battery', 10) : attribute('mdi:white-balance-sunny', 'brightness', limits['min_brightness'], limits['max_brightness'])}
-        </div>
-      </ha-card>
-    `
-  }
-
-  setConfig(config) {
-    if (!config.entity) {
-      throw new Error('You need to define an entity')
-    }
-    this.config = config
-    this.useBattery = this.config.useBattery
-    this.requestUpdate()
-  }
-
-  firstUpdated() {
-    bindActionHandler(this.shadowRoot.querySelectorAll('.clickable'))
-  }
-
-  static get styles() {
-    return css`
-      ha-card {
-        margin-top: 32px;
-      }
-      .attributes {
-        white-space: nowrap;
-        padding: 8px;
-      }
-      .attribute ha-icon {
-        float: left;
-        margin-right: 4px;
-      }
-      .attribute {
-        display: inline-block;
-        width: 50%;
-        white-space: normal;
-      }
-      .header {
-        padding-top: 8px;
-        height: 72px;
-      }
-      .header > img {
-        border-radius: 50%;
-        width: 88px;
-        margin-left: 16px;
-        margin-right: 16px;
-        margin-top: -32px;
-        float: left;
-        box-shadow: var(--ha-card-box-shadow, 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2));
-      }
-      .header > #name {
-        font-weight: bold;
-        width: 100%;
-        margin-top: 16px;
-        text-transform: capitalize;
-        display: block;
-      }
-      #name ha-icon {
-        color: rgb(240, 163, 163);
-      }
-      .header > #species {
-        text-transform: capitalize;
-        color: #8c96a5;
-        display: block;
-      }
-      .meter {
-        height: 8px;
-        background-color: #f1f1f1;
-        border-radius: 2px;
-        display: inline-grid;
-        overflow: hidden;
-      }
-      .meter.red {
-        width: 10%;
-      }
-      .meter.green {
-        width: 50%;
-      }
-      .meter.battery {
-        width: 61.5%;
-      }
-      .meter > span {
-        grid-row: 1;
-        grid-column: 1;
-        height: 100%;
-      }
-      .meter > .good {
-        background-color: rgba(43, 194, 83, 1);
-      }
-      .meter > .bad {
-        background-color: rgba(240, 163, 163);
-      }
-      .meter > .unavailable {
-        background-color: rgba(158, 158, 158, 1);
-      }
-      .divider {
-        height: 1px;
-        background-color: #727272;
-        opacity: 0.25;
-        margin-left: 8px;
-        margin-right: 8px;
-      }
-      .tooltip {
-        position: relative;
-      }
-      .tooltip:after {
-        opacity: 0;
-        visibility: hidden;
-        position: absolute;
-        content: attr(data-tooltip);
-        padding: 6px 10px;
-        top: 1.4em;
-        left: 50%;
-        -webkit-transform: translateX(-50%) translateY(-180%);
-        transform: translateX(-50%) translateY(-180%);
-        background: grey;
-        color: white;
-        white-space: nowrap;
-        z-index: 2;
-        border-radius: 2px;
-        transition: opacity 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), -webkit-transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
-        transition: opacity 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
-        transition: opacity 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), -webkit-transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
-      }
-      .tooltip:hover:after,
-      .tooltip:active:after {
-        display: block;
-        opacity: 1;
-        visibility: visible;
-        -webkit-transform: translateX(-50%) translateY(-200%);
-        transform: translateX(-50%) translateY(-200%);
-      }
-    `
-  }
-}
-
-customElements.define('flower-card', FlowerCard)
