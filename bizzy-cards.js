@@ -45,7 +45,7 @@ export const willyStyles = css`
     overflow: hidden;
     border-radius: 2px;
   }
-  .meter.sections {
+  .meter.section {
     display: inline-grid;
   }
   .meter.red {
