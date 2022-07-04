@@ -397,7 +397,7 @@ class FlowerCard extends LitElement {
     return html`
       <ha-card>
         <div 
-          class="header" id="clickable-div" @action=${(ev) => console.log('I was clicked, or something', ev)}">
+          class="header clickable" @action=${(ev) => console.log('I was clicked, or something', ev)}">
           <img src="${stateObj.attributes.image}" />
           <span id="name"> ${stateObj.attributes.name} <ha-icon .icon="mdi:${stateObj.state == 'problem' ? 'alert-circle-outline' : ''}"></ha-icon></span>
           <span id="species">${species} </span>
@@ -424,7 +424,9 @@ class FlowerCard extends LitElement {
   firstUpdated() {
     customElements.whenDefined('action-handler').then(() => {
       const actionHandler = document.body.querySelector('action-handler')
-      actionHandler.bind(this.shadowRoot.querySelector('#clickable-div'), { hasHold: true, hasDoubleClick: true })
+      this.shadowRoot.querySelectorAll('.clickable').forEach(() => {
+        actionHandler.bind(this, { hasHold: true, hasDoubleClick: true })
+      })
     })
   }
 
