@@ -40,6 +40,7 @@ export const willyStyles = css`
     overflow: hidden;
   }
   .meter {
+    display: grid;
     height: 8px;
     background-color: #f1f1f1;
     border-radius: 2px;
