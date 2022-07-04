@@ -422,8 +422,10 @@ class FlowerCard extends LitElement {
   }
 
   firstUpdated() {
-    const actionHandler = document.body.querySelector('action-handler')
-    actionHandler.bind(this.shadowRoot.querySelector('clickable-div'), { hasHold: true, hasDoubleClick: true })
+    customElements.whenDefined('action-handler').then(() => {
+      const actionHandler = document.body.querySelector('action-handler')
+      actionHandler.bind(this.shadowRoot.querySelector('clickable-div'), { hasHold: true, hasDoubleClick: true })
+    })
   }
 
   static get styles() {
