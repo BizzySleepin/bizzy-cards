@@ -375,7 +375,13 @@ class FlowerCard extends LitElement {
       if (attr !== 'battery') {
         const pct = 100 * Math.max(0, Math.min(1, (val - min) / (max - min)))
         return html`
-          <div class="attribute tooltip" data-tooltip="${aval ? val + ' ' + unit + ' | ' + min + ' ~ ' + max + ' ' + unit : val}" @click="${() => moreInfo(stateObj.attributes.sensors[attr])}">
+          <div
+            class="attribute clickable tooltip"
+            data-tooltip="${aval ? val + ' ' + unit + ' | ' + min + ' ~ ' + max + ' ' + unit : val}"
+            @action=${(ev) => {
+              if (ev.detail.action === 'hold') moreInfo(stateObj.attributes.sensors[attr])
+            }}
+          >
             <ha-icon .icon="${icon}"></ha-icon>
             <div class="meter red">
               <span class="${aval ? (val < min || val > max ? 'bad' : 'good') : 'unavailable'}" style="width: 100%;"></span>
@@ -390,7 +396,13 @@ class FlowerCard extends LitElement {
         `
       } else {
         return html`
-          <div class="attribute tooltip" data-tooltip="${aval ? val + ' ' + unit : val}" @click="${() => moreInfo(stateObj.attributes.sensors['battery'])}">
+          <div
+            class="attribute clickable tooltip"
+            data-tooltip="${aval ? val + ' ' + unit : val}"
+            @action=${(ev) => {
+              if (ev.detail.action === 'hold') moreInfo(stateObj.attributes.sensors['battery'])
+            }}
+          >
             <ha-icon .icon="${icon}"></ha-icon>
             <div class="meter red">
               <span class="${aval ? (val < min ? 'bad' : 'good') : 'unavailable'}" style="width: 100%;"></span>
