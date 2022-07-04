@@ -399,9 +399,7 @@ class FlowerCard extends LitElement {
         <div
           class="header clickable"
           @action=${(ev) => {
-            if (ev.detail.action === 'tap') console.log('I was tapped')
-            if (ev.detail.action === 'hold') console.log('I was held')
-            if (ev.detail.action === 'double_tap') console.log('I was double tapped')
+            if (ev.detail.action === 'tap') moreInfo(stateObj.entity_id)
           }}
         >
           <img src="${stateObj.attributes.image}" />
