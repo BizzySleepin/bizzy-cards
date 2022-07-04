@@ -397,7 +397,9 @@ class FlowerCard extends LitElement {
     return html`
       <ha-card>
         <div 
-          class="header clickable" @action=${(ev) => console.log('I was clicked, or something', ev)}">
+          class="header clickable" @action=${(ev) => {
+            console.log('I was clicked, or something', ev)
+          }}">
           <img src="${stateObj.attributes.image}" />
           <span id="name"> ${stateObj.attributes.name} <ha-icon .icon="mdi:${stateObj.state == 'problem' ? 'alert-circle-outline' : ''}"></ha-icon></span>
           <span id="species">${species} </span>
