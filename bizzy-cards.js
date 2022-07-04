@@ -9,6 +9,15 @@ const moreInfo = (entity) => {
   ev.detail = { entityId: entity }
   document.querySelector('home-assistant').dispatchEvent(ev)
 }
+
+const bindActionHandler = (elements) => {
+  customElements.whenDefined('action-handler').then(() => {
+    const actionHandler = document.body.querySelector('action-handler')
+    elements.forEach((el) => {
+      actionHandler.bind(el, { hasHold: true, hasDoubleClick: true })
+    })
+  })
+}
 export class batteryCard extends LitElement {
   static get properties() {
     return {
@@ -426,12 +435,7 @@ class FlowerCard extends LitElement {
   }
 
   firstUpdated() {
-    customElements.whenDefined('action-handler').then(() => {
-      const actionHandler = document.body.querySelector('action-handler')
-      this.shadowRoot.querySelectorAll('.clickable').forEach((el) => {
-        actionHandler.bind(el, { hasHold: true, hasDoubleClick: true })
-      })
-    })
+    bindActionHandler(this.shadowRoot.querySelectorAll('.clickable'))
   }
 
   static get styles() {
