@@ -176,11 +176,10 @@ export class batteryCard extends LitElement {
           display: block;
         }
         .meter {
+          display: grid;
           height: 8px;
+          width: 100%;
           background-color: #f1f1f1;
-          border-radius: 2px;
-          display: inline-grid;
-          overflow: hidden;
           border-radius: 2px;
         }
         .meter > .good {
@@ -334,10 +333,11 @@ class FlowerCard extends LitElement {
           display: block;
         }
         .meter {
-          display: grid;
           height: 8px;
-          width: 100%;
           background-color: #f1f1f1;
+          border-radius: 2px;
+          display: inline-grid;
+          overflow: hidden;
         }
         .meter > .good {
           background-color: rgba(43, 194, 83, 1);
