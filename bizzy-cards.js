@@ -8,6 +8,13 @@ export const willyStyles = css`
     padding-top: 8px;
     height: 72px;
   }
+  .header > #name {
+    font-weight: bold;
+    width: 100%;
+    margin-top: 16px;
+    text-transform: capitalize;
+    display: block;
+  }
   .header > img {
     border-radius: 50%;
     width: 88px;
@@ -26,6 +33,13 @@ export const willyStyles = css`
     height: 20px;
     text-transform: capitalize;
     overflow: hidden;
+  }
+  .meter {
+    display: inline-grid;
+    height: 8px;
+    background-color: #f1f1f1;
+    overflow: hidden;
+    border-radius: 2px;
   }
   .meter.red {
     width: 10%;
@@ -178,18 +192,7 @@ export class batteryCard extends LitElement {
           white-space: normal;
         }
         .header > #name {
-          font-weight: bold;
-          width: 100%;
-          margin-top: 16px;
-          text-transform: capitalize;
-          display: block;
-        }
-        .meter {
-          display: grid;
-          height: 8px;
-          width: 100%;
-          background-color: #f1f1f1;
-          border-radius: 2px;
+          margin-top: 20px;
         }
       `,
     ]
@@ -321,20 +324,6 @@ class FlowerCard extends LitElement {
           text-transform: capitalize;
           color: #8c96a5;
           display: block;
-        }
-        .header > #name {
-          font-weight: bold;
-          width: 100%;
-          margin-top: 20px;
-          text-transform: capitalize;
-          display: block;
-        }
-        .meter {
-          height: 8px;
-          background-color: #f1f1f1;
-          border-radius: 2px;
-          display: inline-grid;
-          overflow: hidden;
         }
       `,
     ]
