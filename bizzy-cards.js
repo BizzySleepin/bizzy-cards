@@ -15,6 +15,11 @@ export const willyStyles = css`
     text-transform: capitalize;
     display: block;
   }
+  .header > #subname {
+    text-transform: capitalize;
+    color: #8c96a5;
+    display: block;
+  }
   .header > img {
     border-radius: 50%;
     width: 88px;
@@ -35,11 +40,13 @@ export const willyStyles = css`
     overflow: hidden;
   }
   .meter {
-    display: inline-grid;
     height: 8px;
     background-color: #f1f1f1;
     overflow: hidden;
     border-radius: 2px;
+  }
+  .meter.sections {
+    display: inline-grid;
   }
   .meter.red {
     width: 10%;
@@ -236,13 +243,13 @@ class FlowerCard extends LitElement {
             }}
           >
             <ha-icon .icon="${icon}"></ha-icon>
-            <div class="meter red">
+            <div class="meter section red">
               <span class="${aval ? (val < min || val > max ? 'bad' : 'good') : 'unavailable'}" style="width: 100%;"></span>
             </div>
-            <div class="meter green">
+            <div class="meter section green">
               <span class="${aval ? (val > max ? 'bad' : 'good') : 'unavailable'}" style="width:${aval ? pct : '0'}%;"></span>
             </div>
-            <div class="meter red">
+            <div class="meter section red">
               <span class="bad" style="width:${aval ? (val > max ? 100 : 0) : '0'}%;"></span>
             </div>
           </div>
@@ -278,7 +285,7 @@ class FlowerCard extends LitElement {
         >
           <img src="${stateObj.attributes.image}" />
           <span id="name"> ${stateObj.attributes.name} <ha-icon .icon="mdi:${stateObj.state == 'problem' ? 'alert-circle-outline' : ''}"></ha-icon></span>
-          <span id="species">${species} </span>
+          <span id="subname">${species} </span>
         </div>
         <div class="divider"></div>
         <div class="attributes">${attribute('mdi:thermometer', 'temperature', limits['min_temperature'], limits['max_temperature'])} ${attribute('mdi:leaf', 'conductivity', limits['min_conductivity'], limits['max_conductivity'])}</div>
@@ -319,11 +326,6 @@ class FlowerCard extends LitElement {
           display: inline-block;
           width: 50%;
           white-space: normal;
-        }
-        .header > #species {
-          text-transform: capitalize;
-          color: #8c96a5;
-          display: block;
         }
       `,
     ]
