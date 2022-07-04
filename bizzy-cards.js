@@ -33,6 +33,15 @@ export const willyStyles = css`
   .meter.green {
     width: 50%;
   }
+  .meter > .good {
+    background-color: rgba(43, 194, 83, 1);
+  }
+  .meter > .bad {
+    background-color: rgba(240, 163, 163);
+  }
+  .meter > .unavailable {
+    background-color: rgba(158, 158, 158, 1);
+  }
   .meter > span {
     grid-row: 1;
     grid-column: 1;
@@ -182,18 +191,6 @@ export class batteryCard extends LitElement {
           background-color: #f1f1f1;
           border-radius: 2px;
         }
-        .meter > .good {
-          background-color: rgba(43, 194, 83, 1);
-          border-radius: 2px;
-        }
-        .meter > .bad {
-          background-color: rgba(240, 163, 163);
-          border-radius: 2px;
-        }
-        .meter > .unavailable {
-          background-color: rgba(158, 158, 158, 1);
-          border-radius: 2px;
-        }
       `,
     ]
   }
@@ -338,15 +335,6 @@ class FlowerCard extends LitElement {
           border-radius: 2px;
           display: inline-grid;
           overflow: hidden;
-        }
-        .meter > .good {
-          background-color: rgba(43, 194, 83, 1);
-        }
-        .meter > .bad {
-          background-color: rgba(240, 163, 163);
-        }
-        .meter > .unavailable {
-          background-color: rgba(158, 158, 158, 1);
         }
       `,
     ]
