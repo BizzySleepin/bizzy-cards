@@ -42,8 +42,8 @@ export const willyStyles = css`
   .meter {
     height: 8px;
     background-color: #f1f1f1;
-    overflow: hidden;
     border-radius: 2px;
+    overflow: hidden;
   }
   .meter.section {
     display: inline-grid;
@@ -53,6 +53,9 @@ export const willyStyles = css`
   }
   .meter.green {
     width: 50%;
+  }
+  .meter.battery {
+    width: 61.5%;
   }
   .meter > .good {
     background-color: rgba(43, 194, 83, 1);
@@ -67,9 +70,6 @@ export const willyStyles = css`
     grid-row: 1;
     grid-column: 1;
     height: 100%;
-  }
-  .meter.battery {
-    width: 61.5%;
   }
   .meter > span {
     grid-row: 1;
@@ -264,10 +264,10 @@ class FlowerCard extends LitElement {
             }}
           >
             <ha-icon .icon="${icon}"></ha-icon>
-            <div class="meter red">
+            <div class="meter section red">
               <span class="${aval ? (val < min ? 'bad' : 'good') : 'unavailable'}" style="width: 100%;"></span>
             </div>
-            <div class="meter battery">
+            <div class="meter section battery">
               <span class="${aval ? 'good' : 'unavailable'}" style="width:${aval ? val - 10 : '0'}%;"></span>
             </div>
           </div>
