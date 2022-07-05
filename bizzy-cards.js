@@ -530,7 +530,6 @@ class leaksCard2 extends LitElement {
           </details>
         </div>
       </ha-card>
-      <ha-card> </ha-card>
     `
   }
 
