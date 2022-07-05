@@ -589,7 +589,6 @@ class leaksCard2 extends LitElement {
         height: 42px;
         width: 42px;
         border-radius: 50%;
-        margin-right: 12px;
         background-color: rgba(111, 111, 111, 0.2);
         color: rgb(111, 111, 111);
         box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 1px;
@@ -599,6 +598,18 @@ class leaksCard2 extends LitElement {
         transition-duration: 0.28s;
         transition-property: background-color, box-shadow;
         transition-timing-function: ease-out;
+      }
+      .shape + .shape {
+        margin-left: 12px;
+      }
+      .shape ha-icon {
+        display: flex;
+        fill: rgb(76, 175, 80);
+        font-size: 42px;
+        transition-delay: 0s;
+        transition-duration: 0.28s;
+        transition-property: color;
+        transition-timing-function: ease-in-out;
       }
       .shape.small {
         height: 30px;
@@ -619,35 +630,9 @@ class leaksCard2 extends LitElement {
         background-color: rgba(255, 204, 0, 0.2)
         color: rgb(255, 204, 0)
       }
-      .circle {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 30px;
-        height: 30px;
-        background-color: #50c878;
-        border-radius: 50%;
-      }
-      .circle + .circle {
-        margin-left: 1rem;
-      }
-      .circle.attention {
-        background-color: #eed202;
-      }
-      .circle.warning {
-        background-color: #d0342c;
-      }
-      .shape ha-icon {
-        display: flex;
-        fill: rgb(76, 175, 80);
-        font-size: 42px;
-        transition-delay: 0s;
-        transition-duration: 0.28s;
-        transition-property: color;
-        transition-timing-function: ease-in-out;
-      }
       .container {
         display: flex;
+        margin-left: 12px;
         flex-basis: 0%;
         flex-direction: column;
         flex-grow: 1;
