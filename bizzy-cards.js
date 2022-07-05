@@ -294,7 +294,6 @@ class FlowerCard extends LitElement {
           ${attribute('mdi:water-percent', 'moisture', limits['min_moisture'], limits['max_moisture'])}
           ${this.useBattery ? attribute('mdi:battery-80', 'battery', 10) : attribute('mdi:white-balance-sunny', 'brightness', limits['min_brightness'], limits['max_brightness'])}
         </div>
-        <div id="poo"></div>
       </ha-card>
     `
   }
@@ -310,17 +309,6 @@ class FlowerCard extends LitElement {
 
   firstUpdated() {
     bindActionHandler(this.shadowRoot.querySelectorAll('.clickable'))
-
-    const myElement = cardTools.createElement({
-      hours_to_show: 24,
-      graph: 'line',
-      type: 'sensor',
-      entity: 'sensor.openweathermap_forecast_precipitation',
-      detail: 2,
-      icon: 'mdi:water',
-      name: 'Water Usage',
-    })
-    document.querySelector('#poo').appendChild(myElement)
   }
 
   static get styles() {
@@ -582,7 +570,6 @@ class valveCard extends LitElement {
             <span class="secondary">Valve is ${item.state !== 'off' ? ' Open!' : ' Closed!'}</span>
           </div>
         </div>
-        <sensor entity="sensor.openweathermap_forecast_precipitation"> </sensor>
       </ha-card>
     `
   }
