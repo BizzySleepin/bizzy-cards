@@ -584,7 +584,7 @@ class leaksCard2 extends LitElement {
         width: 100%;
       }
       .shape {
-        display: flex;
+        display: inline-flex;
         align-items: center;
         height: 42px;
         width: 42px;
@@ -603,6 +603,9 @@ class leaksCard2 extends LitElement {
       .shape.small {
         height: 30px;
         width: 30px;
+      }
+      .shape.small ha-icon {
+        width: 18px;
       }
       .shape.green {
         background-color: rgba(76, 175, 80, 0.2);
