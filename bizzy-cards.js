@@ -517,6 +517,10 @@ class leaksCard2 extends LitElement {
           <div class="shape">
             <ha-icon icon="mdi:water"></ha-icon>
           </div>
+          <div class="container">
+            <span class="primary">Pi-Hole Core Update Available</span>
+            <span class="secondary">Up-to-date</span>
+            </div>
         </div>
       </ha-card>
     `
@@ -534,6 +538,10 @@ class leaksCard2 extends LitElement {
     return css`
       .card {
         padding: 12px;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
       }
       .shape {
         align-items: center;
@@ -559,6 +567,34 @@ class leaksCard2 extends LitElement {
         position: relative;
         vertical-align: middle;
         width: 21px;
+      }
+      .container {
+        display: flex;
+        flex-basis: 0%;
+        flex-direction: column;
+        flex-grow: 1;
+        flex-shrink: 1;
+        min-width: 0px;
+      }
+      .primary {
+        color: rgb(225, 225, 225);
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 21px;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .secondary {
+        color: rgb(155, 155, 155);
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 18px;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
     `
   }
