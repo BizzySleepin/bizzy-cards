@@ -557,4 +557,4 @@ class leaksCard2 extends LitElement {
   }
 }
 
-customElements.define('leaks-card2', leaksCard2)
+customElements.define('leaks-cardtwo', leaksCard2)
