@@ -512,9 +512,11 @@ class leaksCard2 extends LitElement {
 
   render() {
     return html`
-      <ha-card class"card">
-        <div class="shape">
-          <ha-icon icon="mdi:water"></ha-icon>
+      <ha-card>
+        <div class"card">
+          <div class="shape">
+            <ha-icon icon="mdi:water"></ha-icon>
+          </div>
         </div>
       </ha-card>
     `
