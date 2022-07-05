@@ -389,7 +389,7 @@ class leaksCard extends LitElement {
             <summary>
               <div class="card">
                 <div class="shape ${items[0].state !== 'off' ? ' red' : items[0].attributes.battery < 10 ? ' yellow' : 'green'}">
-                  <ha-icon icon="mdi:water"></ha-icon>
+                  <ha-icon icon="mdi:pipe-leak"></ha-icon>
                 </div>
                 <div class="container">
                   <span class="primary">Leak Sensors</span>
@@ -544,3 +544,173 @@ class leaksCard extends LitElement {
 }
 
 customElements.define('leaks-card', leaksCard)
+
+class valveCard extends LitElement {
+  static get properties() {
+    return {
+      hass: {},
+      config: {},
+    }
+  }
+
+  script() {
+    return
+  }
+
+  render() {
+    const status = 'Water Running'
+
+    return html`
+      <ha-card>
+        <div class="card">
+          <div class="shape">
+            <ha-icon icon="mdi:water"></ha-icon>
+          </div>
+          <div class="container">
+            <span class="primary">Leak Sensors</span>
+            <span class="secondary">${status}</span>
+          </div>
+        </div>
+      </ha-card>
+    `
+  }
+
+  setConfig(config) {
+    if (!config.entity) {
+      throw new Error('You need to define an entity')
+    }
+    this.config = config
+    this.requestUpdate()
+  }
+
+  static get styles() {
+    return css`
+      .card {
+        padding: 12px;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 100%;
+      }
+      .shape {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        height: 42px;
+        width: 42px;
+        border-radius: 50%;should
+        background-color: rgba(111, 111, 111, 0.2);
+        color: rgb(111, 111, 111);
+        font-size: 42px;
+        justify-content: center;
+        box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 1px;
+        transition-duration: 0.28s;
+        transition-property: background-color, box-shadow;
+        transition-timing-function: ease-out;
+      }
+      .shape + .shape {
+        margin-left: 12px;
+      }
+      .shape ha-icon {
+        display: flex;
+        fill: rgb(76, 175, 80);
+        font-size: 42px;
+        transition-delay: 0s;
+        transition-duration: 0.28s;
+        transition-property: color;
+        transition-timing-function: ease-in-out;
+      }
+      .shape.small {
+        height: 30px;
+        width: 30px;
+      }
+      .shape.small ha-icon {
+        width: 18px;
+      }
+      .shape.green {
+        background-color: rgba(76, 175, 80, 0.2);
+        color: rgb(76, 175, 80);
+      }
+      .shape.red {
+        background-color: rgba(244, 67, 54, 0.2);
+        color: rgb(244, 67, 54);
+      }
+      .shape.yellow {
+        background-color: rgba(255, 204, 0, 0.2);
+        color: rgb(255, 204, 0);
+      }
+      .container {
+        display: flex;
+        margin-left: 12px;
+        flex-basis: 0%;
+        flex-direction: column;
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+      .primary {
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 21px;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .secondary {
+        color: rgb(155, 155, 155);
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 18px;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .outer {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .inner {
+        height: 30px;
+        padding: 12px 36px;
+        display: flex;
+        justify-content: space-between;
+      }
+      details .inner + .inner {
+        padding-top: 0;
+      }
+      details + details {
+        margin-top: 0.5rem;
+      }
+      summary {
+        list-style: none;
+      }
+      summary::-webkit-details-marker {
+        display: none;
+      }
+      summary {
+        cursor: pointer;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+      }
+      details[open] summary {
+      }
+      details[open] summary div .toggle {
+        transform: rotate(180deg);
+      }
+      summary:hover {
+      }
+      .entity-text {
+        display: flex;
+        align-items: center;
+      }
+      .entity-states {
+        white-space: nowrap;
+      }
+    `
+  }
+}
+
+customElements.define('valve-card', valveCard)
