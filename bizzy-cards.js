@@ -623,12 +623,12 @@ class leaksCard2 extends LitElement {
         color: rgb(76, 175, 80);
       }
       .shape.red {
-        background-color: rgba(244, 67, 54, 0.2)
-        color: rgb(244, 67, 54)
+        background-color: rgba(244, 67, 54, 0.2);
+        color: rgb(244, 67, 54);
       }
       .shape.yellow {
-        background-color: rgba(255, 204, 0, 0.2)
-        color: rgb(255, 204, 0)
+        background-color: rgba(255, 204, 0, 0.2);
+        color: rgb(255, 204, 0);
       }
       .container {
         display: flex;
@@ -699,7 +699,7 @@ class leaksCard2 extends LitElement {
       .entity-states {
         white-space: nowrap;
       }
-      `
+    `
   }
 }
 
