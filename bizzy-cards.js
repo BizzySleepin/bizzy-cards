@@ -560,14 +560,14 @@ class leaksCard2 extends LitElement {
         margin-right: 12px;
       }
       .shape ha-icon {
-        align-items: center;
+        color: rgb(76, 175, 80);
         display: flex;
         fill: rgb(76, 175, 80);
-        height: 21px;
-        justify-content: center;
-        position: relative;
-        vertical-align: middle;
-        width: 21px;
+        font-size: 42px;
+        transition-delay: 0s;
+        transition-duration: 0.28s;
+        transition-property: color;
+        transition-timing-function: ease-in-out;
       }
       .container {
         display: flex;
