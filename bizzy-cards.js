@@ -9,53 +9,6 @@ export const willyStyles = css`
     justify-content: flex-start;
     width: 100%;
   }
-  .shape {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    height: 42px;
-    width: 42px;
-    border-radius: 50%;
-    background-color: rgba(111, 111, 111, 0.2);
-    color: rgb(111, 111, 111);
-    font-size: 42px;
-    justify-content: center;
-    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 1px;
-    transition-duration: 0.28s;
-    transition-property: background-color, box-shadow;
-    transition-timing-function: ease-out;
-  }
-  .shape + .shape {
-    margin-left: 12px;
-  }
-  .shape ha-icon {
-    display: flex;
-    fill: rgb(76, 175, 80);
-    font-size: 42px;
-    transition-delay: 0s;
-    transition-duration: 0.28s;
-    transition-property: color;
-    transition-timing-function: ease-in-out;
-  }
-  .shape.small {
-    height: 30px;
-    width: 30px;
-  }
-  .shape.small ha-icon {
-    width: 18px;
-  }
-  .shape.green {
-    background-color: rgba(76, 175, 80, 0.2);
-    color: rgb(76, 175, 80);
-  }
-  .shape.red {
-    background-color: rgba(244, 67, 54, 0.2);
-    color: rgb(244, 67, 54);
-  }
-  .shape.yellow {
-    background-color: rgba(255, 204, 0, 0.2);
-    color: rgb(255, 204, 0);
-  }
   .container {
     display: flex;
     margin-left: 12px;
@@ -160,6 +113,15 @@ export const willyStyles = css`
     text-transform: capitalize;
     overflow: hidden;
   }
+  .divider {
+    height: 1px;
+    background-color: #727272;
+    opacity: 0.25;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+`
+export const meterStyles = css`
   .meter {
     display: grid;
     height: 8px;
@@ -198,13 +160,9 @@ export const willyStyles = css`
     grid-column: 1;
     height: 100%;
   }
-  .divider {
-    height: 1px;
-    background-color: #727272;
-    opacity: 0.25;
-    margin-left: 8px;
-    margin-right: 8px;
-  }
+`
+
+export const tooltipStyles = css`
   .tooltip {
     position: relative;
   }
@@ -234,6 +192,55 @@ export const willyStyles = css`
     visibility: visible;
     -webkit-transform: translateX(-50%) translateY(-200%);
     transform: translateX(-50%) translateY(-200%);
+  }
+`
+export const iconStyles = css`
+  .shape {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+    background-color: rgba(111, 111, 111, 0.2);
+    color: rgb(111, 111, 111);
+    font-size: 42px;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 1px;
+    transition-duration: 0.28s;
+    transition-property: background-color, box-shadow;
+    transition-timing-function: ease-out;
+  }
+  .shape + .shape {
+    margin-left: 12px;
+  }
+  .shape ha-icon {
+    display: flex;
+    fill: rgb(76, 175, 80);
+    font-size: 42px;
+    transition-delay: 0s;
+    transition-duration: 0.28s;
+    transition-property: color;
+    transition-timing-function: ease-in-out;
+  }
+  .shape.small {
+    height: 30px;
+    width: 30px;
+  }
+  .shape.small ha-icon {
+    width: 18px;
+  }
+  .shape.green {
+    background-color: rgba(76, 175, 80, 0.2);
+    color: rgb(76, 175, 80);
+  }
+  .shape.red {
+    background-color: rgba(244, 67, 54, 0.2);
+    color: rgb(244, 67, 54);
+  }
+  .shape.yellow {
+    background-color: rgba(255, 204, 0, 0.2);
+    color: rgb(255, 204, 0);
   }
 `
 
@@ -306,6 +313,8 @@ export class batteryCard extends LitElement {
   static get styles() {
     return [
       willyStyles,
+      meterStyles,
+      tooltipStyles,
       css`
         ha-card {
           margin-top: 30px;
@@ -438,6 +447,8 @@ class FlowerCard extends LitElement {
   static get styles() {
     return [
       willyStyles,
+      meterStyles,
+      tooltipStyles,
       css`
         ha-card {
           margin-top: 30px;
@@ -542,7 +553,7 @@ class leaksCard extends LitElement {
   }
 
   static get styles() {
-    return willyStyles
+    return [willyStyles, iconStyles, tooltipStyles]
   }
 }
 
@@ -586,7 +597,7 @@ class valveCard extends LitElement {
   }
 
   static get styles() {
-    return willyStyles
+    return [willyStyles, iconStyles, tooltipStyles]
   }
 }
 
