@@ -95,6 +95,19 @@ export const imageHeaderStyles = css`
 `
 
 export const meterStyles = css`
+  .entity-box {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-bottom: 8px;
+  }
+  .entity {
+    display: block;
+    box-sizing: border-box;
+    width: 50%;
+    padding: 8px 16px;
+    white-space: normal;
+  }
   .meter-row {
     white-space: nowrap;
     padding: 8px;
@@ -298,7 +311,7 @@ export class batteryCard extends LitElement {
       const aval = val !== 'unavailable' && val !== 'unknown' ? true : false
       const min = this.min
       return html`
-        <div class="battery tooltip" data-tooltip="${aval ? val + '%' : val}">
+        <div class="entity tooltip" data-tooltip="${aval ? val + '%' : val}">
           <div class="label">${item.attributes.friendly_name.toLowerCase().replace(' battery', '')}</div>
           <div class="meter">
             <span class="${aval ? (val > min ? 'good' : 'bad') : 'unavailable'}" style="width:${aval ? val : 100}%;"></span>
@@ -314,7 +327,7 @@ export class batteryCard extends LitElement {
           <span id="name"> ${this.title} </span>
         </div>
         <div class="divider"></div>
-        <div class="batteries">${items.map((item) => attribute(item))}</div>
+        <div class="entity-box">${items.map((item) => attribute(item))}</div>
       </ha-card>
     `
   }
@@ -331,30 +344,7 @@ export class batteryCard extends LitElement {
   }
 
   static get styles() {
-    return [
-      commonStyles,
-      meterStyles,
-      tooltipStyles,
-      imageHeaderStyles,
-      css`
-        .batteries {
-          display: flex;
-          flex-wrap: wrap;
-          width: 100%;
-          padding-bottom: 8px;
-        }
-        .battery {
-          display: block;
-          box-sizing: border-box;
-          width: 50%;
-          padding: 8px 16px;
-          white-space: normal;
-        }
-        .header > #name {
-          margin-top: 20px;
-        }
-      `,
-    ]
+    return [commonStyles, meterStyles, tooltipStyles, imageHeaderStyles, css``]
   }
 }
 
