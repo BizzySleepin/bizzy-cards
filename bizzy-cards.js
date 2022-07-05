@@ -1,6 +1,33 @@
 import { LitElement, html, css } from 'https://unpkg.com/lit-element@2.0.1/lit-element.js?module'
 
 export const willyStyles = css`
+  .entity-text {
+    display: flex;
+    align-items: center;
+  }
+  .entity-states {
+    white-space: nowrap;
+  }
+
+  #name ha-icon {
+    color: rgb(240, 163, 163);
+  }
+  .label {
+    display: block;
+    width: 100%;
+    height: 20px;
+    text-transform: capitalize;
+    overflow: hidden;
+  }
+  .divider {
+    height: 1px;
+    background-color: #727272;
+    opacity: 0.25;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+`
+export const iconHeaderStyles = css`
   .card {
     padding: 12px;
     align-items: center;
@@ -36,13 +63,8 @@ export const willyStyles = css`
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  .entity-text {
-    display: flex;
-    align-items: center;
-  }
-  .entity-states {
-    white-space: nowrap;
-  }
+`
+export const imageHeaderStyles = css`
   .header {
     padding-top: 8px;
     height: 72px;
@@ -68,24 +90,8 @@ export const willyStyles = css`
     float: left;
     box-shadow: var(--ha-card-box-shadow, 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2));
   }
-  #name ha-icon {
-    color: rgb(240, 163, 163);
-  }
-  .label {
-    display: block;
-    width: 100%;
-    height: 20px;
-    text-transform: capitalize;
-    overflow: hidden;
-  }
-  .divider {
-    height: 1px;
-    background-color: #727272;
-    opacity: 0.25;
-    margin-left: 8px;
-    margin-right: 8px;
-  }
 `
+
 export const meterStyles = css`
   .meter {
     display: grid;
@@ -314,6 +320,7 @@ export class batteryCard extends LitElement {
       willyStyles,
       meterStyles,
       tooltipStyles,
+      imageHeaderStyles,
       css`
         ha-card {
           margin-top: 30px;
@@ -448,6 +455,7 @@ class FlowerCard extends LitElement {
       willyStyles,
       meterStyles,
       tooltipStyles,
+      imageHeaderStyles,
       css`
         ha-card {
           margin-top: 30px;
@@ -550,7 +558,7 @@ class leaksCard extends LitElement {
   }
 
   static get styles() {
-    return [willyStyles, iconStyles, tooltipStyles, dropdownStyles]
+    return [willyStyles, iconStyles, tooltipStyles, dropdownStyles, iconHeaderStyles]
   }
 }
 
@@ -594,7 +602,7 @@ class valveCard extends LitElement {
   }
 
   static get styles() {
-    return [willyStyles, iconStyles, tooltipStyles]
+    return [willyStyles, iconStyles, tooltipStyles, iconHeaderStyles]
   }
 }
 
