@@ -514,12 +514,12 @@ class leaksCard2 extends LitElement {
     const sensor = (item) => {
       return html`
         <div class="inner">
-          <span class="center" @click="${() => moreInfo(item.entity_id)}">${item.attributes.friendly_name.replace(' Leak Sensor Water Leak', '')}</span>
-          <span class="circles">
+          <span class="entity-text" @click="${() => moreInfo(item.entity_id)}">${item.attributes.friendly_name.replace(' Leak Sensor Water Leak', '')}</span>
+          <span class="entity-states">
             <div class="shape small ${item.attributes.battery > 10 ? ' green' : ' yellow'}">
               <ha-icon icon="mdi:battery${item.attributes.battery === 100 ? '' : '-' + Math.round(item.attributes.battery / 10) * 10}"></ha-icon>
             </div>
-            <div class="shape small ${item.state === 'off' ? '' : ' red'}">
+            <div class="shape small ${item.state === 'off' ? 'green' : ' red'}">
               <ha-icon icon="mdi:water"></ha-icon>
             </div>
           </span>
@@ -685,23 +685,6 @@ class leaksCard2 extends LitElement {
         display: flex;
         justify-content: space-between;
       }
-      .title {
-        font-weight: bold;
-      }
-      .title-icons {
-        display: flex;
-        align-items: center;
-      }
-      .state {
-        margin-right: 0.5rem;
-      }
-      .center {
-        display: flex;
-        align-items: center;
-      }
-      .circles {
-        white-space: nowrap;
-      }
       details[open] summary {
       }
       details[open] summary div .toggle {
@@ -709,7 +692,14 @@ class leaksCard2 extends LitElement {
       }
       summary:hover {
       }
-    `
+      .entity-text {
+        display: flex;
+        align-items: center;
+      }
+      .entity-states {
+        white-space: nowrap;
+      }
+      `
   }
 }
 
