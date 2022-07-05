@@ -421,17 +421,17 @@ class leaksCard extends LitElement {
         width: 100%;
       }
       .shape {
+        position: relative;
         display: inline-flex;
         align-items: center;
         height: 42px;
         width: 42px;
-        border-radius: 50%;
+        border-radius: 50%;should
         background-color: rgba(111, 111, 111, 0.2);
         color: rgb(111, 111, 111);
-        box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 1px;
         font-size: 42px;
         justify-content: center;
-        position: relative;
+        box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 1px;
         transition-duration: 0.28s;
         transition-property: background-color, box-shadow;
         transition-timing-function: ease-out;
