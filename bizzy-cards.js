@@ -307,6 +307,9 @@ export class batteryCard extends LitElement {
     return [
       willyStyles,
       css`
+        ha-card {
+          margin-top: 30px;
+        }
         .batteries {
           display: flex;
           flex-wrap: wrap;
@@ -436,6 +439,9 @@ class FlowerCard extends LitElement {
     return [
       willyStyles,
       css`
+        ha-card {
+          margin-top: 30px;
+        }
         .attributes {
           white-space: nowrap;
           padding: 8px;
