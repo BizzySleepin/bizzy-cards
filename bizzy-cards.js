@@ -399,7 +399,7 @@ class FlowerCard extends LitElement {
       } else {
         return html`
           <div
-            class="meter-box clickable tooltip"
+            class="entity clickable tooltip"
             data-tooltip="${aval ? val + ' ' + unit : val}"
             @action=${(ev) => {
               if (ev.detail.action === 'hold') moreInfo(stateObj.attributes.sensors['battery'])
@@ -430,10 +430,10 @@ class FlowerCard extends LitElement {
           <span id="subname">${species} </span>
         </div>
         <div class="divider"></div>
-        <div class="meter-row">${attribute('mdi:thermometer', 'temperature', limits['min_temperature'], limits['max_temperature'])} ${attribute('mdi:leaf', 'conductivity', limits['min_conductivity'], limits['max_conductivity'])}</div>
-        <div class="meter-row">
+        <div class="entity-box">
           ${attribute('mdi:water-percent', 'moisture', limits['min_moisture'], limits['max_moisture'])}
           ${this.useBattery ? attribute('mdi:battery-80', 'battery', 10) : attribute('mdi:white-balance-sunny', 'brightness', limits['min_brightness'], limits['max_brightness'])}
+          ${attribute('mdi:thermometer', 'temperature', limits['min_temperature'], limits['max_temperature'])} ${attribute('mdi:leaf', 'conductivity', limits['min_conductivity'], limits['max_conductivity'])}
         </div>
       </ha-card>
     `
