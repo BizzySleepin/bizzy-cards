@@ -549,7 +549,7 @@ class leaksCard2 extends LitElement {
             <summary>
               <div class="card">
                 <div class="shape" style="background-color: rgba(244, 67, 54, 0.2)">
-                  <ha-icon icon="mdi:water" style="background-color: rgb(244, 67, 54)"></ha-icon>
+                  <ha-icon icon="mdi:water" style="color: rgb(244, 67, 54)"></ha-icon>
                 </div>
                 <div class="container">
                   <span class="primary">Leak Sensors</span>
@@ -585,7 +585,8 @@ class leaksCard2 extends LitElement {
       }
       .shape {
         align-items: center;
-        background-color: rgba(76, 175, 80, 0.2);
+        background-color: rgba(111, 111, 111, 0.2);
+        color: rgb(111, 111, 111);
         box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 1px;
         display: flex;
         font-size: 42px;
@@ -599,8 +600,15 @@ class leaksCard2 extends LitElement {
         border-radius: 50%;
         margin-right: 12px;
       }
-      .shape ha-icon {
+      .shape.green {
+        background-color: rgba(76, 175, 80, 0.2);
         color: rgb(76, 175, 80);
+      }
+      .shape.red {
+        background-color: rgba(244, 67, 54, 0.2)
+        color: rgb(244, 67, 54)
+      }
+      .shape ha-icon {
         display: flex;
         fill: rgb(76, 175, 80);
         font-size: 42px;
