@@ -581,6 +581,7 @@ class leaksCard2 extends LitElement {
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
+        width: 100%;
       }
       .shape {
         align-items: center;
@@ -614,7 +615,6 @@ class leaksCard2 extends LitElement {
         flex-direction: column;
         flex-grow: 1;
         flex-shrink: 1;
-        width: 100%;
       }
       .primary {
         font-size: 14px;
