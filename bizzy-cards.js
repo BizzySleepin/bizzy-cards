@@ -531,27 +531,28 @@ class leaksCard2 extends LitElement {
   static get styles() {
     return css`
       .shape {
-        position: relative;
-        width: 42px;
-        height: 42px;
-        font-size: 42px;
-        border-radius: 50%;
-        display: flex;
         align-items: center;
+        background-color: rgba(76, 175, 80, 0.2);
+        box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 1px;
+        display: flex;
+        font-size: 42px;
+        height: 42px;
         justify-content: center;
-        background-color: green;
+        position: relative;
+        transition-duration: 0.28s;
         transition-property: background-color, box-shadow;
-        transition-duration: 280ms;
         transition-timing-function: ease-out;
-        animation: none;
-        box-shadow: 0 0 0 1px transparent;
+        width: 42px;
       }
       .shape ha-icon {
+        align-items: center;
         display: flex;
-        --mdc-icon-size: 0.5rem;
-        color: green;
-        transition: color 280ms ease-in-out 0s;
-        animation: none;
+        fill: rgb(76, 175, 80);
+        height: 21px;
+        justify-content: center;
+        position: relative;
+        vertical-align: middle;
+        width: 21px;
       }
     `
   }
