@@ -525,12 +525,6 @@ class leaksCard2 extends LitElement {
                   <span class="secondary">Everything is OK!</span>
                 </div>
               </div>
-              <div class="title-icons">
-                <span class="state">${items[0].state !== 'off' ? 'Leak Detected! - ' : items[0].attributes.battery < 10 ? 'Low Batteries - ' : ''}</span>
-                <div class="circle ${items[0].state !== 'off' ? ' warning' : items[0].attributes.battery < 10 ? ' attention' : ''}">
-                  <ha-icon icon="mdi:${items[0].state !== 'off' ? 'water-alert' : 'check-bold'}"></ha-icon>
-                </div>
-              </div>
             </summary>
             ${items.map((item) => sensor(item))}
           </details>
