@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'https://unpkg.com/lit-element@2.0.1/lit-element.js?module'
 
-export const willyStyles = css`
+export const commonStyles = css`
   .entity-text {
     display: flex;
     align-items: center;
@@ -8,7 +8,6 @@ export const willyStyles = css`
   .entity-states {
     white-space: nowrap;
   }
-
   #name ha-icon {
     color: rgb(240, 163, 163);
   }
@@ -65,6 +64,9 @@ export const iconHeaderStyles = css`
   }
 `
 export const imageHeaderStyles = css`
+  ha-card {
+    margin-top: 30px;
+  }
   .header {
     padding-top: 8px;
     height: 72px;
@@ -93,6 +95,19 @@ export const imageHeaderStyles = css`
 `
 
 export const meterStyles = css`
+  .meter-row {
+    white-space: nowrap;
+    padding: 8px;
+  }
+  .meter-box {
+    display: inline-block;
+    width: 50%;
+    white-space: normal;
+  }
+  .meter-box ha-icon {
+    float: left;
+    margin-right: 4px;
+  }
   .meter {
     display: grid;
     height: 8px;
@@ -317,14 +332,11 @@ export class batteryCard extends LitElement {
 
   static get styles() {
     return [
-      willyStyles,
+      commonStyles,
       meterStyles,
       tooltipStyles,
       imageHeaderStyles,
       css`
-        ha-card {
-          margin-top: 30px;
-        }
         .batteries {
           display: flex;
           flex-wrap: wrap;
@@ -376,7 +388,7 @@ class FlowerCard extends LitElement {
         const pct = 100 * Math.max(0, Math.min(1, (val - min) / (max - min)))
         return html`
           <div
-            class="attribute clickable tooltip"
+            class="meter-box clickable tooltip"
             data-tooltip="${aval ? val + ' ' + unit + ' | ' + min + ' ~ ' + max + ' ' + unit : val}"
             @action=${(ev) => {
               if (ev.detail.action === 'hold') moreInfo(stateObj.attributes.sensors[attr])
@@ -397,7 +409,7 @@ class FlowerCard extends LitElement {
       } else {
         return html`
           <div
-            class="attribute clickable tooltip"
+            class="meter-box clickable tooltip"
             data-tooltip="${aval ? val + ' ' + unit : val}"
             @action=${(ev) => {
               if (ev.detail.action === 'hold') moreInfo(stateObj.attributes.sensors['battery'])
@@ -428,8 +440,8 @@ class FlowerCard extends LitElement {
           <span id="subname">${species} </span>
         </div>
         <div class="divider"></div>
-        <div class="attributes">${attribute('mdi:thermometer', 'temperature', limits['min_temperature'], limits['max_temperature'])} ${attribute('mdi:leaf', 'conductivity', limits['min_conductivity'], limits['max_conductivity'])}</div>
-        <div class="attributes">
+        <div class="meter-row">${attribute('mdi:thermometer', 'temperature', limits['min_temperature'], limits['max_temperature'])} ${attribute('mdi:leaf', 'conductivity', limits['min_conductivity'], limits['max_conductivity'])}</div>
+        <div class="meter-row">
           ${attribute('mdi:water-percent', 'moisture', limits['min_moisture'], limits['max_moisture'])}
           ${this.useBattery ? attribute('mdi:battery-80', 'battery', 10) : attribute('mdi:white-balance-sunny', 'brightness', limits['min_brightness'], limits['max_brightness'])}
         </div>
@@ -452,26 +464,13 @@ class FlowerCard extends LitElement {
 
   static get styles() {
     return [
-      willyStyles,
+      commonStyles,
       meterStyles,
       tooltipStyles,
       imageHeaderStyles,
       css`
         ha-card {
           margin-top: 30px;
-        }
-        .attributes {
-          white-space: nowrap;
-          padding: 8px;
-        }
-        .attribute ha-icon {
-          float: left;
-          margin-right: 4px;
-        }
-        .attribute {
-          display: inline-block;
-          width: 50%;
-          white-space: normal;
         }
       `,
     ]
@@ -558,7 +557,7 @@ class leaksCard extends LitElement {
   }
 
   static get styles() {
-    return [willyStyles, iconStyles, tooltipStyles, dropdownStyles, iconHeaderStyles]
+    return [commonStyles, iconStyles, tooltipStyles, dropdownStyles, iconHeaderStyles]
   }
 }
 
@@ -602,7 +601,7 @@ class valveCard extends LitElement {
   }
 
   static get styles() {
-    return [willyStyles, iconStyles, tooltipStyles, iconHeaderStyles]
+    return [commonStyles, iconStyles, tooltipStyles, iconHeaderStyles]
   }
 }
 
