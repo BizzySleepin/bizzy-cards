@@ -1,9 +1,6 @@
 import { LitElement, html, css } from 'https://unpkg.com/lit-element@2.0.1/lit-element.js?module'
 
 export const willyStyles = css`
-  ha-card {
-    margin-top: 32px;
-  }
   .header {
     padding-top: 8px;
     height: 72px;
