@@ -641,7 +641,7 @@ class leaksCard2 extends LitElement {
       }
       .inner {
         height: 30px;
-        padding: 1em 1.5em 1.5em;
+        padding: 12px 36px;
         display: flex;
         justify-content: space-between;
       }
