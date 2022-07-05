@@ -36,41 +36,6 @@ export const willyStyles = css`
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  .outer {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .inner {
-    height: 30px;
-    padding: 12px 36px;
-    display: flex;
-    justify-content: space-between;
-  }
-  details .inner + .inner {
-    padding-top: 0;
-  }
-  details + details {
-    margin-top: 0.5rem;
-  }
-  summary {
-    list-style: none;
-  }
-  summary::-webkit-details-marker {
-    display: none;
-  }
-  summary {
-    cursor: pointer;
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-  }
-  details[open] summary {
-  }
-  details[open] summary div .toggle {
-    transform: rotate(180deg);
-  }
-  summary:hover {
-  }
   .entity-text {
     display: flex;
     align-items: center;
@@ -241,6 +206,40 @@ export const iconStyles = css`
   .shape.yellow {
     background-color: rgba(255, 204, 0, 0.2);
     color: rgb(255, 204, 0);
+  }
+`
+
+export const dropdownStyles = css`
+  .inner {
+    height: 30px;
+    padding: 12px 36px;
+    display: flex;
+    justify-content: space-between;
+  }
+  details .inner + .inner {
+    padding-top: 0;
+  }
+  details + details {
+    margin-top: 0.5rem;
+  }
+  summary {
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+  }
+  details[open] summary {
+  }
+  details[open] summary div .toggle {
+    transform: rotate(180deg);
+  }
+  summary:hover {
   }
 `
 
@@ -522,24 +521,22 @@ class leaksCard extends LitElement {
 
     return html`
       <ha-card>
-        <div class="outer">
-          <details>
-            <summary>
-              <div class="card">
-                <div class="shape ${items[0].state !== 'off' ? ' red' : items[0].attributes.battery < 10 ? ' yellow' : 'green'}">
-                  <ha-icon icon="mdi:pipe-leak"></ha-icon>
-                </div>
-                <div class="container">
-                  <span class="primary">Leak Sensors</span>
-                  <span class="secondary">${status}</span>
-                </div>
-                <div class="toggle"><ha-icon icon="mdi:chevron-down"></ha-icon></div>
+        <details>
+          <summary>
+            <div class="card">
+              <div class="shape ${items[0].state !== 'off' ? ' red' : items[0].attributes.battery < 10 ? ' yellow' : 'green'}">
+                <ha-icon icon="mdi:pipe-leak"></ha-icon>
               </div>
-            </summary>
-            <div class="divider"></div>
-            ${items.map((item) => sensor(item))}
-          </details>
-        </div>
+              <div class="container">
+                <span class="primary">Leak Sensors</span>
+                <span class="secondary">${status}</span>
+              </div>
+              <div class="toggle"><ha-icon icon="mdi:chevron-down"></ha-icon></div>
+            </div>
+          </summary>
+          <div class="divider"></div>
+          ${items.map((item) => sensor(item))}
+        </details>
       </ha-card>
     `
   }
@@ -553,7 +550,7 @@ class leaksCard extends LitElement {
   }
 
   static get styles() {
-    return [willyStyles, iconStyles, tooltipStyles]
+    return [willyStyles, iconStyles, tooltipStyles, dropdownStyles]
   }
 }
 
