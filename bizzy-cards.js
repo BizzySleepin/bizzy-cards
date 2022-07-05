@@ -555,6 +555,7 @@ class leaksCard2 extends LitElement {
                   <span class="primary">Leak Sensors</span>
                   <span class="secondary">Everything is OK!</span>
                 </div>
+                <div class="toggle"><ha-icon icon="mdi:chevron-down"></ha-icon></div>
               </div>
             </summary>
             ${items.map((item) => sensor(item))}
@@ -635,8 +636,6 @@ class leaksCard2 extends LitElement {
         white-space: nowrap;
       }
       .outer {
-        width: 90%;
-        max-width: 600px;
         margin-left: auto;
         margin-right: auto;
       }
@@ -659,7 +658,6 @@ class leaksCard2 extends LitElement {
         display: none;
       }
       summary {
-        padding: 0.75em 0;
         cursor: pointer;
         position: relative;
         display: flex;
