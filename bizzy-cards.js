@@ -512,7 +512,7 @@ class leaksCard2 extends LitElement {
 
   render() {
     return html`
-      <ha-card>
+      <ha-card class"card">
         <div class="shape">
           <ha-icon icon="mdi:water"></ha-icon>
         </div>
@@ -530,6 +530,9 @@ class leaksCard2 extends LitElement {
 
   static get styles() {
     return css`
+      .card {
+        padding: 12px;
+      }
       .shape {
         align-items: center;
         background-color: rgba(76, 175, 80, 0.2);
@@ -543,6 +546,7 @@ class leaksCard2 extends LitElement {
         transition-property: background-color, box-shadow;
         transition-timing-function: ease-out;
         width: 42px;
+        border-radius: 50%;
       }
       .shape ha-icon {
         align-items: center;
