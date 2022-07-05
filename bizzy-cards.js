@@ -516,10 +516,10 @@ class leaksCard2 extends LitElement {
         <div class="inner">
           <span class="center" @click="${() => moreInfo(item.entity_id)}">${item.attributes.friendly_name.replace(' Leak Sensor Water Leak', '')}</span>
           <span class="circles">
-            <div class="circle ${item.attributes.battery > 10 ? '' : ' attention'}">
+            <div class="shape small ${item.attributes.battery > 10 ? ' green' : ' yellow'}">
               <ha-icon icon="mdi:battery${item.attributes.battery === 100 ? '' : '-' + Math.round(item.attributes.battery / 10) * 10}"></ha-icon>
             </div>
-            <div class="circle ${item.state === 'off' ? '' : ' warning'}">
+            <div class="shape small ${item.state === 'off' ? '' : ' red'}">
               <ha-icon icon="mdi:water"></ha-icon>
             </div>
           </span>
@@ -584,21 +584,25 @@ class leaksCard2 extends LitElement {
         width: 100%;
       }
       .shape {
+        display: flex;
         align-items: center;
+        height: 42px;
+        width: 42px;
+        border-radius: 50%;
+        margin-right: 12px;
         background-color: rgba(111, 111, 111, 0.2);
         color: rgb(111, 111, 111);
         box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 1px;
-        display: flex;
         font-size: 42px;
-        height: 42px;
         justify-content: center;
         position: relative;
         transition-duration: 0.28s;
         transition-property: background-color, box-shadow;
         transition-timing-function: ease-out;
-        width: 42px;
-        border-radius: 50%;
-        margin-right: 12px;
+      }
+      .shape.small {
+        height: 30px;
+        width: 30px;
       }
       .shape.green {
         background-color: rgba(76, 175, 80, 0.2);
@@ -611,6 +615,24 @@ class leaksCard2 extends LitElement {
       .shape.yellow {
         background-color: rgba(255, 204, 0, 0.2)
         color: rgb(255, 204, 0)
+      }
+      .circle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        background-color: #50c878;
+        border-radius: 50%;
+      }
+      .circle + .circle {
+        margin-left: 1rem;
+      }
+      .circle.attention {
+        background-color: #eed202;
+      }
+      .circle.warning {
+        background-color: #d0342c;
       }
       .shape ha-icon {
         display: flex;
@@ -691,24 +713,6 @@ class leaksCard2 extends LitElement {
       }
       .circles {
         white-space: nowrap;
-      }
-      .circle {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 30px;
-        height: 30px;
-        background-color: #50c878;
-        border-radius: 50%;
-      }
-      .circle + .circle {
-        margin-left: 1rem;
-      }
-      .circle.attention {
-        background-color: #eed202;
-      }
-      .circle.warning {
-        background-color: #d0342c;
       }
       details[open] summary {
       }
