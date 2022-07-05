@@ -578,7 +578,6 @@ class leaksCard2 extends LitElement {
         min-width: 0px;
       }
       .primary {
-        color: rgb(225, 225, 225);
         font-size: 14px;
         font-weight: 700;
         line-height: 21px;
