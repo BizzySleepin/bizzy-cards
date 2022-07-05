@@ -513,14 +513,14 @@ class leaksCard2 extends LitElement {
   render() {
     return html`
       <ha-card>
-        <div class"card">
+        <div class="card">
           <div class="shape">
             <ha-icon icon="mdi:water"></ha-icon>
           </div>
           <div class="container">
             <span class="primary">Pi-Hole Core Update Available</span>
             <span class="secondary">Up-to-date</span>
-            </div>
+          </div>
         </div>
       </ha-card>
     `
@@ -557,6 +557,7 @@ class leaksCard2 extends LitElement {
         transition-timing-function: ease-out;
         width: 42px;
         border-radius: 50%;
+        margin-right: 12px;
       }
       .shape ha-icon {
         align-items: center;
