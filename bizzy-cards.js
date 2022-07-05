@@ -558,17 +558,15 @@ class valveCard extends LitElement {
   }
 
   render() {
-    const status = 'Water Running'
-
     return html`
       <ha-card>
         <div class="card">
-          <div class="shape">
+          <div class="shape ${items[0].state !== 'off' ? ' green' : 'red'}">
             <ha-icon icon="mdi:water"></ha-icon>
           </div>
           <div class="container">
-            <span class="primary">Leak Sensors</span>
-            <span class="secondary">${status}</span>
+            <span class="primary">Water Valve</span>
+            <span class="secondary">Valve is ${items[0].state !== 'off' ? ' Open!' : ' Closed!'}</span>
           </div>
         </div>
       </ha-card>
@@ -599,7 +597,7 @@ class valveCard extends LitElement {
         align-items: center;
         height: 42px;
         width: 42px;
-        border-radius: 50%;should
+        border-radius: 50%;
         background-color: rgba(111, 111, 111, 0.2);
         color: rgb(111, 111, 111);
         font-size: 42px;
