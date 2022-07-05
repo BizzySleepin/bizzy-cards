@@ -548,12 +548,12 @@ class leaksCard2 extends LitElement {
           <details>
             <summary>
               <div class="card">
-                <div class="shape">
-                  <ha-icon icon="mdi:water"></ha-icon>
+                <div class="shape" style="background-color: rgba(244, 67, 54, 0.2)">
+                  <ha-icon icon="mdi:water" style="background-color: rgb(244, 67, 54)"></ha-icon>
                 </div>
                 <div class="container">
                   <span class="primary">Leak Sensors</span>
-                  <span class="secondary">Everything is OK!</span>
+                  <span class="secondary">${items[0].state !== 'off' ? 'Leak Detected! - ' : items[0].attributes.battery < 10 ? 'Low Batteries - ' : 'Everything is OK!'}</span>
                 </div>
                 <div class="toggle"><ha-icon icon="mdi:chevron-down"></ha-icon></div>
               </div>
