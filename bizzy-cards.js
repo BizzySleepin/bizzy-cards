@@ -349,9 +349,10 @@ class leaksCard extends LitElement {
 
   render() {
     const sensor = (item) => {
+      const name = item.attributes.friendly_name.replace(' Leak Sensor Water Leak', '')
       return html`
         <div class="inner">
-          <span class="entity-text" @click="${() => moreInfo(item.entity_id)}">${item.attributes.friendly_name.replace(' Leak Sensor Water Leak', '')}</span>
+          <span class="entity-text" @click="${() => moreInfo(item.entity_id)}">${name}</span>
           <span class="entity-states">
             <div class="shape small ${item.attributes.battery > 10 ? ' green' : ' yellow'}">
               <ha-icon icon="mdi:battery${item.attributes.battery === 100 ? '' : '-' + Math.round(item.attributes.battery / 10) * 10}"></ha-icon>
@@ -379,6 +380,8 @@ class leaksCard extends LitElement {
     const dry = sorted.filter((item) => item.state !== 'on')
     const items = wet.concat(dry)
 
+    const status = items[0].state !== 'off' ? 'Leak Detected!' : items[0].attributes.battery < 10 ? 'Low Batteries' : 'Everything is OK!'
+
     return html`
       <ha-card>
         <div class="outer">
@@ -390,7 +393,7 @@ class leaksCard extends LitElement {
                 </div>
                 <div class="container">
                   <span class="primary">Leak Sensors</span>
-                  <span class="secondary">${items[0].state !== 'off' ? 'Leak Detected! - ' : items[0].attributes.battery < 10 ? 'Low Batteries - ' : 'Everything is OK!'}</span>
+                  <span class="secondary">${status}</span>
                 </div>
                 <div class="toggle"><ha-icon icon="mdi:chevron-down"></ha-icon></div>
               </div>
