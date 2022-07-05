@@ -548,7 +548,7 @@ class leaksCard2 extends LitElement {
           <details>
             <summary>
               <div class="card">
-                <div class="shape">
+                <div class="shape ${items[0].state !== 'off' ? ' red' : items[0].attributes.battery < 10 ? ' yellow' : 'green'}">
                   <ha-icon icon="mdi:water"></ha-icon>
                 </div>
                 <div class="container">
@@ -607,6 +607,10 @@ class leaksCard2 extends LitElement {
       .shape.red {
         background-color: rgba(244, 67, 54, 0.2)
         color: rgb(244, 67, 54)
+      }
+      .shape.yellow {
+        background-color: rgba(255, 204, 0, 0.2)
+        color: rgb(255, 204, 0)
       }
       .shape ha-icon {
         display: flex;
