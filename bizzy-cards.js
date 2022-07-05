@@ -511,6 +511,37 @@ class leaksCard2 extends LitElement {
   }
 
   render() {
+    const sensor = (item) => {
+      return html`
+        <div class="inner">
+          <span class="center" @click="${() => moreInfo(item.entity_id)}">${item.attributes.friendly_name.replace(' Leak Sensor Water Leak', '')}</span>
+          <span class="circles">
+            <div class="circle ${item.attributes.battery > 10 ? '' : ' attention'}">
+              <ha-icon icon="mdi:battery${item.attributes.battery === 100 ? '' : '-' + Math.round(item.attributes.battery / 10) * 10}"></ha-icon>
+            </div>
+            <div class="circle ${item.state === 'off' ? '' : ' warning'}">
+              <ha-icon icon="mdi:water"></ha-icon>
+            </div>
+          </span>
+        </div>
+      `
+    }
+
+    const sorted = this.config.entities
+      .map((item) => this.hass.states[item])
+      .sort((a, b) => {
+        if (a.attributes.battery > b.attributes.battery) {
+          return 1
+        }
+        if (a.attributes.battery < b.attributes.battery) {
+          return -1
+        }
+        return 0
+      })
+    const wet = sorted.filter((item) => item.state === 'on')
+    const dry = sorted.filter((item) => item.state !== 'on')
+    const items = wet.concat(dry)
+
     return html`
       <ha-card>
         <div class="outer">
