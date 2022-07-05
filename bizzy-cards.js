@@ -548,8 +548,8 @@ class leaksCard2 extends LitElement {
           <details>
             <summary>
               <div class="card">
-                <div class="shape" style="background-color: rgba(244, 67, 54, 0.2)">
-                  <ha-icon icon="mdi:water" style="color: rgb(244, 67, 54)"></ha-icon>
+                <div class="shape">
+                  <ha-icon icon="mdi:water"></ha-icon>
                 </div>
                 <div class="container">
                   <span class="primary">Leak Sensors</span>
