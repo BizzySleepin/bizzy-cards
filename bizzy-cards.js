@@ -614,7 +614,7 @@ class leaksCard2 extends LitElement {
         flex-direction: column;
         flex-grow: 1;
         flex-shrink: 1;
-        min-width: 0px;
+        width: 100%;
       }
       .primary {
         font-size: 14px;
