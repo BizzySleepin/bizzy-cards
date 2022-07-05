@@ -570,7 +570,7 @@ class valveCard extends LitElement {
             <span class="secondary">Valve is ${item.state !== 'off' ? ' Open!' : ' Closed!'}</span>
           </div>
         </div>
-        <hui-sensor-card></hui-sensor-card>
+        <hui-sensor-card entity="sensor.openweathermap_forecast_precipitation"></hui-sensor-card>
       </ha-card>
     `
   }
