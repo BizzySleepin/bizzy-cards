@@ -513,16 +513,30 @@ class leaksCard2 extends LitElement {
   render() {
     return html`
       <ha-card>
-        <div class="card">
-          <div class="shape">
-            <ha-icon icon="mdi:water"></ha-icon>
-          </div>
-          <div class="container">
-            <span class="primary">Pi-Hole Core Update Available</span>
-            <span class="secondary">Up-to-date</span>
-          </div>
+        <div class="outer">
+          <details>
+            <summary>
+              <div class="card">
+                <div class="shape">
+                  <ha-icon icon="mdi:water"></ha-icon>
+                </div>
+                <div class="container">
+                  <span class="primary">Leak Sensors</span>
+                  <span class="secondary">Everything is OK!</span>
+                </div>
+              </div>
+              <div class="title-icons">
+                <span class="state">${items[0].state !== 'off' ? 'Leak Detected! - ' : items[0].attributes.battery < 10 ? 'Low Batteries - ' : ''}</span>
+                <div class="circle ${items[0].state !== 'off' ? ' warning' : items[0].attributes.battery < 10 ? ' attention' : ''}">
+                  <ha-icon icon="mdi:${items[0].state !== 'off' ? 'water-alert' : 'check-bold'}"></ha-icon>
+                </div>
+              </div>
+            </summary>
+            ${items.map((item) => sensor(item))}
+          </details>
         </div>
       </ha-card>
+      <ha-card> </ha-card>
     `
   }
 
@@ -595,6 +609,79 @@ class leaksCard2 extends LitElement {
         overflow-y: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+      }
+      .outer {
+        width: 90%;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .inner {
+        height: 30px;
+        padding: 1em 1.5em 1.5em;
+        display: flex;
+        justify-content: space-between;
+      }
+      details .inner + .inner {
+        padding-top: 0;
+      }
+      details + details {
+        margin-top: 0.5rem;
+      }
+      summary {
+        list-style: none;
+      }
+      summary::-webkit-details-marker {
+        display: none;
+      }
+      summary {
+        padding: 0.75em 0;
+        cursor: pointer;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+      }
+      .title {
+        font-weight: bold;
+      }
+      .title-icons {
+        display: flex;
+        align-items: center;
+      }
+      .state {
+        margin-right: 0.5rem;
+      }
+      .center {
+        display: flex;
+        align-items: center;
+      }
+      .circles {
+        white-space: nowrap;
+      }
+      .circle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        background-color: #50c878;
+        border-radius: 50%;
+      }
+      .circle + .circle {
+        margin-left: 1rem;
+      }
+      .circle.attention {
+        background-color: #eed202;
+      }
+      .circle.warning {
+        background-color: #d0342c;
+      }
+      details[open] summary {
+      }
+      details[open] summary div .toggle {
+        transform: rotate(180deg);
+      }
+      summary:hover {
       }
     `
   }
