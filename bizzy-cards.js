@@ -398,6 +398,7 @@ class leaksCard extends LitElement {
                 <div class="toggle"><ha-icon icon="mdi:chevron-down"></ha-icon></div>
               </div>
             </summary>
+            <div class="divider"></div>
             ${items.map((item) => sensor(item))}
           </details>
         </div>
@@ -414,7 +415,9 @@ class leaksCard extends LitElement {
   }
 
   static get styles() {
-    return css`
+    return [
+      willyStyles,
+      css`
       .card {
         padding: 12px;
         align-items: center;
@@ -539,7 +542,8 @@ class leaksCard extends LitElement {
       .entity-states {
         white-space: nowrap;
       }
-    `
+    `,
+    ]
   }
 }
 
@@ -570,7 +574,6 @@ class valveCard extends LitElement {
             <span class="secondary">Valve is ${item.state !== 'off' ? ' Open!' : ' Closed!'}</span>
           </div>
         </div>
-        <hui-sensor-card entity="sensor.openweathermap_forecast_precipitation"></hui-sensor-card>
       </ha-card>
     `
   }
