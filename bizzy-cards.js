@@ -497,3 +497,64 @@ class leaksCard extends LitElement {
 }
 
 customElements.define('leaks-card', leaksCard)
+
+class leaksCard2 extends LitElement {
+  static get properties() {
+    return {
+      hass: {},
+      config: {},
+    }
+  }
+
+  script() {
+    return
+  }
+
+  render() {
+    return html`
+    <ha-card class="">
+    <div class="shape">
+    <ha-icon icon="mdi:water'></ha-icon>
+    </div>
+    </ha-card>
+    `
+  }
+
+  setConfig(config) {
+    if (!config.entities) {
+      throw new Error('You need to define entities')
+    }
+    this.config = config
+    this.requestUpdate()
+  }
+
+  static get styles() {
+    return css`
+      .shape {
+        position: relative;
+        width: var(--icon-size);
+        height: var(--icon-size);
+        font-size: var(--icon-size);
+        border-radius: var(--icon-border-radius);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--shape-color);
+        transition-property: background-color, box-shadow;
+        transition-duration: 280ms;
+        transition-timing-function: ease-out;
+        animation: var(--shape-animation);
+        box-shadow: 0 0 0 1px var(--shape-outline-color);
+      }
+      .shape ha-icon {
+        display: flex;
+        --mdc-icon-size: var(--icon-symbol-size);
+        color: var(--icon-color);
+        transition: color 280ms ease-in-out 0s;
+        animation: var(--icon-animation);
+      }
+    `
+  }
+}
+
+customElements.define('leaks-card2', leaksCard2)
