@@ -656,6 +656,7 @@ class topBarCard extends LitElement {
           border-radius: var(--ha-card-border-radius, 4px);
           height: 36px;
         }
+
         .chip.shape {
           width: 36px;
           margin: 0;
