@@ -1,25 +1,5 @@
 import { LitElement, html, css } from 'https://unpkg.com/lit-element@2.0.1/lit-element.js?module'
 
-export const commonStyles = [
-  iconStyles,
-  tooltipStyles,
-  css`
-    .label {
-      display: flex;
-      align-items: center;
-      text-transform: capitalize;
-      overflow: hidden;
-    }
-    .divider {
-      height: 1px;
-      background-color: #727272;
-      opacity: 0.25;
-      margin-left: 8px;
-      margin-right: 8px;
-    }
-  `,
-]
-
 export const tooltipStyles = css`
   .tooltip {
     position: relative;
@@ -271,6 +251,26 @@ export const dropdownStyles = css`
   summary:hover {
   }
 `
+
+export const commonStyles = [
+  iconStyles,
+  tooltipStyles,
+  css`
+    .label {
+      display: flex;
+      align-items: center;
+      text-transform: capitalize;
+      overflow: hidden;
+    }
+    .divider {
+      height: 1px;
+      background-color: #727272;
+      opacity: 0.25;
+      margin-left: 8px;
+      margin-right: 8px;
+    }
+  `,
+]
 
 const moreInfo = (entity) => {
   const ev = new Event('hass-more-info', {
