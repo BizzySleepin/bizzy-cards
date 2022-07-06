@@ -630,6 +630,7 @@ class backChip extends LitElement {
           background: none;
           box-shadow: none;
           display: flex;
+          justify-content: space-between;
         }
         .shape {
           height: 36px;
@@ -638,7 +639,10 @@ class backChip extends LitElement {
           box-shadow: var(--ha-card-box-shadow, none);
         }
         .shape.title {
-          justify-self: center;
+          border-radius: var(--ha-card-border-radius, 4px);
+          height: 42px;
+          width: auto;
+          padding: 0 12px;
         }
       `,
     ]
