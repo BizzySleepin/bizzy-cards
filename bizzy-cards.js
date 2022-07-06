@@ -391,7 +391,7 @@ class FlowerCard extends LitElement {
             class="meter-box clickable tooltip"
             data-tooltip="${aval ? val + ' ' + unit + ' | ' + min + ' ~ ' + max + ' ' + unit : val}"
             @action=${(ev) => {
-              if (ev.detail.action === 'hold') handleAction({ action: 'more-info', entity: stateObj.attributes.sensors[attr] })
+              if (ev.detail.action === 'hold') handleAction({ action: 'more-info', entityId: stateObj.attributes.sensors[attr] })
             }}
           >
             <ha-icon .icon="${icon}"></ha-icon>
@@ -412,7 +412,7 @@ class FlowerCard extends LitElement {
             class="meter-box clickable tooltip"
             data-tooltip="${aval ? val + ' ' + unit : val}"
             @action=${(ev) => {
-              if (ev.detail.action === 'hold') handleAction({ action: 'more-info', entity: stateObj.attributes.sensors['battery'] })
+              if (ev.detail.action === 'hold') handleAction({ action: 'more-info', entityId: stateObj.attributes.sensors['battery'] })
             }}
           >
             <ha-icon .icon="${icon}"></ha-icon>
@@ -432,7 +432,7 @@ class FlowerCard extends LitElement {
         <div
           class="header clickable"
           @action=${(ev) => {
-            if (ev.detail.action === 'tap') handleAction({ action: 'more-info', entity: stateObj.entity_id })
+            if (ev.detail.action === 'tap') handleAction({ action: 'more-info', entityId: stateObj.entity_id })
           }}
         >
           <img src="${stateObj.attributes.image}" />
@@ -495,7 +495,7 @@ class leaksCard extends LitElement {
       const name = item.attributes.friendly_name.replace(' Leak Sensor Water Leak', '')
       return html`
         <div class="inner">
-          <span class="label" @click="${() => handleAction({ action: 'more-info', entity: item.entity_id })}">${name}</span>
+          <span class="label" @click="${() => handleAction({ action: 'more-info', entityId: item.entity_id })}">${name}</span>
           <span>
             <div class="shape small ${item.attributes.battery > 10 ? ' green' : ' yellow'}">
               <ha-icon icon="mdi:battery${item.attributes.battery === 100 ? '' : '-' + Math.round(item.attributes.battery / 10) * 10}"></ha-icon>
