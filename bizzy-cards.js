@@ -125,10 +125,10 @@ export const meterStyles = css`
     width: 10%;
   }
   .meter.green {
-    width: 60%;
+    width: 55%;
   }
   .meter.battery {
-    width: 71.5%;
+    width: 66.5%;
   }
   .meter > .good {
     background-color: rgba(43, 194, 83, 1);
