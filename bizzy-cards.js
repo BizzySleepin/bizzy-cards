@@ -587,3 +587,37 @@ class valveCard extends LitElement {
 }
 
 customElements.define('valve-card', valveCard)
+
+class backChip extends LitElement {
+  static get properties() {
+    return {
+      hass: {},
+      config: {},
+    }
+  }
+
+  script() {
+    return
+  }
+
+  render() {
+    const back = () => window.history.back()
+    return html`
+      <ha-card>
+        <div class="shape" @click="${back()}">
+          <ha-icon icon="mdi:water"></ha-icon>
+        </div>
+      </ha-card>
+    `
+  }
+
+  setConfig(config) {
+    this.config = config
+  }
+
+  static get styles() {
+    return [commonStyles, iconStyles]
+  }
+}
+
+customElements.define('back-chip', backChip)
