@@ -275,26 +275,25 @@ export const commonStyles = [
   `,
 ]
 
-const moreInfo = (entity) => {
-  const ev = new Event('hass-more-info', {
-    bubbles: true,
-    cancelable: false,
-    composed: true,
-  })
-  ev.detail = { entityId: entity }
-  document.querySelector('home-assistant').dispatchEvent(ev)
-}
+const handleAction = (config) => {
+  const newEvent = (type) => {
+    const ev = new Event(type, {
+      bubbles: true,
+      cancelable: false,
+      composed: true,
+    })
+    ev.detail = { ...config }
+  }
 
-const navigate = (path) => {
-  if (!path) return
-  const ev = new Event('location-changed', {
-    bubbles: true,
-    cancelable: false,
-    composed: true,
-  })
-  ev.detail = {}
-  history.pushState(null, '', path)
-  document.querySelector('home-assistant').dispatchEvent(ev)
+  const hass = document.querySelector('home-assistant')
+
+  switch (config.action) {
+    case 'more-info':
+      hass.dispatchEvent(newEvent('hass-more-info'))
+    case 'navigate':
+      history.pushState(null, '', config.path)
+      hass.dispatchEvent(newEvent('location-changed'))
+  }
 }
 
 const bindActionHandler = (elements) => {
@@ -392,7 +391,7 @@ class FlowerCard extends LitElement {
             class="meter-box clickable tooltip"
             data-tooltip="${aval ? val + ' ' + unit + ' | ' + min + ' ~ ' + max + ' ' + unit : val}"
             @action=${(ev) => {
-              if (ev.detail.action === 'hold') moreInfo(stateObj.attributes.sensors[attr])
+              if (ev.detail.action === 'hold') handleAction({ action: 'more-info', entity: stateObj.attributes.sensors[attr] })
             }}
           >
             <ha-icon .icon="${icon}"></ha-icon>
@@ -413,7 +412,7 @@ class FlowerCard extends LitElement {
             class="meter-box clickable tooltip"
             data-tooltip="${aval ? val + ' ' + unit : val}"
             @action=${(ev) => {
-              if (ev.detail.action === 'hold') moreInfo(stateObj.attributes.sensors['battery'])
+              if (ev.detail.action === 'hold') handleAction({ action: 'more-info', entity: stateObj.attributes.sensors['battery'] })
             }}
           >
             <ha-icon .icon="${icon}"></ha-icon>
@@ -433,7 +432,7 @@ class FlowerCard extends LitElement {
         <div
           class="header clickable"
           @action=${(ev) => {
-            if (ev.detail.action === 'tap') moreInfo(stateObj.entity_id)
+            if (ev.detail.action === 'tap') handleAction({ action: 'more-info', entity: stateObj.entity_id })
           }}
         >
           <img src="${stateObj.attributes.image}" />
@@ -496,7 +495,7 @@ class leaksCard extends LitElement {
       const name = item.attributes.friendly_name.replace(' Leak Sensor Water Leak', '')
       return html`
         <div class="inner">
-          <span class="label" @click="${() => moreInfo(item.entity_id)}">${name}</span>
+          <span class="label" @click="${() => handleAction({ action: 'more-info', entity: item.entity_id })}">${name}</span>
           <span>
             <div class="shape small ${item.attributes.battery > 10 ? ' green' : ' yellow'}">
               <ha-icon icon="mdi:battery${item.attributes.battery === 100 ? '' : '-' + Math.round(item.attributes.battery / 10) * 10}"></ha-icon>
@@ -630,7 +629,7 @@ class topBarCard extends LitElement {
       } else if (button === 'home') {
         const home = this.config.home || '/lovelace/default_view'
         return html`
-          <div class="chip shape" @click="${() => navigate(home)}">
+          <div class="chip shape" @click="${() => handleAction({ action: 'navigate', path: home })}">
             <ha-icon icon="mdi:home"></ha-icon>
           </div>
         `
