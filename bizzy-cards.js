@@ -564,7 +564,6 @@ class valveCard extends LitElement {
   }
 
   render() {
-    const back = () => window.history.back()
     const item = this.hass.states[this.config.entity]
     return html`
       <ha-card>
@@ -609,10 +608,9 @@ class backChip extends LitElement {
   }
 
   render() {
-    const back = () => window.history.back()
     return html`
       <ha-card>
-        <div class="shape">
+        <div class="shape" @click="${window.history.back()}">
           <ha-icon icon="mdi:arrow-left"></ha-icon>
         </div>
       </ha-card>
