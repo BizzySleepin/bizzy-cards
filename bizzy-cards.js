@@ -610,7 +610,7 @@ class backChip extends LitElement {
     return html`
       <ha-card>
         <div class="shape">
-          <ha-icon icon="mdi:water"></ha-icon>
+          <ha-icon icon="mdi:arrow-left"></ha-icon>
         </div>
       </ha-card>
     `
@@ -621,7 +621,18 @@ class backChip extends LitElement {
   }
 
   static get styles() {
-    return [commonStyles]
+    return [
+      commonStyles,
+      css`
+        ha-card {
+          background: none;
+        }
+        .shaoe {
+          height: 36px;
+          width: 36px;
+        }
+      `,
+    ]
   }
 }
 
