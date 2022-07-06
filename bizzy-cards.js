@@ -618,7 +618,7 @@ class topBarCard extends LitElement {
       } else if (button === 'home') {
         const home = this.config.home || '/lovelace/default_view'
         return html`
-          <div class="chip shape" @click="${() => window.location.href(home)}">
+          <div class="chip shape" @click="${() => (window.location.href = home)}">
             <ha-icon icon="mdi:home"></ha-icon>
           </div>
         `
