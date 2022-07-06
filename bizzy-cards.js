@@ -596,10 +596,6 @@ class backChip extends LitElement {
     }
   }
 
-  script() {
-    return
-  }
-
   render() {
     const back = () => window.history.back()
     return html`
