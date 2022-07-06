@@ -137,7 +137,7 @@ export const meterStyles = css`
     width: 10%;
   }
   .meter.green {
-    width: 61.5%;
+    width: 60%;
   }
   .meter.battery {
     width: 71.5%;
@@ -297,6 +297,7 @@ const bindActionHandler = (elements) => {
     })
   })
 }
+
 export class batteryCard extends LitElement {
   static get properties() {
     return {
@@ -313,7 +314,7 @@ export class batteryCard extends LitElement {
       const aval = val !== 'unavailable' && val !== 'unknown' ? true : false
       const min = this.min
       return html`
-        <div class="entity tooltip" data-tooltip="${aval ? val + '%' : val}">
+        <div class="meter-box tooltip" data-tooltip="${aval ? val + '%' : val}">
           <div class="label">${item.attributes.friendly_name.toLowerCase().replace(' battery', '')}</div>
           <div class="meter">
             <span class="${aval ? (val > min ? 'good' : 'bad') : 'unavailable'}" style="width:${aval ? val : 100}%;"></span>
