@@ -609,7 +609,7 @@ class backChip extends LitElement {
   }
 
   render() {
-    //const back = () => window.history.back()
+    const back = () => window.history.back()
     return html`
       <ha-card>
         <div class="shape">
@@ -631,7 +631,7 @@ class backChip extends LitElement {
           background: none;
           box-shadow: none;
         }
-        .shaoe {
+        .shape {
           height: 36px;
           width: 36px;
           background: var(--ha-card-background, var(--card-background-color, white));
