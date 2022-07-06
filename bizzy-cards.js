@@ -632,8 +632,8 @@ class backChip extends LitElement {
         .shape {
           height: 36px;
           width: 36px;
-          background: var(--ha-card-background, var(--card-background-color, white));
-          box-shadow: var(--ha-card-box-shadow, 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12));
+          background: var(--card-background-color, white);
+          box-shadow: var(--ha-card-box-shadow, none);
         }
       `,
     ]
