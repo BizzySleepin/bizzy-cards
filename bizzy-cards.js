@@ -1,20 +1,107 @@
 import { LitElement, html, css } from 'https://unpkg.com/lit-element@2.0.1/lit-element.js?module'
 
-export const commonStyles = css`
-  .label {
-    display: flex;
-    align-items: center;
-    text-transform: capitalize;
-    overflow: hidden;
+export const commonStyles = [
+  iconStyles,
+  tooltipStyles,
+  css`
+    .label {
+      display: flex;
+      align-items: center;
+      text-transform: capitalize;
+      overflow: hidden;
+    }
+    .divider {
+      height: 1px;
+      background-color: #727272;
+      opacity: 0.25;
+      margin-left: 8px;
+      margin-right: 8px;
+    }
+  `,
+]
+
+export const tooltipStyles = css`
+  .tooltip {
+    position: relative;
   }
-  .divider {
-    height: 1px;
-    background-color: #727272;
-    opacity: 0.25;
-    margin-left: 8px;
-    margin-right: 8px;
+  .tooltip:after {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    content: attr(data-tooltip);
+    padding: 6px 10px;
+    top: 1.4em;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-180%);
+    transform: translateX(-50%) translateY(-180%);
+    background: grey;
+    color: white;
+    white-space: nowrap;
+    z-index: 2;
+    border-radius: 2px;
+    transition: opacity 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), -webkit-transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+    transition: opacity 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+    transition: opacity 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), -webkit-transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+  }
+  .tooltip:hover:after,
+  .tooltip:active:after {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: translateX(-50%) translateY(-200%);
+    transform: translateX(-50%) translateY(-200%);
   }
 `
+export const iconStyles = css`
+  .shape {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+    background-color: rgba(111, 111, 111, 0.2);
+    color: rgb(111, 111, 111);
+    font-size: 42px;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 1px;
+    transition-duration: 0.28s;
+    transition-property: background-color, box-shadow;
+    transition-timing-function: ease-out;
+  }
+  .shape + .shape {
+    margin-left: 12px;
+  }
+  .shape ha-icon {
+    display: flex;
+    fill: rgb(76, 175, 80);
+    font-size: 42px;
+    transition-delay: 0s;
+    transition-duration: 0.28s;
+    transition-property: color;
+    transition-timing-function: ease-in-out;
+  }
+  .shape.small {
+    height: 30px;
+    width: 30px;
+  }
+  .shape.small ha-icon {
+    width: 18px;
+  }
+  .shape.green {
+    background-color: rgba(76, 175, 80, 0.2);
+    color: rgb(76, 175, 80);
+  }
+  .shape.red {
+    background-color: rgba(244, 67, 54, 0.2);
+    color: rgb(244, 67, 54);
+  }
+  .shape.yellow {
+    background-color: rgba(255, 204, 0, 0.2);
+    color: rgb(255, 204, 0);
+  }
+`
+
 export const iconHeaderStyles = css`
   .card {
     padding: 12px;
@@ -151,88 +238,6 @@ export const meterStyles = css`
   }
 `
 
-export const tooltipStyles = css`
-  .tooltip {
-    position: relative;
-  }
-  .tooltip:after {
-    opacity: 0;
-    visibility: hidden;
-    position: absolute;
-    content: attr(data-tooltip);
-    padding: 6px 10px;
-    top: 1.4em;
-    left: 50%;
-    -webkit-transform: translateX(-50%) translateY(-180%);
-    transform: translateX(-50%) translateY(-180%);
-    background: grey;
-    color: white;
-    white-space: nowrap;
-    z-index: 2;
-    border-radius: 2px;
-    transition: opacity 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), -webkit-transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
-    transition: opacity 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
-    transition: opacity 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), -webkit-transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
-  }
-  .tooltip:hover:after,
-  .tooltip:active:after {
-    display: block;
-    opacity: 1;
-    visibility: visible;
-    -webkit-transform: translateX(-50%) translateY(-200%);
-    transform: translateX(-50%) translateY(-200%);
-  }
-`
-export const iconStyles = css`
-  .shape {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    height: 42px;
-    width: 42px;
-    border-radius: 50%;
-    background-color: rgba(111, 111, 111, 0.2);
-    color: rgb(111, 111, 111);
-    font-size: 42px;
-    justify-content: center;
-    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 1px;
-    transition-duration: 0.28s;
-    transition-property: background-color, box-shadow;
-    transition-timing-function: ease-out;
-  }
-  .shape + .shape {
-    margin-left: 12px;
-  }
-  .shape ha-icon {
-    display: flex;
-    fill: rgb(76, 175, 80);
-    font-size: 42px;
-    transition-delay: 0s;
-    transition-duration: 0.28s;
-    transition-property: color;
-    transition-timing-function: ease-in-out;
-  }
-  .shape.small {
-    height: 30px;
-    width: 30px;
-  }
-  .shape.small ha-icon {
-    width: 18px;
-  }
-  .shape.green {
-    background-color: rgba(76, 175, 80, 0.2);
-    color: rgb(76, 175, 80);
-  }
-  .shape.red {
-    background-color: rgba(244, 67, 54, 0.2);
-    color: rgb(244, 67, 54);
-  }
-  .shape.yellow {
-    background-color: rgba(255, 204, 0, 0.2);
-    color: rgb(255, 204, 0);
-  }
-`
-
 export const dropdownStyles = css`
   .inner {
     height: 30px;
@@ -335,7 +340,7 @@ export class batteryCard extends LitElement {
   }
 
   static get styles() {
-    return [commonStyles, meterStyles, tooltipStyles, imageHeaderStyles, css``]
+    return [commonStyles, meterStyles, imageHeaderStyles, css``]
   }
 }
 
@@ -447,7 +452,6 @@ class FlowerCard extends LitElement {
     return [
       commonStyles,
       meterStyles,
-      tooltipStyles,
       imageHeaderStyles,
       css`
         ha-card {
@@ -538,7 +542,7 @@ class leaksCard extends LitElement {
   }
 
   static get styles() {
-    return [commonStyles, iconStyles, tooltipStyles, dropdownStyles, iconHeaderStyles]
+    return [commonStyles, dropdownStyles, iconHeaderStyles]
   }
 }
 
@@ -582,7 +586,7 @@ class valveCard extends LitElement {
   }
 
   static get styles() {
-    return [commonStyles, iconStyles, tooltipStyles, iconHeaderStyles]
+    return [commonStyles, iconHeaderStyles]
   }
 }
 
@@ -616,7 +620,7 @@ class backChip extends LitElement {
   }
 
   static get styles() {
-    return [commonStyles, iconStyles]
+    return [commonStyles]
   }
 }
 
