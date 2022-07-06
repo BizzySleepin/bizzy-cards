@@ -116,6 +116,8 @@ export const meterStyles = css`
     display: inline-block;
     width: 50%;
     white-space: normal;
+    padding: 12px;
+    box-sizing: border-box;
   }
   .meter-box ha-icon {
     float: left;
@@ -135,10 +137,10 @@ export const meterStyles = css`
     width: 10%;
   }
   .meter.green {
-    width: 50%;
+    width: 61.5%;
   }
   .meter.battery {
-    width: 61.5%;
+    width: 71.5%;
   }
   .meter > .good {
     background-color: rgba(43, 194, 83, 1);
@@ -399,7 +401,7 @@ class FlowerCard extends LitElement {
       } else {
         return html`
           <div
-            class="entity clickable tooltip"
+            class="meter-box clickable tooltip"
             data-tooltip="${aval ? val + ' ' + unit : val}"
             @action=${(ev) => {
               if (ev.detail.action === 'hold') moreInfo(stateObj.attributes.sensors['battery'])
