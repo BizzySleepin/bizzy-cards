@@ -614,7 +614,7 @@ class backChip extends LitElement {
           <ha-icon icon="mdi:arrow-left"></ha-icon>
         </div>
         <div class="shape title">Plants</div>
-        <div></div>
+        <div class="shape"></div>
       </ha-card>
     `
   }
