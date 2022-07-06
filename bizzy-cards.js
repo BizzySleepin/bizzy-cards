@@ -610,7 +610,7 @@ class backChip extends LitElement {
   render() {
     return html`
       <ha-card>
-        <div class="shape" @click="${window.history.back()}">
+        <div class="shape" @click="${() => window.history.back()}">
           <ha-icon icon="mdi:arrow-left"></ha-icon>
         </div>
       </ha-card>
