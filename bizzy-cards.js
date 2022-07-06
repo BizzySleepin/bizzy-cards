@@ -645,7 +645,7 @@ class topBarCard extends LitElement {
         }
         .shape.title {
           width: auto;
-          padding: 0 12px;
+          padding: 0 16px;
           font-size: 20px;
           font-weight: 700;
         }
