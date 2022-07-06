@@ -610,11 +610,11 @@ class backChip extends LitElement {
   render() {
     return html`
       <ha-card>
-        <div class="shape" @click="${() => window.history.back()}">
+        <div class="chip shape" @click="${() => window.history.back()}">
           <ha-icon icon="mdi:arrow-left"></ha-icon>
         </div>
         <div class="shape title">Plants</div>
-        <div class="shape"></div>
+        <div class="chip shape"></div>
       </ha-card>
     `
   }
@@ -633,19 +633,20 @@ class backChip extends LitElement {
           display: flex;
           justify-content: space-between;
         }
-        .shape {
-          height: 36px;
-          width: 36px;
+        .chip {
           background: var(--card-background-color, white);
           box-shadow: var(--ha-card-box-shadow, none);
+          border-radius: var(--ha-card-border-radius, 4px);
+          height: 36px;
+        }
+        .chip.shape {
+          width: 36px;
         }
         .shape.title {
-          border-radius: var(--ha-card-border-radius, 4px);
-          height: 42px;
           width: auto;
           padding: 0 12px;
           font-size: 20px;
-          fot-weight: 700;
+          font-weight: 700;
         }
       `,
     ]
