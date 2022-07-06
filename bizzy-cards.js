@@ -1,20 +1,9 @@
 import { LitElement, html, css } from 'https://unpkg.com/lit-element@2.0.1/lit-element.js?module'
 
 export const commonStyles = css`
-  .entity-text {
+  .label {
     display: flex;
     align-items: center;
-  }
-  .entity-states {
-    white-space: nowrap;
-  }
-  #name ha-icon {
-    color: rgb(240, 163, 163);
-  }
-  .label {
-    display: block;
-    width: 100%;
-    height: 20px;
     text-transform: capitalize;
     overflow: hidden;
   }
@@ -24,6 +13,9 @@ export const commonStyles = css`
     opacity: 0.25;
     margin-left: 8px;
     margin-right: 8px;
+  }
+  #name ha-icon {
+    color: rgb(240, 163, 163);
   }
 `
 export const iconHeaderStyles = css`
@@ -100,13 +92,6 @@ export const meterStyles = css`
     flex-wrap: wrap;
     width: 100%;
     padding-bottom: 8px;
-  }
-  .entity {
-    display: block;
-    box-sizing: border-box;
-    width: 50%;
-    padding: 8px 16px;
-    white-space: normal;
   }
   .meter-row {
     white-space: nowrap;
