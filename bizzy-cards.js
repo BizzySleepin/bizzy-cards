@@ -624,4 +624,4 @@ class backChip extends LitElement {
   }
 }
 
-customElements.define('back-chip-card', backChip)
+customElements.define('back-chip', backChip)
