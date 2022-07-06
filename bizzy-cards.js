@@ -564,6 +564,7 @@ class valveCard extends LitElement {
   }
 
   render() {
+    const back = () => window.history.back()
     const item = this.hass.states[this.config.entity]
     return html`
       <ha-card>
