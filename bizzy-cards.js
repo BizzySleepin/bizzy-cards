@@ -282,7 +282,7 @@ const handleAction = (config) => {
       cancelable: false,
       composed: true,
     })
-    ev.detail = { ...config }
+    ev.detail = config
     return ev
   }
 
