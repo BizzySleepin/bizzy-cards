@@ -641,6 +641,7 @@ class backChip extends LitElement {
         }
         .chip.shape {
           width: 36px;
+          margin: 0;
         }
         .shape.title {
           width: auto;
