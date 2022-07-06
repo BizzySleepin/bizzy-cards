@@ -608,13 +608,27 @@ class topBarCard extends LitElement {
   }
 
   render() {
+    const leftSide = () => {
+      if (this.config.back) {
+        return html`
+          <div class="chip shape" @click="${() => window.history.back()}">
+            <ha-icon icon="mdi:arrow-left"></ha-icon>
+          </div>
+        `
+      } else {
+        return html` <div class="chip-blank"></div> `
+      }
+    }
+
+    const rightSide = () => {
+      return html` <div class="chip-blank"></div> `
+    }
+
     return html`
       <ha-card>
-        <div class="chip shape" @click="${() => window.history.back()}">
-          <ha-icon icon="mdi:arrow-left"></ha-icon>
-        </div>
+        ${leftSide()}
         <div class="chip shape title">${this.config.title}</div>
-        <div class="chip-blank"></div>
+        ${rightSide()}
       </ha-card>
     `
   }
