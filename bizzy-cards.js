@@ -283,10 +283,10 @@ const handleAction = (config) => {
       composed: true,
     })
     ev.detail = { ...config }
+    return ev
   }
 
   const hass = document.querySelector('home-assistant')
-
   switch (config.action) {
     case 'more-info':
       hass.dispatchEvent(newEvent('hass-more-info'))
