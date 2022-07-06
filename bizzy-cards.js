@@ -609,7 +609,7 @@ class backChip extends LitElement {
   }
 
   render() {
-    const back = () => window.history.back()
+    //const back = () => window.history.back()
     return html`
       <ha-card>
         <div class="shape">
