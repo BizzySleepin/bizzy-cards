@@ -609,9 +609,16 @@ class topBarCard extends LitElement {
 
   render() {
     const leftSide = () => {
-      if (this.config.back) {
+      if (this.config.left === 'back') {
         return html`
           <div class="chip shape" @click="${() => window.history.back()}">
+            <ha-icon icon="mdi:arrow-left"></ha-icon>
+          </div>
+        `
+      } else if (this.config.left === 'home') {
+        const home = this.config.home || '/lovelace/default_view'
+        return html`
+          <div class="chip shape" @click="${() => window.location.replace(home)}">
             <ha-icon icon="mdi:arrow-left"></ha-icon>
           </div>
         `
