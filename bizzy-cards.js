@@ -608,18 +608,18 @@ class topBarCard extends LitElement {
   }
 
   render() {
-    const leftSide = () => {
-      if (this.config.left === 'back') {
+    const side = (button) => {
+      if (button === 'back') {
         return html`
           <div class="chip shape" @click="${() => window.history.back()}">
             <ha-icon icon="mdi:arrow-left"></ha-icon>
           </div>
         `
-      } else if (this.config.left === 'home') {
+      } else if (button === 'home') {
         const home = this.config.home || '/lovelace/default_view'
         return html`
-          <div class="chip shape" @click="${() => window.location.replace(home)}">
-            <ha-icon icon="mdi:arrow-left"></ha-icon>
+          <div class="chip shape" @click="${() => window.location.href(home)}">
+            <ha-icon icon="mdi:home"></ha-icon>
           </div>
         `
       } else {
@@ -627,15 +627,11 @@ class topBarCard extends LitElement {
       }
     }
 
-    const rightSide = () => {
-      return html` <div class="chip-blank"></div> `
-    }
-
     return html`
       <ha-card>
-        ${leftSide()}
+        ${side(this.config.left)}
         <div class="chip shape title">${this.config.title}</div>
-        ${rightSide()}
+        ${side(this.config.right)}
       </ha-card>
     `
   }
