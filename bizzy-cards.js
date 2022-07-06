@@ -285,6 +285,18 @@ const moreInfo = (entity) => {
   document.querySelector('home-assistant').dispatchEvent(ev)
 }
 
+const navigate = (path) => {
+  if (!path) return
+  const ev = new Event('location-changed', {
+    bubbles: true,
+    cancelable: false,
+    composed: true,
+  })
+  ev.detail = {}
+  history.pushState(null, '', path)
+  document.querySelector('home-assistant').dispatchEvent(ev)
+}
+
 const bindActionHandler = (elements) => {
   customElements.whenDefined('action-handler').then(() => {
     const actionHandler = document.body.querySelector('action-handler')
@@ -618,7 +630,7 @@ class topBarCard extends LitElement {
       } else if (button === 'home') {
         const home = this.config.home || '/lovelace/default_view'
         return html`
-          <div class="chip shape" @click="${() => history.replaceState({}, '', home)}">
+          <div class="chip shape" @click="${() => navigate(home)}">
             <ha-icon icon="mdi:home"></ha-icon>
           </div>
         `
