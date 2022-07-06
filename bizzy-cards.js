@@ -595,7 +595,7 @@ class valveCard extends LitElement {
 
 customElements.define('valve-card', valveCard)
 
-class backChip extends LitElement {
+class topBarCard extends LitElement {
   static get properties() {
     return {
       hass: {},
@@ -613,7 +613,7 @@ class backChip extends LitElement {
         <div class="chip shape" @click="${() => window.history.back()}">
           <ha-icon icon="mdi:arrow-left"></ha-icon>
         </div>
-        <div class="chip shape title">Plants</div>
+        <div class="chip shape title">${this.config.title}</div>
         <div class="chip-blank"></div>
       </ha-card>
     `
@@ -657,4 +657,4 @@ class backChip extends LitElement {
   }
 }
 
-customElements.define('back-chip', backChip)
+customElements.define('top-bar-card', topBarCard)
