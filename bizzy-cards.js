@@ -32,6 +32,7 @@ export const tooltipStyles = css`
     transform: translateX(-50%) translateY(-200%);
   }
 `
+
 export const iconStyles = css`
   .shape {
     position: relative;
