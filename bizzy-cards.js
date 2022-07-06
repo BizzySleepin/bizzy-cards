@@ -41,8 +41,6 @@ export const iconStyles = css`
     height: 42px;
     width: 42px;
     border-radius: 50%;
-    background-color: rgba(111, 111, 111, 0.2);
-    color: rgb(111, 111, 111);
     font-size: 42px;
     justify-content: center;
     box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 1px;
@@ -68,6 +66,10 @@ export const iconStyles = css`
   }
   .shape.small ha-icon {
     width: 18px;
+  }
+  .shape.grey {
+    background-color: rgba(111, 111, 111, 0.2);
+    color: rgb(111, 111, 111);
   }
   .shape.green {
     background-color: rgba(76, 175, 80, 0.2);
@@ -626,6 +628,7 @@ class backChip extends LitElement {
       css`
         ha-card {
           background: none;
+          box-shadow: none;
         }
         .shaoe {
           height: 36px;
