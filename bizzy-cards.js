@@ -713,8 +713,8 @@ class chipBoxCard extends LitElement {
       return entities
         .map((item) => {
           const stateObj = this.hass.states[item.entityId]
-          const unit = item.unit === true ? stateObj.unit_of_measurement : item.unit || ''
-          return stateObj.state + '' + unit
+          const unit = item.unit === true ? stateObj.unit_of_measurement || '' : item.unit || ''
+          return stateObj.state + (item.space === true ? ' ' : '') + unit
         })
         .join(' / ')
     }
@@ -740,6 +740,9 @@ class chipBoxCard extends LitElement {
           box-shadow: none;
           display: flex;
           justify-content: space-between;
+        }
+        .chip.title {
+          font-size: 14px;
         }
       `,
     ]
