@@ -709,7 +709,7 @@ class chipBoxCard extends LitElement {
   }
 
   render() {
-    const states = (entities) => {
+    const states = (entities = []) => {
       return entities.map((item) => {
         const state = this.hass.states[item.entityId].state
         const attr = this.hass.states[item.entityId].attributes
