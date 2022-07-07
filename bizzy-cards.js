@@ -711,11 +711,15 @@ class chipBoxCard extends LitElement {
   render() {
     const states = (entities) => {
       return entities.map((item) => {
-        const max = 8
-        const min = 3
-        const stateObj = this.hass.states[item.entityId]
-        const unit = item.unit === true ? stateObj.attributes.unit_of_measurement || '' : item.unit || ''
-        return html`<p style="color: ${stateObj.state > max ? 'red' : stateObj.state < min ? 'blue' : 'black'}">${stateObj.state + (item.space === true ? ' ' : '') + unit}</p>`
+        const state = this.hass.states[item.entityId].state
+        const attr = this.hass.states[item.entityId].attributes
+        const max = item.max || ''
+        const min = item.min || ''
+        const maxColor = item.maxColor || 'red'
+        const minColor = item.minColor || 'blue'
+        const color = max && state > max ? maxColor : min && state < min ? minColor : 'black'
+        const unit = item.unit === true ? attr.unit_of_measurement || '' : item.unit || ''
+        return html`<p style="color: ${color}">${state + (item.space === true ? ' ' : '') + unit}</p>`
       })
     }
 
@@ -745,9 +749,10 @@ class chipBoxCard extends LitElement {
           font-size: 14px;
         }
         p + p::before {
-          content: ' / ';
-          font-color: 'black';
-          margin-left: 1rem;
+          content: '/';
+          color: 'black';
+          margin-left: 5px;
+          margin-right: 5px;
         }
       `,
     ]
