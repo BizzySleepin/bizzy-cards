@@ -717,7 +717,7 @@ class chipBoxCard extends LitElement {
       }
     }
     const chip = () => {
-      return html` <div class="chip shape title">${icon(this.config.icon)} ${this.config.text} ${this.hass.states[this.config.entity].state} / 0</div>`
+      return html` <div class="chip shape title">${icon(this.config.icon)} ${this.config.text} ${this.hass.states[this.config.entity].state} ${this.hass.states[this.config.entity2].state}</div>`
     }
 
     return html` <ha-card> ${chip()} </ha-card> `
@@ -725,6 +725,7 @@ class chipBoxCard extends LitElement {
 
   setConfig(config) {
     this.config = config
+    console.dir(config)
   }
 
   static get styles() {
