@@ -719,7 +719,7 @@ class chipBoxCard extends LitElement {
         const minColor = item.minColor || 'blue'
         const color = max && state > max ? maxColor : min && state < min ? minColor : 'black'
         const unit = item.unit === true ? attr.unit_of_measurement || '' : item.unit || ''
-        return html`<p style="color: ${color}">${state + (item.space === true ? ' ' : '') + unit}</p>`
+        return html`<p class="${item.spaceBracket ? 'space' : ''}" style="color: ${color}">${state + (item.spaceUnit === true ? ' ' : '') + unit}</p>`
       })
     }
 
@@ -750,7 +750,8 @@ class chipBoxCard extends LitElement {
         }
         p + p::before {
           content: '/';
-          color: 'black';
+          color: black;
+        p + p.space::before {
           margin-left: 5px;
           margin-right: 5px;
         }
