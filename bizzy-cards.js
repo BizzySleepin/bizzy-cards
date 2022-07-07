@@ -724,7 +724,7 @@ class chipBoxCard extends LitElement {
     }
 
     const chip = (item) => {
-      return html` <div class="chip shape title">${item.icon ? html`<ha-icon icon="mdi:${item.icon}"></ha-icon>` : ''} ${item.text} ${states(item.entities)}</div>`
+      return html` <div class="chip">${item.icon ? html`<ha-icon icon="mdi:${item.icon}"></ha-icon>` : ''} ${item.text} ${states(item.entities)}</div>`
     }
 
     return html` <ha-card> ${this.config.chips.map((item) => chip(item))} </ha-card> `
@@ -743,10 +743,27 @@ class chipBoxCard extends LitElement {
           background: none;
           box-shadow: none;
           display: flex;
-          justify-content: space-between;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 8px;
         }
-        .chip.title {
+        .chip {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          height: 36px;
+          width: auto;
           font-size: 14px;
+          font-weight: 700;
+          margin: 0px;
+          padding: 0px 12px;
+          background: var(--card-background-color, white);
+          box-shadow: var(--ha-card-box-shadow, none);
+          border-radius: var(--ha-card-border-radius, 4px);
+          transition-duration: 0.28s;
+          transition-property: background-color, box-shadow;
+          transition-timing-function: ease-out;
         }
         p + p::before {
           content: '/';
