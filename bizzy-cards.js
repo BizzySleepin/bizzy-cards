@@ -709,13 +709,21 @@ class chipBoxCard extends LitElement {
   }
 
   render() {
-    const icon = (i) => html`<ha-icon icon="mdi:${i}"></ha-icon>`
-    const string = `${item.text} ${this.hass.states[item.entity].state}` + `${item.entity && item.entity2 ? ' / ' : ''}` + `${this.hass.states[item.entity2].state}`
-    const chip = (item) => {
-      return html` <div class="chip shape title">${item.icon ? html`<ha-icon icon="mdi:${item.icon}"></ha-icon>` : ''} ${string}</div>`
+    const states = (entities) => {
+      return entities
+        .map((item) => {
+          const stateObj = this.hass.states[item.entityId]
+          const unit = item.unit === true ? stateObj.unit_of_measurement : item.unit || ''
+          return stateObj.state + '' + unit
+        })
+        .join(' / ')
     }
 
-    return html` <ha-card> ${this.config.entities.map((item) => chip(item))} </ha-card> `
+    const chip = (item) => {
+      return html` <div class="chip shape title">${item.icon ? html`<ha-icon icon="mdi:${item.icon}"></ha-icon>` : ''} ${item.text} ${states(item.entities)}</div>`
+    }
+
+    return html` <ha-card> ${this.config.chips.map((item) => chip(item))} </ha-card> `
   }
 
   setConfig(config) {
