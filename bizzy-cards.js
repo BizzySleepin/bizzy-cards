@@ -84,6 +84,27 @@ export const iconStyles = css`
     color: rgb(255, 204, 0);
   }
 `
+export const chipStyles = css`
+  .chip {
+    background: var(--card-background-color, white);
+    box-shadow: var(--ha-card-box-shadow, none);
+    border-radius: var(--ha-card-border-radius, 4px);
+    height: 36px;
+  }
+  .chip.shape {
+    width: 36px;
+    margin: 0;
+  }
+  .chip.title {
+    width: auto;
+    padding: 0 16px;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .chip-blank {
+    width: 36px;
+  }
+`
 
 export const iconHeaderStyles = css`
   .card {
@@ -257,6 +278,7 @@ export const dropdownStyles = css`
 
 export const commonStyles = [
   iconStyles,
+  chipStyles,
   tooltipStyles,
   css`
     .label {
@@ -633,6 +655,12 @@ class topBarCard extends LitElement {
             <ha-icon icon="mdi:home"></ha-icon>
           </div>
         `
+      } else if (button === 'config') {
+        return html`
+          <div class="chip shape">
+            <ha-icon icon="mdi:cog"></ha-icon>
+          </div>
+        `
       } else {
         return html` <div class="chip-blank"></div> `
       }
@@ -661,28 +689,50 @@ class topBarCard extends LitElement {
           display: flex;
           justify-content: space-between;
         }
-        .chip {
-          background: var(--card-background-color, white);
-          box-shadow: var(--ha-card-box-shadow, none);
-          border-radius: var(--ha-card-border-radius, 4px);
-          height: 36px;
-        }
-        .chip.shape {
-          width: 36px;
-          margin: 0;
-        }
-        .shape.title {
-          width: auto;
-          padding: 0 16px;
-          font-size: 20px;
-          font-weight: 700;
-        }
-        .chip-blank {
-          width: 36px;
-        }
       `,
     ]
   }
 }
 
 customElements.define('top-bar-card', topBarCard)
+
+class chipBoxCard extends LitElement {
+  static get properties() {
+    return {
+      hass: {},
+      config: {},
+    }
+  }
+
+  script() {
+    return
+  }
+
+  render() {
+    const chip = () => {
+      return html`<div>🏠 2 / 0</div>`
+    }
+
+    return html` <ha-card> ${chip()} </ha-card> `
+  }
+
+  setConfig(config) {
+    this.config = config
+  }
+
+  static get styles() {
+    return [
+      commonStyles,
+      css`
+        ha-card {
+          background: none;
+          box-shadow: none;
+          display: flex;
+          justify-content: space-between;
+        }
+      `,
+    ]
+  }
+}
+
+customElements.define('chip-box-card', chipBoxCard)
