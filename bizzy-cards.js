@@ -746,6 +746,8 @@ class chipBoxCard extends LitElement {
         }
         p + p::before {
           content: ' / ';
+          font-color: 'black';
+          margin-left: 1rem;
         }
       `,
     ]
