@@ -751,8 +751,6 @@ class chipBoxCard extends LitElement {
         p + p::before {
           content: '/';
           color: black;
-        }
-        p.space + p.space::before {
           margin-left: 5px;
           margin-right: 5px;
         }
