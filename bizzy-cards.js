@@ -713,8 +713,8 @@ class chipBoxCard extends LitElement {
       return entities
         .map((item) => {
           const stateObj = this.hass.states[item.entityId]
-          const unit = item.unit === true ? stateObj.unit_of_measurement || '' : item.unit || ''
-          return stateObj.state + (item.space === true ? ' ' : '') + unit
+          const unit = item.unit === true ? stateObj.attributes.unit_of_measurement || '' : item.unit || ''
+          return html`<p style="color: ${stateObj.state > 5 ? blue : red}">${stateObj.state + (item.space === true ? ' ' : '') + unit}</p>`
         })
         .join(' / ')
     }
