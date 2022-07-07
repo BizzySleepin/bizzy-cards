@@ -710,10 +710,14 @@ class chipBoxCard extends LitElement {
 
   render() {
     const icon = (i) => {
-      return html`<ha-icon icon="mdi:${i}"></ha-icon>`
+      if (i) {
+        return html`<ha-icon icon="mdi:${i}"></ha-icon>`
+      } else {
+        return html``
+      }
     }
     const chip = () => {
-      return html`<div class="chip shape title">${icon(this.config.icon)}${this.config.text}${this.hass.states[this.config.entity]} / 0</div>`
+      return html` <div class="chip shape title">${icon(this.config.icon)} ${this.config.text} ${this.hass.states[this.config.entity].state} / 0</div>`
     }
 
     return html` <ha-card> ${chip()} </ha-card> `
