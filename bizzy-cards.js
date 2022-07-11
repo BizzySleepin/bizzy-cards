@@ -286,6 +286,7 @@ export const commonStyles = [
       align-items: center;
       text-transform: capitalize;
       overflow: hidden;
+      white-space: nowrap;
     }
     .divider {
       height: 1px;
@@ -514,11 +515,11 @@ class leaksCard extends LitElement {
 
   render() {
     const sensor = (item) => {
-      const name = item.attributes.friendly_name.replace(' Leak Sensor Water Leak', '')
+      const name = item.attributes.friendly_name.toLowerCase().replace(' leak sensor water leak', '')
       return html`
         <div class="inner">
           <span class="label" @click="${() => handleAction({ action: 'more-info', entityId: item.entity_id })}">${name}</span>
-          <span>
+          <span class="badge-box">
             <div class="shape small ${item.attributes.battery > 10 ? ' green' : ' yellow'}">
               <ha-icon icon="mdi:battery${item.attributes.battery === 100 ? '' : '-' + Math.round(item.attributes.battery / 10) * 10}"></ha-icon>
             </div>
@@ -578,7 +579,16 @@ class leaksCard extends LitElement {
   }
 
   static get styles() {
-    return [commonStyles, dropdownStyles, iconHeaderStyles]
+    return [
+      commonStyles,
+      dropdownStyles,
+      iconHeaderStyles,
+      css`
+        .badge-box {
+          min-width: 76px;
+        }
+      `,
+    ]
   }
 }
 
