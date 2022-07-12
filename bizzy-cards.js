@@ -889,6 +889,7 @@ class personCard extends LitElement {
           flex-direction: column;
         }
         .badge {
+          --badge-size: 16px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -896,9 +897,18 @@ class personCard extends LitElement {
           width: var(--badge-size);
           height: var(--badge-size);
           font-size: var(--badge-size);
-          border-radius: var(--badge-border-radius);
-          background-color: var(--main-color);
+          border-radius: 50%;
+          background-color: grey;
           transition: background-color 280ms ease-in-out 0s;
+        }
+        .badge ha-icon {
+          display: flex;
+          fill: rgb(76, 175, 80);
+          font-size: 16px;
+          transition-delay: 0s;
+          transition-duration: 0.28s;
+          transition-property: color;
+          transition-timing-function: ease-in-out;
         }
         .badge-box {
           position: absolute;
@@ -906,6 +916,7 @@ class personCard extends LitElement {
           right: -3px;
         }
         .state-box {
+          margin-top: 12px;
         }
       `,
     ]
