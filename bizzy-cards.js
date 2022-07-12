@@ -774,7 +774,7 @@ class chipBoxCard extends LitElement {
       const createChip = (type = 'custom', icon = '', text = '', size = 'small', entities = []) => {
         if (type == 'weather' && icon) return weatherChip(this.hass.states[icon].state, entities)
         if (type == 'alarm' && icon) alarmChip(this.hass.states[icon].state, size)
-        if (icon.startsWith('mdi:')) return html`<ha-icon class="${size}" icon="${icon}"></ha-icon>${states(entities)}`
+        if (icon.startsWith('mdi:')) return html`<ha-icon class="${size}" icon="${icon}"></ha-icon>${text}${states(entities)}`
         return html`${icon} ${text} ${states(entities)}`
       }
       return html` <div class="chip ${item.size || ''}">${createChip(item.type, item.icon, item.text, item.size, item.entities)}</div>`
@@ -816,7 +816,7 @@ class chipBoxCard extends LitElement {
           transition-duration: 0.28s;
           transition-property: background-color, box-shadow;
           transition-timing-function: ease-out;
-          --ha-icon-display: inline;
+          --ha-icon-display: block;
           --mdc-icon-size: 16px;
         }
         .chip.small {
