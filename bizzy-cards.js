@@ -751,9 +751,35 @@ class chipBoxCard extends LitElement {
       })
     }
 
+    const alarmChip = (i) => {
+      if (i == 'armed_home') return { icon: 'mdi:shield-home', state: 'Armed - Home', color: 'var(--google-red)' }
+      if (i == 'armed_away') return { icon: 'mdi:shield-lock', state: 'Armed - Away', color: 'var(--google-red)' }
+      if (i == 'armed_night') return { icon: 'mdi:shield-moon', state: 'Armed - Night', color: 'var(--google-red)' }
+      if (i == 'disarmed') return { icon: 'mdi:shield-off', state: 'Disarmed', color: 'var(--google-green)' }
+      if (i == 'arming') return { icon: 'mdi:shield', state: 'Arming', color: 'var(--google-yellow)' }
+      if (i == 'triggered') return { icon: 'mdi:shield-alert', state: 'Triggered', color: 'var(--google-red)' }
+      return { icon: 'mdi:shield-outline', state: 'Unknown', color: 'var(--google-black)' }
+    }
+
+    const icon = (icon) => {
+      if (icon == 'weather') {
+      }
+      if (icon == 'alarm') {
+      }
+      if (icon.startsWith('mdi:')) {
+      }
+      var emojiRE = /\p{EPres}|\p{ExtPict}/gu
+      const index = icon.indexOf(emojiRE)
+      if (index >= 0) {
+        console.log('hello')
+      }
+      console.log('icon')
+    }
+
     const chip = (item) => {
       return html` <div class="chip ${item.size || ''}">
-        ${item.icon ? html`<ha-icon class="${item.iconSize || 'small'}" icon="mdi:${item.icon}"></ha-icon>` : ''} ${item.weather ? getWeatherEmoji(this.hass.states[item.weather].state) || '🌡️' : ''} ${item.text} ${states(item.entities)}
+        ${icon(item.test)} ${item.icon ? html`<ha-icon class="${item.iconSize || 'small'}" icon="mdi:${item.icon}"></ha-icon>` : ''} ${item.weather ? getWeatherEmoji(this.hass.states[item.weather].state) || '🌡️' : ''} ${item.text}
+        ${states(item.entities)}
       </div>`
     }
 
