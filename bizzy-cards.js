@@ -859,6 +859,8 @@ class personCard extends LitElement {
         <div class="shape">
           <ha-icon icon="mdi:account"></ha-icon>
         </div>
+        <p>Kristen</p>
+        <p>Home</p>
       </ha-card>
     `
   }
