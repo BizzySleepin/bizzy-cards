@@ -762,17 +762,11 @@ class chipBoxCard extends LitElement {
     }
 
     const icon = (icon = '') => {
-      if (icon == 'weather') {
-      }
-      if (icon == 'alarm') {
-      }
-      if (icon.startsWith('mdi:')) {
-      }
-      var emojiRE = /\p{EPres}|\p{ExtPict}/gu
-      const index = icon.indexOf(emojiRE)
-      if (index >= 0) {
-        console.log('hello')
-      }
+      const emojiRE = /\p{EPres}|\p{ExtPict}/gu
+      if (icon.startsWith(emojiRE)) return icon[0]
+      if (icon.startsWith('weather')) return 'weather'
+      if (icon.startsWith('alarm')) return 'alarm'
+      if (icon.startsWith('mdi:')) return 'mdi:icon'
       console.log(icon)
     }
 
