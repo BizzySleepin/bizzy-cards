@@ -542,8 +542,8 @@ class leaksCard extends LitElement {
         }
         return 0
       })
-    const wet = sorted.filter((item) => item.state === 'on')
-    const dry = sorted.filter((item) => item.state !== 'on')
+    const wet = sorted.filter((item) => item && item.state === 'on')
+    const dry = sorted.filter((item) => item && item.state !== 'on')
     const items = wet.concat(dry)
 
     const status = items[0].state !== 'off' ? 'Leak Detected!' : items[0].attributes.battery < 10 ? 'Low Batteries' : 'Everything is OK!'
