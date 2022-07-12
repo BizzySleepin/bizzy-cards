@@ -926,6 +926,7 @@ class personCard extends LitElement {
         }
         .state-box {
           margin-top: 12px;
+          width: 100%;
         }
       `,
     ]
