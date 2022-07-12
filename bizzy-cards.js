@@ -328,6 +328,23 @@ const bindActionHandler = (elements) => {
   })
 }
 
+const getWeatherEmoji = (i) => {
+  if (i == 'clear-night') return '🌙'
+  if (i == 'cloudy') return '☁️'
+  if (i == 'exceptional') return '🌞'
+  if (i == 'fog') return '🌫️'
+  if (i == 'hail') return '⛈️'
+  if (i == 'lightning') return '⚡'
+  if (i == 'lightning-rainy') return '⛈️'
+  if (i == 'partlycloudy') return '⛅'
+  if (i == 'pouring') return '🌧️'
+  if (i == 'rainy') return '💧'
+  if (i == 'snowy') return '❄️'
+  if (i == 'snowy-rainy') return '🌨️'
+  if (i == 'sunny') return '☀️'
+  if (i == 'windy') return '🌪️'
+}
+
 export class batteryCard extends LitElement {
   static get properties() {
     return {
@@ -734,42 +751,8 @@ class chipBoxCard extends LitElement {
       })
     }
 
-    const emoji = (entity) => {
-      let icon = entity ? '🌡️' : ''
-      const weather_state = this.hass.states[entity].state
-      if (weather_state == 'clear-night') {
-        icon = '🌙'
-      } else if (weather_state == 'cloudy') {
-        icon = '☁️'
-      } else if (weather_state == 'exceptional') {
-        icon = '🌞'
-      } else if (weather_state == 'fog') {
-        icon = '🌫️'
-      } else if (weather_state == 'hail') {
-        icon = '⛈️'
-      } else if (weather_state == 'lightning') {
-        icon = '⚡'
-      } else if (weather_state == 'lightning-rainy') {
-        icon = '⛈️'
-      } else if (weather_state == 'partlycloudy') {
-        icon = '⛅'
-      } else if (weather_state == 'pouring') {
-        icon = '🌧️'
-      } else if (weather_state == 'rainy') {
-        icon = '💧'
-      } else if (weather_state == 'snowy') {
-        icon = '❄️'
-      } else if (weather_state == 'snowy-rainy') {
-        icon = '🌨️'
-      } else if (weather_state == 'sunny') {
-        icon = '☀️'
-      } else if (weather_state == 'windy') {
-        icon = '🌪️'
-      }
-    }
-
     const chip = (item) => {
-      return html` <div class="chip">${item.icon ? html`<ha-icon icon="mdi:${item.icon}"></ha-icon>` : ''} ${emoji(item.weather)} ${item.text} ${states(item.entities)}</div>`
+      return html` <div class="chip">${item.icon ? html`<ha-icon icon="mdi:${item.icon}"></ha-icon>` : ''} ${item.weather ? getWeatherEmoji(this.hass.states[item.weather].state) || '🌡️' : ''} ${item.text} ${states(item.entities)}</div>`
     }
 
     return html` <ha-card> ${this.config.chips.map((item) => chip(item))} </ha-card> `
