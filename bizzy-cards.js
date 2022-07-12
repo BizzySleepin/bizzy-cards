@@ -608,16 +608,16 @@ class valveCard extends LitElement {
   }
 
   render() {
-    const item = this.hass.states[this.config.entity]
+    const item = this.hass.states[this.config.entity].state
     return html`
       <ha-card>
         <div class="card">
-          <div class="shape ${item.state !== 'off' ? ' green' : 'red'}">
+          <div class="shape ${item == 'on' ? ' green' : item == 'off' ? 'red' : 'unavailable'}">
             <ha-icon icon="mdi:water"></ha-icon>
           </div>
           <div class="container">
             <span class="primary">Water Valve</span>
-            <span class="secondary">Valve is ${item.state !== 'off' ? ' Open!' : ' Closed!'}</span>
+            <span class="secondary">Valve is ${item == 'on' ? 'Open!' : item == 'off' ? 'Closed!' : 'Unavailable!'}</span>
           </div>
         </div>
       </ha-card>
