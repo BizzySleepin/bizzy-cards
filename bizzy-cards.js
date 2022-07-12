@@ -762,15 +762,13 @@ class chipBoxCard extends LitElement {
     }
 
     const icon = (icon = '', size = 'small') => {
-      const emojiRE = /\p{EPres}|\p{ExtPict}/gu
       if (icon.startsWith('weather')) return getWeatherEmoji(this.hass.states[icon].state)
       if (icon.startsWith('alarm')) {
         const alarmInfo = alarmChip(this.hass.states[icon].state)
         return html`<ha-icon icon="${alarmInfo.icon}" style="color: ${alarmInfo.color}" class="${size}"></ha-icon>`
       }
       if (icon.startsWith('mdi:')) return html`<ha-icon class="${size}" icon="${icon}"></ha-icon>`
-      if (icon.startsWith(emojiRE)) return icon[0]
-      console.log(icon)
+      return icon[0]
     }
 
     const chip = (item) => {
