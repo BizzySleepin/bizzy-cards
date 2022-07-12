@@ -730,12 +730,46 @@ class chipBoxCard extends LitElement {
         const minColor = item.minColor || 'blue'
         const color = max && state > max ? maxColor : min && state < min ? minColor : 'black'
         const unit = item.unit === true ? attr.unit_of_measurement || '' : item.unit || ''
-        return html`<p class="${this.config.spaceBracket ? 'space' : ''}" style="color: ${color}">${state + (item.spaceUnit === true ? ' ' : '') + unit}</p>`
+        return html`<p style="color: ${color}">${state + (item.spaceUnit === true ? ' ' : '') + unit}</p>`
       })
     }
 
+    const emoji = (entity) => {
+      let icon = entity ? '🌡️' : ''
+      const weather_state = this.hass.states[entity].state
+      if (weather_state == 'clear-night') {
+        icon = '🌙'
+      } else if (weather_state == 'cloudy') {
+        icon = '☁️'
+      } else if (weather_state == 'exceptional') {
+        icon = '🌞'
+      } else if (weather_state == 'fog') {
+        icon = '🌫️'
+      } else if (weather_state == 'hail') {
+        icon = '⛈️'
+      } else if (weather_state == 'lightning') {
+        icon = '⚡'
+      } else if (weather_state == 'lightning-rainy') {
+        icon = '⛈️'
+      } else if (weather_state == 'partlycloudy') {
+        icon = '⛅'
+      } else if (weather_state == 'pouring') {
+        icon = '🌧️'
+      } else if (weather_state == 'rainy') {
+        icon = '💧'
+      } else if (weather_state == 'snowy') {
+        icon = '❄️'
+      } else if (weather_state == 'snowy-rainy') {
+        icon = '🌨️'
+      } else if (weather_state == 'sunny') {
+        icon = '☀️'
+      } else if (weather_state == 'windy') {
+        icon = '🌪️'
+      }
+    }
+
     const chip = (item) => {
-      return html` <div class="chip">${item.icon ? html`<ha-icon icon="mdi:${item.icon}"></ha-icon>` : ''} ${item.text} ${states(item.entities)}</div>`
+      return html` <div class="chip">${item.icon ? html`<ha-icon icon="mdi:${item.icon}"></ha-icon>` : ''} ${emoji(item.weather)} ${item.text} ${states(item.entities)}</div>`
     }
 
     return html` <ha-card> ${this.config.chips.map((item) => chip(item))} </ha-card> `
@@ -743,7 +777,6 @@ class chipBoxCard extends LitElement {
 
   setConfig(config) {
     this.config = config
-    console.dir(config)
   }
 
   static get styles() {
