@@ -925,8 +925,10 @@ class personCard extends LitElement {
           left: -3px;
         }
         .state-box {
-          margin-top: 12px;
-          width: 100%;
+          min-width: 0px;
+          flex: 1 1 0%;
+          display: flex;
+          flex-direction: column;
         }
       `,
     ]
