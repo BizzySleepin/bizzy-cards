@@ -340,7 +340,7 @@ export class batteryCard extends LitElement {
     const items = this.config.entities.map((item) => this.hass.states[item])
 
     const attribute = (item) => {
-      const val = item.state
+      const val = item.state || 'unavailable'
       const aval = val !== 'unavailable' && val !== 'unknown' ? true : false
       const min = this.min
       return html`
@@ -404,7 +404,7 @@ class FlowerCard extends LitElement {
 
     const attribute = (icon, attr, min, max) => {
       const unit = stateObj.attributes.unit_of_measurement_dict[attr] || '%'
-      const val = stateObj.attributes[attr]
+      const val = stateObj.attributes[attr] || 'unavailable'
       const aval = val !== 'unavailable' ? true : false
 
       if (attr !== 'battery') {
