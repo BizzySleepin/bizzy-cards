@@ -791,9 +791,9 @@ class chipBoxCard extends LitElement {
       commonStyles,
       css`
         ha-card {
+          display: flex;
           background: none;
           box-shadow: none;
-          display: flex;
           flex-wrap: wrap;
           justify-content: center;
           gap: 8px;
