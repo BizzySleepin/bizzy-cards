@@ -901,8 +901,8 @@ class personCard extends LitElement {
           transition: background-color 280ms ease-in-out 0s;
         }
         .badge ha-icon {
-          --mdc-icon-size: 12px;
           color: white;
+          --mdc-icon-size: 12px;
           transition-delay: 0s;
           transition-duration: 0.28s;
           transition-property: color;
