@@ -863,8 +863,8 @@ class personCard extends LitElement {
           </div>
         </div>
         <div class="state-box">
-          <div>Kristen</div>
-          <div>Home</div>
+          <div class="name">Kristen</div>
+          <div class="status">Home</div>
         </div>
       </ha-card>
     `
@@ -925,10 +925,20 @@ class personCard extends LitElement {
           left: -3px;
         }
         .state-box {
-          min-width: 0px;
-          flex: 1 1 0%;
+          margin-top: 12px;
+          width: 100%;
           display: flex;
           flex-direction: column;
+          align-items: center;
+        }
+        .name {
+          font-size: 14px;
+          font-weight: 700;
+        }
+        .status {
+          color: rgb(114, 114, 114);
+          font-size: 12px;
+          font-weight: 700;
         }
       `,
     ]
