@@ -586,6 +586,7 @@ class leaksCard extends LitElement {
       css`
         .badge-box {
           min-width: 76px;
+          margin-left: 10px;
         }
       `,
     ]
@@ -774,6 +775,9 @@ class chipBoxCard extends LitElement {
           transition-duration: 0.28s;
           transition-property: background-color, box-shadow;
           transition-timing-function: ease-out;
+        }
+        p::first {
+          margin-left: 5px;
         }
         p + p::before {
           content: '/';
