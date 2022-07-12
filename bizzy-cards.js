@@ -761,21 +761,18 @@ class chipBoxCard extends LitElement {
       return { icon: 'mdi:shield-outline', state: 'Unknown', color: 'var(--google-black)' }
     }
 
-    const icon = (icon = '', size = 'small') => {
-      if (icon.startsWith('weather')) return getWeatherEmoji(this.hass.states[icon].state)
-      if (icon.startsWith('alarm')) {
+    const icon = (type = 'custom', icon = '', size = 'small') => {
+      if (type == 'weather' && icon) return getWeatherEmoji(this.hass.states[icon].state)
+      if (type == 'alarm' && icon) {
         const alarmInfo = alarmChip(this.hass.states[icon].state)
         return html`<ha-icon icon="${alarmInfo.icon}" style="color: ${alarmInfo.color}" class="${size}"></ha-icon>`
       }
       if (icon.startsWith('mdi:')) return html`<ha-icon class="${size}" icon="${icon}"></ha-icon>`
-      return icon[0]
+      return icon
     }
 
     const chip = (item) => {
-      return html` <div class="chip ${item.size || ''}">
-        ${icon(item.test)} ${item.icon ? html`<ha-icon class="${item.iconSize || 'small'}" icon="mdi:${item.icon}"></ha-icon>` : ''} ${item.weather ? getWeatherEmoji(this.hass.states[item.weather].state) || '🌡️' : ''} ${item.text}
-        ${states(item.entities)}
-      </div>`
+      return html` <div class="chip ${item.size || ''}">${icon(item.type, item.icon, item.size)} ${item.text} ${states(item.entities)}</div>`
     }
 
     return html` <ha-card> ${this.config.chips.map((item) => chip(item))} </ha-card> `
