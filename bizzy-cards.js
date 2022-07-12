@@ -858,9 +858,12 @@ class personCard extends LitElement {
       <ha-card>
         <div class="shape">
           <ha-icon icon="mdi:account"></ha-icon>
+          <div class="badge-box">
+            <div class="badge"></div>
+          </div>
         </div>
-        <p>Kristen</p>
-        <p>Home</p>
+        <div>Kristen</div>
+        <div>Home</div>
       </ha-card>
     `
   }
@@ -880,6 +883,23 @@ class personCard extends LitElement {
           align-items: center;
           justify-content: flex-start;
           flex-direction: column;
+        }
+        .badge {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          line-height: 0;
+          width: var(--badge-size);
+          height: var(--badge-size);
+          font-size: var(--badge-size);
+          border-radius: var(--badge-border-radius);
+          background-color: var(--main-color);
+          transition: background-color 280ms ease-in-out 0s;
+        }
+        .badge-box {
+          position: absolute;
+          top: -3px;
+          right: -3px;
         }
       `,
     ]
