@@ -337,7 +337,7 @@ export class batteryCard extends LitElement {
   }
 
   render() {
-    const items = this.config.entities.map((item) => this.hass.states[item])
+    const items = this.config.entities.map((item) => this.hass.states[item] || {})
 
     const attribute = (item) => {
       const val = item.state || 'unavailable'
@@ -901,8 +901,8 @@ class personCard extends LitElement {
           transition: background-color 280ms ease-in-out 0s;
         }
         .badge ha-icon {
-          color: white;
           --mdc-icon-size: 12px;
+          color: white;
           transition-delay: 0s;
           transition-duration: 0.28s;
           transition-property: color;
