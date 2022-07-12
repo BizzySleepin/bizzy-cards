@@ -769,6 +769,7 @@ class chipBoxCard extends LitElement {
       commonStyles,
       css`
         ha-card {
+          --mdc-icon-size: 14px;
           background: none;
           box-shadow: none;
           display: flex;
