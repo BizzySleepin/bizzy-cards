@@ -752,7 +752,7 @@ class chipBoxCard extends LitElement {
     }
 
     const chip = (item) => {
-      return html` <div class="chip">
+      return html` <div class="chip ${item.size || ''}">
         ${item.icon ? html`<ha-icon class="${item.iconSize || 'small'}" icon="mdi:${item.icon}"></ha-icon>` : ''} ${item.weather ? getWeatherEmoji(this.hass.states[item.weather].state) || '🌡️' : ''} ${item.text} ${states(item.entities)}
       </div>`
     }
@@ -769,7 +769,6 @@ class chipBoxCard extends LitElement {
       commonStyles,
       css`
         ha-card {
-          --mdc-icon-size: 14px;
           background: none;
           box-shadow: none;
           display: flex;
@@ -794,12 +793,17 @@ class chipBoxCard extends LitElement {
           transition-duration: 0.28s;
           transition-property: background-color, box-shadow;
           transition-timing-function: ease-out;
+          --mdc-icon-size: 16px;
+        }
+        .chip.small {
+          --mdc-icon-size: 14px;
+          font-size: 12px;
         }
         p:first-of-type {
           margin-left: 5px;
         }
-        ha-svg-icon {
-          width: 14px;
+        ha-icon {
+          margin-right: 5px;
         }
         p + p::before {
           content: '/';
