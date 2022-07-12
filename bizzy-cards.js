@@ -877,8 +877,8 @@ class personCard extends LitElement {
       commonStyles,
       css`
         ha-card {
-          padding: 12px;
           display: flex;
+          padding: 12px;
           flex-direction: row;
           align-items: center;
           justify-content: flex-start;
