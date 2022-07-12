@@ -858,10 +858,8 @@ class personCard extends LitElement {
       <ha-card>
         <div class="shape">
           <ha-icon icon="mdi:account"></ha-icon>
-          <div class="badge-box">
-            <div class="badge">
-              <ha-icon icon="mdi:account"></ha-icon>
-            </div>
+          <div class="badge top-right">
+            <ha-icon icon="mdi:account"></ha-icon>
           </div>
         </div>
         <div class="state-box">
@@ -890,6 +888,7 @@ class personCard extends LitElement {
         }
         .badge {
           --badge-size: 16px;
+          position: absolute;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -903,17 +902,27 @@ class personCard extends LitElement {
         }
         .badge ha-icon {
           --mdc-icon-size: 12px;
-          display: flex;
-          fill: rgb(76, 175, 80);
+          color: white;
           transition-delay: 0s;
           transition-duration: 0.28s;
           transition-property: color;
           transition-timing-function: ease-in-out;
         }
-        .badge-box {
-          position: absolute;
+        .badge.top-right {
           top: -3px;
           right: -3px;
+        }
+        .badge.top-left {
+          top: -3px;
+          left: -3px;
+        }
+        .badge.bottom-right {
+          bottom: -3px;
+          right: -3px;
+        }
+        .badge.bottom-left {
+          bottom: -3px;
+          left: -3px;
         }
         .state-box {
           margin-top: 12px;
