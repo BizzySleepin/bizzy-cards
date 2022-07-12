@@ -763,10 +763,10 @@ class chipBoxCard extends LitElement {
 
     const icon = (icon = '') => {
       const emojiRE = /\p{EPres}|\p{ExtPict}/gu
-      if (icon.startsWith(emojiRE)) return icon[0]
       if (icon.startsWith('weather')) return 'weather'
       if (icon.startsWith('alarm')) return 'alarm'
       if (icon.startsWith('mdi:')) return 'mdi:icon'
+      if (icon.startsWith(emojiRE)) return icon[0]
       console.log(icon)
     }
 
