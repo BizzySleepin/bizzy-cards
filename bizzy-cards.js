@@ -761,7 +761,7 @@ class chipBoxCard extends LitElement {
       return { icon: 'mdi:shield-outline', state: 'Unknown', color: 'var(--google-black)' }
     }
 
-    const icon = (icon) => {
+    const icon = (icon = '') => {
       if (icon == 'weather') {
       }
       if (icon == 'alarm') {
@@ -773,7 +773,7 @@ class chipBoxCard extends LitElement {
       if (index >= 0) {
         console.log('hello')
       }
-      console.log('icon')
+      console.log(icon)
     }
 
     const chip = (item) => {
