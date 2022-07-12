@@ -327,24 +327,6 @@ const bindActionHandler = (elements) => {
     })
   })
 }
-
-const getWeatherEmoji = (i) => {
-  if (i == 'clear-night') return '🌙'
-  if (i == 'cloudy') return '☁️'
-  if (i == 'exceptional') return '🌞'
-  if (i == 'fog') return '🌫️'
-  if (i == 'hail') return '⛈️'
-  if (i == 'lightning') return '⚡'
-  if (i == 'lightning-rainy') return '⛈️'
-  if (i == 'partlycloudy') return '⛅'
-  if (i == 'pouring') return '🌧️'
-  if (i == 'rainy') return '💧'
-  if (i == 'snowy') return '❄️'
-  if (i == 'snowy-rainy') return '🌨️'
-  if (i == 'sunny') return '☀️'
-  if (i == 'windy') return '🌪️'
-}
-
 export class batteryCard extends LitElement {
   static get properties() {
     return {
@@ -752,6 +734,22 @@ class chipBoxCard extends LitElement {
     }
 
     const weatherChip = (state, entities) => {
+      const getWeatherEmoji = (i) => {
+        if (i == 'clear-night') return '🌙'
+        if (i == 'cloudy') return '☁️'
+        if (i == 'exceptional') return '🌞'
+        if (i == 'fog') return '🌫️'
+        if (i == 'hail') return '⛈️'
+        if (i == 'lightning') return '⚡'
+        if (i == 'lightning-rainy') return '⛈️'
+        if (i == 'partlycloudy') return '⛅'
+        if (i == 'pouring') return '🌧️'
+        if (i == 'rainy') return '💧'
+        if (i == 'snowy') return '❄️'
+        if (i == 'snowy-rainy') return '🌨️'
+        if (i == 'sunny') return '☀️'
+        if (i == 'windy') return '🌪️'
+      }
       return html`${getWeatherEmoji(state)} ${states(entities)}`
     }
 
@@ -771,13 +769,13 @@ class chipBoxCard extends LitElement {
     }
 
     const chip = (item) => {
-      const createChip = (type = 'custom', icon = '', text = '', size = 'small', entities = []) => {
+      const createChip = (type = 'custom', icon = '', color = 'black', text = '', size = 'small', entities = []) => {
         if (type == 'weather' && icon) return weatherChip(this.hass.states[icon].state, entities)
         if (type == 'alarm' && icon) alarmChip(this.hass.states[icon].state, size)
-        if (icon.startsWith('mdi:')) return html`<ha-icon class="${size}" icon="${icon}"></ha-icon>${text}${states(entities)}`
+        if (icon.startsWith('mdi:')) return html`<ha-icon class="${size}" style="color: ${color}" icon="${icon}"></ha-icon>${text}${states(entities)}`
         return html`${icon} ${text} ${states(entities)}`
       }
-      return html` <div class="chip ${item.size || ''}">${createChip(item.type, item.icon, item.text, item.size, item.entities)}</div>`
+      return html` <div class="chip ${item.size || ''}">${createChip(item.type, item.icon, item.color, item.text, item.size, item.entities)}</div>`
     }
 
     return html` <ha-card> ${this.config.chips.map((item) => chip(item))} </ha-card> `
