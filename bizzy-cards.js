@@ -776,7 +776,7 @@ class chipBoxCard extends LitElement {
           transition-property: background-color, box-shadow;
           transition-timing-function: ease-out;
         }
-        p::first {
+        p:first-of-type {
           margin-left: 5px;
         }
         p + p::before {
