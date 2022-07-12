@@ -859,11 +859,15 @@ class personCard extends LitElement {
         <div class="shape">
           <ha-icon icon="mdi:account"></ha-icon>
           <div class="badge-box">
-            <div class="badge"></div>
+            <div class="badge">
+              <ha-icon icon="mdi:account"></ha-icon>
+            </div>
           </div>
         </div>
-        <div>Kristen</div>
-        <div>Home</div>
+        <div class="state-box">
+          <div>Kristen</div>
+          <div>Home</div>
+        </div>
       </ha-card>
     `
   }
@@ -900,6 +904,8 @@ class personCard extends LitElement {
           position: absolute;
           top: -3px;
           right: -3px;
+        }
+        .state-box {
         }
       `,
     ]
