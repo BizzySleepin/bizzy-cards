@@ -40,6 +40,7 @@ export const iconStyles = css`
     align-items: center;
     height: 42px;
     width: 42px;
+    background-color: rgba(var(--color-theme), 0.05);
     border-radius: 50%;
     font-size: 42px;
     justify-content: center;
@@ -856,7 +857,7 @@ class personCard extends LitElement {
     return html`
       <ha-card>
         <div class="shape">
-          <ha-icon icon="mdi-user"></ha-icon>
+          <ha-icon icon="mdi:account"></ha-icon>
         </div>
       </ha-card>
     `
