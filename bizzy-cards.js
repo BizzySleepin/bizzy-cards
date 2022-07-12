@@ -797,7 +797,7 @@ class chipBoxCard extends LitElement {
         p:first-of-type {
           margin-left: 5px;
         }
-        ha-icon.small > ha-svg-icon {
+        ha-icon[class='small'] > ha-svg-icon {
           width: 14px;
         }
         p + p::before {
