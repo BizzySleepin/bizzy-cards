@@ -751,28 +751,33 @@ class chipBoxCard extends LitElement {
       })
     }
 
-    const alarmChip = (i) => {
-      if (i == 'armed_home') return { icon: 'mdi:shield-home', state: 'Armed - Home', color: 'var(--google-red)' }
-      if (i == 'armed_away') return { icon: 'mdi:shield-lock', state: 'Armed - Away', color: 'var(--google-red)' }
-      if (i == 'armed_night') return { icon: 'mdi:shield-moon', state: 'Armed - Night', color: 'var(--google-red)' }
-      if (i == 'disarmed') return { icon: 'mdi:shield-off', state: 'Disarmed', color: 'var(--google-green)' }
-      if (i == 'arming') return { icon: 'mdi:shield', state: 'Arming', color: 'var(--google-yellow)' }
-      if (i == 'triggered') return { icon: 'mdi:shield-alert', state: 'Triggered', color: 'var(--google-red)' }
-      return { icon: 'mdi:shield-outline', state: 'Unknown', color: 'var(--google-black)' }
+    const weatherChip = (state, entities) => {
+      return html`${getWeatherEmoji(state)} ${states(entities)}`
     }
 
-    const icon = (type = 'custom', icon = '', size = 'small') => {
-      if (type == 'weather' && icon) return getWeatherEmoji(this.hass.states[icon].state)
-      if (type == 'alarm' && icon) {
-        const alarmInfo = alarmChip(this.hass.states[icon].state)
-        return html`<ha-icon icon="${alarmInfo.icon}" style="color: ${alarmInfo.color}" class="${size}"></ha-icon>`
+    const alarmChip = (state, size = 'small') => {
+      const getAlarmData = (i) => {
+        if (i == 'armed_home') return { icon: 'mdi:shield-home', state: 'Armed - Home', color: 'var(--google-red)' }
+        if (i == 'armed_away') return { icon: 'mdi:shield-lock', state: 'Armed - Away', color: 'var(--google-red)' }
+        if (i == 'armed_night') return { icon: 'mdi:shield-moon', state: 'Armed - Night', color: 'var(--google-red)' }
+        if (i == 'disarmed') return { icon: 'mdi:shield-off', state: 'Disarmed', color: 'var(--google-green)' }
+        if (i == 'arming') return { icon: 'mdi:shield', state: 'Arming', color: 'var(--google-yellow)' }
+        if (i == 'triggered') return { icon: 'mdi:shield-alert', state: 'Triggered', color: 'var(--google-red)' }
+        return { icon: 'mdi:shield-outline', state: 'Unknown', color: 'var(--google-black)' }
       }
-      if (icon.startsWith('mdi:')) return html`<ha-icon class="${size}" icon="${icon}"></ha-icon>`
-      return icon
+      const data = getAlarmData(state)
+      return html`<ha-icon icon="${data.icon}" style="color: ${data.color}" class="${size}"></ha-icon>
+        <p>${data.state}</p>`
     }
 
     const chip = (item) => {
-      return html` <div class="chip ${item.size || ''}">${icon(item.type, item.icon, item.size)} ${item.text} ${states(item.entities)}</div>`
+      const createChip = (type = 'custom', icon = '', text = '', size = 'small', entities = []) => {
+        if (type == 'weather' && icon) return weatherChip(this.hass.states[icon].state, entities)
+        if (type == 'alarm' && icon) alarmChip(this.hass.states[icon].state, size)
+        if (icon.startsWith('mdi:')) return html`<ha-icon class="${size}" icon="${icon}"></ha-icon>${states(entities)}`
+        return html`${icon} ${text} ${states(entities)}`
+      }
+      return html` <div class="chip ${item.size || ''}">${createChip(item.type, item.icon, item.text, item.size, item.entities)}</div>`
     }
 
     return html` <ha-card> ${this.config.chips.map((item) => chip(item))} </ha-card> `
@@ -811,6 +816,7 @@ class chipBoxCard extends LitElement {
           transition-duration: 0.28s;
           transition-property: background-color, box-shadow;
           transition-timing-function: ease-out;
+          --ha-icon-display: inline;
           --mdc-icon-size: 16px;
         }
         .chip.small {
@@ -822,6 +828,7 @@ class chipBoxCard extends LitElement {
         }
         ha-icon {
           margin-right: 5px;
+          display
         }
         p + p::before {
           content: '/';
