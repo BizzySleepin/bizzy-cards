@@ -337,10 +337,10 @@ export class batteryCard extends LitElement {
   }
 
   render() {
-    const items = this.config.entities.map((item) => this.hass.states[item] || {})
+    const items = this.config.entities.filter((item) => this.hass.states[item]).map((item) => this.hass.states[item])
 
     const attribute = (item) => {
-      const val = item.state || 'unavailable'
+      const val = item.state
       const aval = val !== 'unavailable' && val !== 'unknown' ? true : false
       const min = this.min
       return html`
