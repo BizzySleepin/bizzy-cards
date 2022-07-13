@@ -74,7 +74,7 @@ export const iconStyles = css`
     width: 30px;
   }
   .shape.small ha-icon {
-    width: 18px;
+    --mdc-icon-size: 18px;
   }
   .shape.grey {
     background-color: rgba(111, 111, 111, 0.2);
