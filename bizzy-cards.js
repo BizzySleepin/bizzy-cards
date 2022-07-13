@@ -925,7 +925,7 @@ class personCard extends LitElement {
         }
         img {
           border-radius: 50%;
-          length: 100%;
+          height: 100%;
           width: 100%;
         }
       `,
