@@ -879,8 +879,6 @@ class personCard extends LitElement {
 
   render() {
     const badge = 'mdi:home-variant'
-    //const name = this.hass.states[this.config.entity].attributes.friendly_name
-    //const location = this.hass.states[this.config.entity].state
 
     return html`
       <ha-card>
@@ -891,18 +889,15 @@ class personCard extends LitElement {
           </div>
         </div>
         <div class="state-box">
-          <div class="primary">${name}</div>
-          <div class="secondary"${location}</div>
+          <div class="primary">Kristen</div>
+          <div class="secondary">Home</div>
         </div>
       </ha-card>
     `
   }
 
   setConfig(config) {
-    if (!config.entity) {
-      throw new Error('You need to define an entity')
-    }
-    this.entity = config.entity
+    this.config = config
   }
 
   static get styles() {
@@ -910,8 +905,8 @@ class personCard extends LitElement {
       commonStyles,
       css`
         ha-card {
-          padding: 12px;
           display: flex;
+          padding: 12px;
           flex-direction: row;
           align-items: center;
           justify-content: flex-start;
