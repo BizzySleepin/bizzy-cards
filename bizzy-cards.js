@@ -54,27 +54,17 @@ export const iconStyles = css`
   .shape + .shape {
     margin-left: 12px;
   }
-  .badge {
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    line-height: 0;
-    color: white;
-    background-color: grey;
-  }
   .shape > ha-icon {
-    transition: color 280ms ease-in-out 0s;
-  }
-  .badge > ha-icon {
-    --mdc-icon-size: 12px;
+    height: 100%;
+    width: 100%;
     transition: color 280ms ease-in-out 0s;
   }
   .shape.small {
     height: 30px;
     width: 30px;
   }
-  .shape.small ha-icon {
-    --mdc-icon-size: 18px;
+  .shape.full-icon {
+    --mdc-icon-size: 100%;
   }
   .shape.grey {
     background-color: rgba(111, 111, 111, 0.2);
@@ -91,6 +81,18 @@ export const iconStyles = css`
   .shape.yellow {
     background-color: rgba(255, 204, 0, 0.2);
     color: rgb(255, 204, 0);
+  }
+  .badge {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    line-height: 0;
+    color: white;
+    background-color: grey;
+  }
+  .badge > ha-icon {
+    --mdc-icon-size: 12px;
+    transition: color 280ms ease-in-out 0s;
   }
   .badge.top-right {
     top: -3px;
@@ -312,13 +314,13 @@ export const commonStyles = [
     .primary {
       font-size: 14px;
       font-weight: 700;
-      line-height: 21px;
+      line-height: 18px;
     }
     .secondary {
       color: rgb(155, 155, 155);
       font-size: 12px;
       font-weight: 700;
-      line-height: 18px;
+      line-height: 15px;
     }
   `,
 ]
