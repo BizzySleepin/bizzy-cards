@@ -59,6 +59,7 @@ export const iconStyles = css`
     width: 16px;
     height: 16px;
     line-height: 0;
+    color: white;
     background-color: grey;
   }
   .shape > ha-icon {
@@ -66,7 +67,6 @@ export const iconStyles = css`
   }
   .badge > ha-icon {
     --mdc-icon-size: 12px;
-    color: white;
     transition: color 280ms ease-in-out 0s;
   }
   .shape.small {
@@ -879,15 +879,15 @@ class personCard extends LitElement {
 
   render() {
     const stateObj = this.hass.states[this.config.entity]
-    console.log(`zone.${stateObj.state}`)
-    const badge = stateObj.state == 'not_home' ? 'mdi:home-minus' : this.hass.states[`zone.${stateObj.state}`].attributes.icon
     const name = stateObj.attributes.friendly_name
     const zone = stateObj.state == 'not_home' ? 'Away' : this.hass.states[`zone.${stateObj.state}`].attributes.friendly_name
+    const badge = stateObj.state == 'not_home' ? 'mdi:home-minus' : this.hass.states[`zone.${stateObj.state}`].attributes.icon
+    const color = stateObj.state == 'home' ? 'green' : stateObj.state == 'not_home' ? 'red' : 'blue'
     return html`
       <ha-card>
         <div class="shape">
           <ha-icon icon="mdi:account"></ha-icon>
-          <div class="badge top-right">
+          <div class="badge top-right" style="background-color: ${color};">
             <ha-icon icon="${badge}"></ha-icon>
           </div>
         </div>
