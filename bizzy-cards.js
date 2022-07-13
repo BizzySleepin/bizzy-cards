@@ -65,7 +65,7 @@ export const iconStyles = css`
     transition: color 280ms ease-in-out 0s;
   }
   .badge > ha-icon {
-    width: 12px;
+    --mdc-icon-size: 12px;
     color: white;
     transition: color 280ms ease-in-out 0s;
   }
@@ -147,25 +147,6 @@ export const iconHeaderStyles = css`
     flex-direction: column;
     flex-grow: 1;
     flex-shrink: 1;
-  }
-  .primary {
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 21px;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .secondary {
-    color: rgb(155, 155, 155);
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 18px;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
   }
 `
 export const imageHeaderStyles = css`
@@ -319,6 +300,25 @@ export const commonStyles = [
       opacity: 0.25;
       margin-left: 8px;
       margin-right: 8px;
+    }
+    .primary {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 21px;
+      overflow-x: hidden;
+      overflow-y: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .secondary {
+      color: rgb(155, 155, 155);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 18px;
+      overflow-x: hidden;
+      overflow-y: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   `,
 ]
@@ -887,8 +887,8 @@ class personCard extends LitElement {
           </div>
         </div>
         <div class="state-box">
-          <div class="name">Kristen</div>
-          <div class="status">Home</div>
+          <div class="primary">Kristen</div>
+          <div class="secondary">Home</div>
         </div>
       </ha-card>
     `
@@ -916,15 +916,6 @@ class personCard extends LitElement {
           display: flex;
           flex-direction: column;
           align-items: center;
-        }
-        .name {
-          font-size: 14px;
-          font-weight: 700;
-        }
-        .status {
-          color: rgb(114, 114, 114);
-          font-size: 12px;
-          font-weight: 700;
         }
       `,
     ]
