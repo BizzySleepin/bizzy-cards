@@ -882,11 +882,12 @@ class personCard extends LitElement {
     const name = stateObj.attributes.friendly_name
     const zone = stateObj.state == 'not_home' ? 'Away' : this.hass.states[`zone.${stateObj.state}`].attributes.friendly_name
     const badge = stateObj.state == 'not_home' ? 'mdi:home-minus' : this.hass.states[`zone.${stateObj.state}`].attributes.icon
-    const color = stateObj.state == 'home' ? 'green' : stateObj.state == 'not_home' ? 'red' : 'blue'
+    const color = stateObj.state == 'home' ? 'rgb(76, 175, 80)' : stateObj.state == 'not_home' ? 'red' : 'blue'
+    const image = this.config.useImage ? html`<img src="${stateObj.attributes.entity_picture}" />` : html`<ha-icon icon="mdi:account"></ha-icon>`
     return html`
       <ha-card>
         <div class="shape">
-          <ha-icon icon="mdi:account"></ha-icon>
+          ${image}
           <div class="badge top-right" style="background-color: ${color};">
             <ha-icon icon="${badge}"></ha-icon>
           </div>
@@ -921,6 +922,10 @@ class personCard extends LitElement {
           display: flex;
           flex-direction: column;
           align-items: center;
+        }
+        img {
+          length: 100%;
+          width: 100%;
         }
       `,
     ]
