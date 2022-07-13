@@ -879,6 +879,7 @@ class personCard extends LitElement {
 
   render() {
     const stateObj = this.hass.states[this.config.entity]
+    console.log(`zone.${stateObj.state}`)
     const badge = stateObj.state == 'not_home' ? 'mdi:home-minus' : this.hass.states[`zone.${stateObj.state}`].attributes.icon
     const name = stateObj.attributes.friendly_name
     const zone = stateObj.state == 'not_home' ? 'Away' : this.hass.states[`zone.${stateObj.state}`].attributes.friendly_name
