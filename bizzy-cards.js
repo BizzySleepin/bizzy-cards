@@ -34,32 +34,40 @@ export const tooltipStyles = css`
 `
 
 export const iconStyles = css`
+  .badge,
   .shape {
-    position: relative;
     display: inline-flex;
     align-items: center;
-    height: 42px;
-    width: 42px;
-    background-color: rgba(var(--color-theme), 0.05);
-    border-radius: 50%;
-    font-size: 42px;
     justify-content: center;
-    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 1px;
+    border-radius: 50%;
     transition-duration: 0.28s;
     transition-property: background-color, box-shadow;
     transition-timing-function: ease-out;
   }
+  .badge {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: grey;
+  }
+  .shape {
+    position: relative;
+    height: 42px;
+    width: 42px;
+    background-color: rgba(var(--color-theme), 0.05);
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 1px;
+  }
   .shape + .shape {
     margin-left: 12px;
   }
+  .badge ha-icon {
+    --mdc-icon-size: 12px;
+    color: white;
+    transition: color 280ms ease-in-out 0s;
+  }
   .shape ha-icon {
     display: flex;
-    fill: rgb(76, 175, 80);
-    font-size: 42px;
-    transition-delay: 0s;
-    transition-duration: 0.28s;
-    transition-property: color;
-    transition-timing-function: ease-in-out;
+    transition: color 280ms ease-in-out 0s;
   }
   .shape.small {
     height: 30px;
@@ -885,28 +893,6 @@ class personCard extends LitElement {
           align-items: center;
           justify-content: flex-start;
           flex-direction: column;
-        }
-        .badge {
-          --badge-size: 16px;
-          position: absolute;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          line-height: 0;
-          width: var(--badge-size);
-          height: var(--badge-size);
-          font-size: var(--badge-size);
-          border-radius: 50%;
-          background-color: grey;
-          transition: background-color 280ms ease-in-out 0s;
-        }
-        .badge ha-icon {
-          --mdc-icon-size: 12px;
-          color: white;
-          transition-delay: 0s;
-          transition-duration: 0.28s;
-          transition-property: color;
-          transition-timing-function: ease-in-out;
         }
         .badge.top-right {
           top: -3px;
