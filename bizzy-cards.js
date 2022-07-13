@@ -34,8 +34,8 @@ export const tooltipStyles = css`
 `
 
 export const iconStyles = css`
-  .badge,
-  .shape {
+  .shape,
+  .badge {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -43,12 +43,6 @@ export const iconStyles = css`
     transition-duration: 0.28s;
     transition-property: background-color, box-shadow;
     transition-timing-function: ease-out;
-  }
-  .badge {
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    background-color: grey;
   }
   .shape {
     position: relative;
@@ -60,13 +54,19 @@ export const iconStyles = css`
   .shape + .shape {
     margin-left: 12px;
   }
-  .badge ha-icon {
-    --mdc-icon-size: 12px;
-    color: white;
+  .badge {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: grey;
+  }
+  .shape > ha-icon {
+    display: flex;
     transition: color 280ms ease-in-out 0s;
   }
-  .shape ha-icon {
-    display: flex;
+  .badge > ha-icon {
+    --mdc-icon-size: 12px;
+    color: white;
     transition: color 280ms ease-in-out 0s;
   }
   .shape.small {
@@ -91,6 +91,22 @@ export const iconStyles = css`
   .shape.yellow {
     background-color: rgba(255, 204, 0, 0.2);
     color: rgb(255, 204, 0);
+  }
+  .badge.top-right {
+    top: -3px;
+    right: -3px;
+  }
+  .badge.top-left {
+    top: -3px;
+    left: -3px;
+  }
+  .badge.bottom-right {
+    bottom: -3px;
+    right: -3px;
+  }
+  .badge.bottom-left {
+    bottom: -3px;
+    left: -3px;
   }
 `
 export const chipStyles = css`
@@ -893,22 +909,6 @@ class personCard extends LitElement {
           align-items: center;
           justify-content: flex-start;
           flex-direction: column;
-        }
-        .badge.top-right {
-          top: -3px;
-          right: -3px;
-        }
-        .badge.top-left {
-          top: -3px;
-          left: -3px;
-        }
-        .badge.bottom-right {
-          bottom: -3px;
-          right: -3px;
-        }
-        .badge.bottom-left {
-          bottom: -3px;
-          left: -3px;
         }
         .state-box {
           margin-top: 12px;
