@@ -74,7 +74,7 @@ export const iconStyles = css`
     width: 30px;
   }
   .shape.small ha-icon {
-    --mdc-icon-size: 18px;
+    width: 18px;
   }
   .shape.grey {
     background-color: rgba(111, 111, 111, 0.2);
@@ -878,14 +878,12 @@ class personCard extends LitElement {
   }
 
   render() {
-    const badge = 'mdi:home-variant'
-
     return html`
       <ha-card>
         <div class="shape">
           <ha-icon icon="mdi:account"></ha-icon>
           <div class="badge top-right">
-            <ha-icon icon="${badge}"></ha-icon>
+            <ha-icon icon="mdi:home-variant"></ha-icon>
           </div>
         </div>
         <div class="state-box">
