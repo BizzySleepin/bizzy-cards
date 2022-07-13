@@ -879,8 +879,8 @@ class personCard extends LitElement {
 
   render() {
     const badge = 'mdi:home-variant'
-    const name = 'poo'
-    const location = 'poo'
+    const name = this.hass.states[this.config.entity].attributes.friendly_name
+    const location = this.hass.states[this.config.entity].state
 
     return html`
       <ha-card>
@@ -903,7 +903,6 @@ class personCard extends LitElement {
       throw new Error('You need to define an entity')
     }
     this.config = config
-    this.requestUpdate()
   }
 
   static get styles() {
