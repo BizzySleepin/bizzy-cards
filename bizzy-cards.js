@@ -301,24 +301,24 @@ export const commonStyles = [
       margin-left: 8px;
       margin-right: 8px;
     }
-    .primary {
-      font-size: 14px;
-      font-weight: 700;
-      line-height: 21px;
+    .primary,
+    .secondary {
       overflow-x: hidden;
       overflow-y: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      text-transform: capitalize;
+    }
+    .primary {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 21px;
     }
     .secondary {
       color: rgb(155, 155, 155);
       font-size: 12px;
       font-weight: 700;
       line-height: 18px;
-      overflow-x: hidden;
-      overflow-y: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
     }
   `,
 ]
