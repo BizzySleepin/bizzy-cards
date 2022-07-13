@@ -878,6 +878,8 @@ class personCard extends LitElement {
   }
 
   render() {
+    const name = this.hass.states[this.config.entity].attributes.friendly_name
+    const zone = this.hass.states[this.config.entity].state.replace('_', ' ')
     return html`
       <ha-card>
         <div class="shape">
@@ -887,8 +889,8 @@ class personCard extends LitElement {
           </div>
         </div>
         <div class="state-box">
-          <div class="primary">${this.hass.states[this.config.entity].state}</div>
-          <div class="secondary">Home</div>
+          <div class="primary">${name}</div>
+          <div class="secondary">${zone}</div>
         </div>
       </ha-card>
     `
