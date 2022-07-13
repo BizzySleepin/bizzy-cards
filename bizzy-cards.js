@@ -898,17 +898,24 @@ class personCard extends LitElement {
     `
   }
 
+  setConfig(config) {
+    if (!config.entity) {
+      throw new Error('You need to define an entity')
+    }
+    this.config = config
+  }
+
   static get styles() {
     return [
       commonStyles,
       css`
         ha-card {
           display: flex;
+          padding: 12px;
           flex-direction: row;
           align-items: center;
           justify-content: flex-start;
           flex-direction: column;
-          padding: 12px;
         }
         .state-box {
           margin-top: 12px;
