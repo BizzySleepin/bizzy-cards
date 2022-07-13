@@ -58,14 +58,14 @@ export const iconStyles = css`
     position: absolute;
     width: 16px;
     height: 16px;
+    line-height: 0;
     background-color: grey;
   }
   .shape > ha-icon {
-    display: flex;
     transition: color 280ms ease-in-out 0s;
   }
   .badge > ha-icon {
-    --mdc-icon-size: 12px;
+    width: 12px;
     color: white;
     transition: color 280ms ease-in-out 0s;
   }
