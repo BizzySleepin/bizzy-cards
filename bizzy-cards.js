@@ -887,7 +887,7 @@ class personCard extends LitElement {
           </div>
         </div>
         <div class="state-box">
-          <div class="primary">Kristen</div>
+          <div class="primary">${this.hass.states[this.config.entity].state}</div>
           <div class="secondary">Home</div>
         </div>
       </ha-card>
