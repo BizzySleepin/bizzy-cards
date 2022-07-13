@@ -783,8 +783,8 @@ class chipBoxCard extends LitElement {
         if (i == 'armed_home') return { icon: 'mdi:shield-home', state: 'Armed - Home', color: 'var(--google-red)' }
         if (i == 'armed_away') return { icon: 'mdi:shield-lock', state: 'Armed - Away', color: 'var(--google-red)' }
         if (i == 'armed_night') return { icon: 'mdi:shield-moon', state: 'Armed - Night', color: 'var(--google-red)' }
-        if (i == 'disarmed') return { icon: 'mdi:shield-off', state: 'Disarmed', color: 'var(--google-green)' }
         if (i == 'arming') return { icon: 'mdi:shield', state: 'Arming', color: 'var(--google-yellow)' }
+        if (i == 'disarmed') return { icon: 'mdi:shield-off', state: 'Disarmed', color: 'var(--google-green)' }
         if (i == 'triggered') return { icon: 'mdi:shield-alert', state: 'Triggered', color: 'var(--google-red)' }
         return { icon: 'mdi:shield-outline', state: 'Unknown', color: 'var(--google-black)' }
       }
