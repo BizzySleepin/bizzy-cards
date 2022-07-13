@@ -879,8 +879,8 @@ class personCard extends LitElement {
 
   render() {
     const badge = 'mdi:home-variant'
-    const name = this.hass.states[this.config.entity].attributes.friendly_name
-    const location = this.hass.states[this.config.entity].state
+    const name = 'poo'
+    const location = 'poo'
 
     return html`
       <ha-card>
