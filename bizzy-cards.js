@@ -904,11 +904,11 @@ class personCard extends LitElement {
       css`
         ha-card {
           display: flex;
-          padding: 12px;
           flex-direction: row;
           align-items: center;
           justify-content: flex-start;
           flex-direction: column;
+          padding: 12px;
         }
         .state-box {
           margin-top: 12px;
