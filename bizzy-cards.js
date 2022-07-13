@@ -898,13 +898,6 @@ class personCard extends LitElement {
     `
   }
 
-  setConfig(config) {
-    if (!config.entity) {
-      throw new Error('You need to define an entity')
-    }
-    this.config = config
-  }
-
   static get styles() {
     return [
       commonStyles,
