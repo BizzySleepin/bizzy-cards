@@ -878,14 +878,16 @@ class personCard extends LitElement {
   }
 
   render() {
-    const name = this.hass.states[this.config.entity].attributes.friendly_name
-    const zone = this.hass.states[this.config.entity].state.replace('_', ' ')
+    const stateObj = this.hass.states[this.config.entity]
+    const name = stateObj.attributes.friendly_name
+    const zone = stateObj.state == 'not_home' ? 'Away' : this.hass.states[`zone.${stateObj.state}`].friendly_name
+    const badge = stateObj.state == 'not_home' ? 'mdi:home-minus' : this.hass.states[`zone.${stateObj.state}`].icon
     return html`
       <ha-card>
         <div class="shape">
           <ha-icon icon="mdi:account"></ha-icon>
           <div class="badge top-right">
-            <ha-icon icon="mdi:home-variant"></ha-icon>
+            <ha-icon icon="${badge}"></ha-icon>
           </div>
         </div>
         <div class="state-box">
