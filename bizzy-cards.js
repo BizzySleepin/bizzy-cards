@@ -662,6 +662,49 @@ class valveCard extends LitElement {
 }
 
 customElements.define('valve-card', valveCard)
+class vehicleCard extends LitElement {
+  static get properties() {
+    return {
+      hass: {},
+      config: {},
+    }
+  }
+
+  script() {
+    return
+  }
+
+  render() {
+    const item = this.hass.states[this.config.entity].state
+    return html`
+      <ha-card>
+        <div class="card">
+          <div class="shape">
+            <ha-icon icon="mdi:car"></ha-icon>
+          </div>
+          <div class="container">
+            <span class="primary">Mazda 3</span>
+            <span class="secondary">Home</span>
+          </div>
+        </div>
+      </ha-card>
+    `
+  }
+
+  setConfig(config) {
+    if (!config.entity) {
+      throw new Error('You need to define an entity')
+    }
+    this.config = config
+    this.requestUpdate()
+  }
+
+  static get styles() {
+    return [commonStyles, iconHeaderStyles]
+  }
+}
+
+customElements.define('vehicle-card', vehicleCard)
 
 class topBarCard extends LitElement {
   static get properties() {
