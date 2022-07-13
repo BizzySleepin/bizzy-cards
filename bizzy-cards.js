@@ -55,6 +55,9 @@ export const iconStyles = css`
     margin-left: 12px;
   }
   .shape > ha-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100%;
     width: 100%;
     transition: color 280ms ease-in-out 0s;
