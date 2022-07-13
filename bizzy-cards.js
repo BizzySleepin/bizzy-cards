@@ -678,7 +678,6 @@ class topBarCard extends LitElement {
   render() {
     const side = (button) => {
       if (button === 'back') {
-        console.dir(window.history)
         return html`
           <div class="chip shape" @click="${() => window.history.back()}">
             <ha-icon icon="mdi:arrow-left"></ha-icon>
@@ -747,7 +746,7 @@ class chipBoxCard extends LitElement {
   render() {
     const states = (entities = []) => {
       return entities.map((item) => {
-        const state = this.hass.states[item.entityId].state
+        const state = parseFloat(this.hass.states[item.entityId].state) ? +this.hass.states[item.entityId].state.toFixed(1) : this.hass.states[item.entityId].state
         const attr = this.hass.states[item.entityId].attributes
         const max = item.max || ''
         const min = item.min || ''
@@ -866,6 +865,7 @@ class chipBoxCard extends LitElement {
 }
 
 customElements.define('chip-box-card', chipBoxCard)
+
 class personCard extends LitElement {
   static get properties() {
     return {
