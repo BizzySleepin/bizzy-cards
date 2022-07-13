@@ -678,6 +678,7 @@ class topBarCard extends LitElement {
   render() {
     const side = (button) => {
       if (button === 'back') {
+        console.dir(window.history)
         return html`
           <div class="chip shape" @click="${() => window.history.back()}">
             <ha-icon icon="mdi:arrow-left"></ha-icon>
