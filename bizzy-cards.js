@@ -878,17 +878,21 @@ class personCard extends LitElement {
   }
 
   render() {
+    const badge = 'mdi:home-variant'
+    const name = this.hass.states[this.config.entity].attributes.friendly_name
+    const location = this.hass.states[this.config.entity].state
+
     return html`
       <ha-card>
         <div class="shape">
           <ha-icon icon="mdi:account"></ha-icon>
           <div class="badge top-right">
-            <ha-icon icon="mdi:account"></ha-icon>
+            <ha-icon icon="${badge}"></ha-icon>
           </div>
         </div>
         <div class="state-box">
-          <div class="primary">Kristen</div>
-          <div class="secondary">Home</div>
+          <div class="primary">${name}</div>
+          <div class="secondary"${location}</div>
         </div>
       </ha-card>
     `
