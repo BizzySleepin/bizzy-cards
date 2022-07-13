@@ -746,7 +746,7 @@ class chipBoxCard extends LitElement {
   render() {
     const states = (entities = []) => {
       return entities.map((item) => {
-        const state = parseFloat(this.hass.states[item.entityId].state) ? parseFloat(this.hass.states[item.entityId].state).toFixed(1) : this.hass.states[item.entityId].state
+        const state = parseFloat(this.hass.states[item.entityId].state) ? parseFloat(parseFloat(this.hass.states[item.entityId].state).toFixed(1)) : this.hass.states[item.entityId].state
         const attr = this.hass.states[item.entityId].attributes
         const max = item.max || ''
         const min = item.min || ''
