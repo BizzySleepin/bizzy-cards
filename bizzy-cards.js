@@ -1103,9 +1103,6 @@ class gaugeCard extends LitElement {
         .gauge--data {
           width: 240px;
           height: 120px;
-        }
-        .gauge--liveupdate .gauge__data,
-        .gauge--liveupdate .gauge__needle {
           -webkit-transition: all 1s ease-in-out;
           -moz-transition: all 1s ease-in-out;
           -ms-transition: all 1s ease-in-out;
