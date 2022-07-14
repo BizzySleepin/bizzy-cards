@@ -684,7 +684,7 @@ class vehicleCard extends LitElement {
     return html`
       <ha-card>
         <div class="card">
-          <div class="shape">
+          <div class="shape full-icon">
             <ha-icon icon="mdi:car"></ha-icon>
           </div>
           <div class="container">
