@@ -338,7 +338,7 @@ const handleAction = (config) => {
     ev.detail = config
     return ev
   }
-
+  console.log(config)
   const hass = document.querySelector('home-assistant')
   switch (config.action) {
     case 'more-info':
@@ -690,7 +690,6 @@ class vehicleCard extends LitElement {
         <div
           class="card clickable"
           @action=${(ev) => {
-            console.log(this.config)
             if (ev.detail.action === 'tap') handleAction(this.config.tap_action)
           }}
         >
