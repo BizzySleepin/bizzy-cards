@@ -1013,7 +1013,7 @@ class gaugeCard extends LitElement {
     return html`
       <ha-card>
         <div>
-          <div class="gauge gauge__liveupdate" id="gauge">
+          <div class="gauge" id="gauge">
             <div class="gauge--container">
               <div class="gauge--background"></div>
               <div class="gauge--center"></div>
@@ -1056,7 +1056,7 @@ class gaugeCard extends LitElement {
         .gauge--background {
           z-index: 0;
           position: absolute;
-          background-color: #c5cae9;
+          background-color: var(--card-background-color, white);
           top: 0;
           border-radius: 300px 300px 0 0;
         }
@@ -1082,9 +1082,8 @@ class gaugeCard extends LitElement {
           margin-right: auto;
           border-radius: 300px 300px 0 0;
         }
-
         .gauge {
-          height: calc(120px + 3em);
+          height: calc(120px);
         }
         .gauge--container {
           width: 240px;
@@ -1110,11 +1109,12 @@ class gaugeCard extends LitElement {
           transition: all 1s ease-in-out;
         }
         .gauge--data {
-          -webkit-transform: rotate(-0.5turn);
-          -moz-transform: rotate(-0.5turn);
-          -ms-transform: rotate(-0.5turn);
-          -o-transform: rotate(-0.5turn);
-          transform: rotate(-0.5turn);
+          --calculated: -0.25
+          -webkit-transform: rotate(var(--calculated)turn);
+          -moz-transform: rotate(var(--calculated)turn);
+          -ms-transform: rotate(var(--calculated)turn);
+          -o-transform: rotate(var(--calculated)turn);
+          transform: rotate(var(--calculated)turn);
         }
       `,
     ]
