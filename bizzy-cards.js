@@ -691,6 +691,7 @@ class vehicleCard extends LitElement {
         <div
           class="card"
           @action=${(ev) => {
+            console.log(ev)
             if (ev.detail.action === 'hold') handleAction(this.config)
           }}
         >
