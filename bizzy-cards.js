@@ -685,7 +685,6 @@ class vehicleCard extends LitElement {
   }
 
   render() {
-    const item = this.hass.states[this.config.entity].state
     return html`
       <ha-card>
         <div
