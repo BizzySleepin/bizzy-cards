@@ -349,7 +349,7 @@ const handleAction = (config) => {
       hass.dispatchEvent(newEvent('location-changed'))
       break
     case 'fire-dom-event':
-      hass.dispatchEvent(newEvent('fire-dom-event'))
+      hass.dispatchEvent(newEvent('ll-custom'))
       break
   }
 }
