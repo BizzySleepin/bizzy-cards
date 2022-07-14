@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'https://unpkg.com/lit-element@2.0.1/lit-element.js?module'
-import '@material/mwc-ripple/mwc-ripple'
+import '@material/mwc-ripple'
 
 export const tooltipStyles = css`
   .tooltip {
@@ -341,8 +341,8 @@ const handleAction = (ev, config) => {
   }
 
   ev.currentTarget.ripple.disabled = false
-  ev.currentTarget.startPress()
-  ev.currentTarget.unbounded = true
+  ev.currentTarget.ripple.startPress()
+  ev.currentTarget.ripple.unbounded = true
 
   const hass = document.querySelector('home-assistant')
   switch (config.action) {
