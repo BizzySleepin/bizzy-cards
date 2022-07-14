@@ -691,7 +691,7 @@ class vehicleCard extends LitElement {
           class="card clickable"
           @action=${(ev) => {
             console.log(this.config)
-            if (ev.detail.action === 'tap') handleAction(this.config)
+            if (ev.detail.action === 'tap') handleAction(this.config.tap_action)
           }}
         >
           <div class="shape full-icon">
