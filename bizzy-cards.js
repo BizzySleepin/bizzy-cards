@@ -688,7 +688,7 @@ class vehicleCard extends LitElement {
     return html`
       <ha-card>
         <div
-          class="card"
+          class="card clickable"
           @action=${(ev) => {
             console.log(this.config)
             console.log(ev)
@@ -712,9 +712,11 @@ class vehicleCard extends LitElement {
       throw new Error('You need to define an entity')
     }
     this.config = config
-    console.log(this.config)
-    console.log(config)
     this.requestUpdate()
+  }
+
+  firstUpdated() {
+    bindActionHandler(this.shadowRoot.querySelectorAll('.clickable'))
   }
 
   static get styles() {
