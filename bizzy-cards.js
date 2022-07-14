@@ -713,6 +713,7 @@ class vehicleCard extends LitElement {
     }
     this.config = config
     console.log(this.config)
+    console.log(config)
     this.requestUpdate()
   }
 
