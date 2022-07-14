@@ -996,3 +996,221 @@ class personCard extends LitElement {
 }
 
 customElements.define('person-card', personCard)
+
+class gaugeCard extends LitElement {
+  static get properties() {
+    return {
+      hass: {},
+      config: {},
+    }
+  }
+
+  script() {
+    return
+  }
+
+  render() {
+    return html`
+      <ha-card>
+        <div class="gauge gauge__liveupdate" id="gauge">
+          <div class="gauge--container">
+            <div class="gauge--background"></div>
+            <div class="gauge--center"></div>
+            <div class="gauge--data"></div>
+          </div>
+          <div class="gauge--labels mdl-typography--headline">
+            <span class="gauge--label__low">E</span>
+            <span class="gauge--label__spacer"></span>
+            <span class="gauge--label__high">F</span>
+          </div>
+        </div>
+      </ha-card>
+    `
+  }
+
+  setConfig(config) {
+    this.config = config
+  }
+
+  static get styles() {
+    return [
+      commonStyles,
+      css`
+        ha-card {
+        }
+        .gauge {
+          position: relative;
+        }
+
+        .gauge__container {
+          margin: 0;
+          padding: 0;
+          position: absolute;
+          left: 50%;
+          overflow: hidden;
+          text-align: center;
+          -webkit-transform: translateX(-50%);
+          -moz-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+          -o-transform: translateX(-50%);
+          transform: translateX(-50%);
+        }
+
+        .gauge__background {
+          z-index: 0;
+          position: absolute;
+          background-color: #c5cae9;
+          top: 0;
+          border-radius: 300px 300px 0 0;
+        }
+
+        .gauge__data {
+          z-index: 1;
+          position: absolute;
+          background-color: #3f51b5;
+          margin-left: auto;
+          margin-right: auto;
+          border-radius: 300px 300px 0 0;
+          -webkit-transform-origin: center bottom;
+          -moz-transform-origin: center bottom;
+          -ms-transform-origin: center bottom;
+          -o-transform-origin: center bottom;
+          transform-origin: center bottom;
+        }
+
+        .gauge__center {
+          z-index: 2;
+          position: absolute;
+          background-color: #fff;
+          margin-right: auto;
+          border-radius: 300px 300px 0 0;
+        }
+
+        .gauge__labels {
+          display: table;
+          margin: 0 auto;
+          position: relative;
+        }
+
+        .gauge__label--low {
+          display: table-cell;
+          text-align: center;
+        }
+
+        .gauge__label--spacer {
+          display: table-cell;
+        }
+
+        .gauge__label--high {
+          display: table-cell;
+          text-align: center;
+        }
+        .gauge {
+          height: calc(120px + 3em);
+        }
+        .gauge__container {
+          width: 240px;
+          height: 120px;
+        }
+        .gauge__marker {
+          height: 120px;
+          left: 119.5px;
+        }
+        .gauge__background {
+          width: 240px;
+          height: 120px;
+        }
+        .gauge__center {
+          width: 144px;
+          height: 72px;
+          top: 48px;
+          margin-left: 48px;
+        }
+        .gauge__data {
+          width: 240px;
+          height: 120px;
+        }
+        .gauge__needle {
+          left: 120px;
+          top: 117px;
+          width: 120px;
+        }
+        .gauge__labels {
+          top: 120px;
+          width: 240px;
+        }
+        .gauge__label--low {
+          width: 48px;
+        }
+        .gauge__label--spacer {
+          width: 144px;
+        }
+        .gauge__label--high {
+          width: 48px;
+        }
+        @media only screen and (min-width: 400px) {
+          .gauge {
+            height: calc(150px + 3em);
+          }
+          .gauge__container {
+            width: 300px;
+            height: 150px;
+          }
+          .gauge__marker {
+            height: 150px;
+            left: 149.5px;
+          }
+          .gauge__background {
+            width: 300px;
+            height: 150px;
+          }
+          .gauge__center {
+            width: 180px;
+            height: 90px;
+            top: 60px;
+            margin-left: 60px;
+          }
+          .gauge__data {
+            width: 300px;
+            height: 150px;
+          }
+          .gauge__needle {
+            left: 150px;
+            top: 147px;
+            width: 150px;
+          }
+          .gauge__labels {
+            top: 150px;
+            width: 300px;
+          }
+          .gauge__label--low {
+            width: 60px;
+          }
+          .gauge__label--spacer {
+            width: 180px;
+          }
+          .gauge__label--high {
+            width: 60px;
+          }
+        }
+        .gauge--liveupdate .gauge__data,
+        .gauge--liveupdate .gauge__needle {
+          -webkit-transition: all 1s ease-in-out;
+          -moz-transition: all 1s ease-in-out;
+          -ms-transition: all 1s ease-in-out;
+          -o-transition: all 1s ease-in-out;
+          transition: all 1s ease-in-out;
+        }
+        .gauge__data {
+          -webkit-transform: rotate(-0.5turn);
+          -moz-transform: rotate(-0.5turn);
+          -ms-transform: rotate(-0.5turn);
+          -o-transform: rotate(-0.5turn);
+          transform: rotate(-0.5turn);
+        }
+      `,
+    ]
+  }
+}
+
+customElements.define('gauge-card', gaugeCard)
