@@ -320,10 +320,10 @@ export const commonStyles = [
       line-height: 18px;
     }
     .secondary {
-      color: rgb(155, 155, 155);
       font-size: 12px;
       font-weight: 700;
       line-height: 18px;
+      color: rgb(155, 155, 155);
     }
   `,
 ]
