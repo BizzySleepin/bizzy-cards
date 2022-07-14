@@ -348,6 +348,9 @@ const handleAction = (config) => {
       history.pushState(null, '', config.path)
       hass.dispatchEvent(newEvent('location-changed'))
       break
+    case 'fire-dom-event':
+      hass.dispatchEvent(newEvent('fire-dom-event'))
+      break
   }
 }
 
@@ -688,7 +691,7 @@ class vehicleCard extends LitElement {
         <div
           class="card"
           @action=${(ev) => {
-            if (ev.detail.action === 'hold') handleAction({ action: this.config.action })
+            if (ev.detail.action === 'hold') handleAction(this.config)
           }}
         >
           <div class="shape full-icon">
