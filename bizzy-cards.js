@@ -323,7 +323,7 @@ export const commonStyles = [
       color: rgb(155, 155, 155);
       font-size: 12px;
       font-weight: 700;
-      line-height: 15px;
+      line-height: 18px;
     }
   `,
 ]
@@ -343,9 +343,11 @@ const handleAction = (config) => {
   switch (config.action) {
     case 'more-info':
       hass.dispatchEvent(newEvent('hass-more-info'))
+      break
     case 'navigate':
       history.pushState(null, '', config.path)
       hass.dispatchEvent(newEvent('location-changed'))
+      break
   }
 }
 
@@ -683,7 +685,12 @@ class vehicleCard extends LitElement {
     const item = this.hass.states[this.config.entity].state
     return html`
       <ha-card>
-        <div class="card">
+        <div
+          class="card"
+          @action=${(ev) => {
+            if (ev.detail.action === 'hold') handleAction({ action: this.config.action })
+          }}
+        >
           <div class="shape full-icon">
             <ha-icon icon="mdi:car"></ha-icon>
           </div>
