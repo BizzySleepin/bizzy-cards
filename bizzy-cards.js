@@ -1,4 +1,5 @@
 import { LitElement, html, css } from 'https://unpkg.com/lit-element@2.0.1/lit-element.js?module'
+import '@material/mwc-ripple/mwc-ripple'
 
 export const tooltipStyles = css`
   .tooltip {
@@ -328,16 +329,20 @@ export const commonStyles = [
   `,
 ]
 
-const handleAction = (config) => {
+const handleAction = (ev, config) => {
   const newEvent = (type) => {
-    const ev = new Event(type, {
+    const newEvent = new Event(type, {
       bubbles: true,
       cancelable: false,
       composed: true,
     })
-    ev.detail = config
-    return ev
+    newEvent.detail = config
+    return newEvent
   }
+
+  ev.currentTarget.ripple.disabled = false
+  ev.currentTarget.startPress()
+  ev.currentTarget.unbounded = true
 
   const hass = document.querySelector('home-assistant')
   switch (config.action) {
@@ -358,6 +363,10 @@ const bindActionHandler = (elements) => {
   customElements.whenDefined('action-handler').then(() => {
     const actionHandler = document.body.querySelector('action-handler')
     elements.forEach((el) => {
+      ripple = document.createElement('mwc-ripple')
+      ripple.primary = true
+      el.ripple = ripple
+      el.appendChild(ripple)
       actionHandler.bind(el, { hasHold: true, hasDoubleClick: true })
     })
   })
@@ -448,7 +457,7 @@ class FlowerCard extends LitElement {
             class="meter-box clickable tooltip"
             data-tooltip="${aval ? val + ' ' + unit + ' | ' + min + ' ~ ' + max + ' ' + unit : val}"
             @action=${(ev) => {
-              if (ev.detail.action === 'hold') handleAction({ action: 'more-info', entityId: stateObj.attributes.sensors[attr] })
+              if (ev.detail.action === 'hold') handleAction(ev, { action: 'more-info', entityId: stateObj.attributes.sensors[attr] })
             }}
           >
             <ha-icon .icon="${icon}"></ha-icon>
@@ -691,8 +700,7 @@ class vehicleCard extends LitElement {
           class="card clickable"
           @action=${(ev) => {
             console.log(this.config)
-            console.log(ev)
-            if (ev.detail.action === 'hold') handleAction(this.config)
+            if (ev.detail.action === 'tap') handleAction(this.config)
           }}
         >
           <div class="shape full-icon">
