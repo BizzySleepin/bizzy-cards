@@ -1056,7 +1056,7 @@ class gaugeCard extends LitElement {
         .gauge--background {
           z-index: 0;
           position: absolute;
-          background-color: var(--card-background-color, white);
+          background-color: #c5cae9;
           top: 0;
           border-radius: 300px 300px 0 0;
         }
@@ -1078,10 +1078,11 @@ class gaugeCard extends LitElement {
         .gauge--center {
           z-index: 2;
           position: absolute;
-          background-color: #fff;
+          background-color: var(--card-background-color, white);
           margin-right: auto;
           border-radius: 300px 300px 0 0;
         }
+
         .gauge {
           height: calc(120px);
         }
