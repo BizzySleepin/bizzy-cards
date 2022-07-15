@@ -1017,7 +1017,7 @@ class gaugeCard extends LitElement {
             <div class="gauge--container">
               <div class="gauge--background"></div>
               <div class="gauge--center"></div>
-              <div class="gauge--data" style="--gauge-size: ${100 * 0.005 + 'turn'}"></div>
+              <div class="gauge--data" style="--gauge-size: ${40 * 0.005 + 'turn'}"></div>
             </div>
           </div>
         </div>
