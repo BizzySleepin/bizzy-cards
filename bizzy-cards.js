@@ -1110,6 +1110,11 @@ class gaugeCard extends LitElement {
           -ms-transition: transform 1s ease-in-out;
           -o-transition: transform 1s ease-in-out;
           transition: transform 1s ease-in-out;
+          -webkit-transform: rotate(-0.5turn);
+          -moz-transform: rotate(-0.5turn);
+          -ms-transform: rotate(-0.5turn);
+          -o-transform: rotate(-0.5turn);
+          transform: rotate(-0.5turn);
         }
         .gauge--data {
           -webkit-transform: rotate(var(--gauge-size));
