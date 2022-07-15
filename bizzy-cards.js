@@ -1095,8 +1095,8 @@ class gaugeCard extends LitElement {
           margin-left: 48px;
         }
         .gauge--data {
-          width: 240px;
           height: 120px;
+          width: 240px;
           transition: transform 1s ease-in-out;
           transform: rotate(-0.5turn);
         }
