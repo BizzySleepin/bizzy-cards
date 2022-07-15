@@ -1020,6 +1020,9 @@ class gaugeCard extends LitElement {
               <div class="gauge--background"></div>
               <div class="gauge--center"></div>
               <div class="gauge--data" style="--gauge-size: ${getGaugeSize(90)}"></div>
+              <script>
+                console.log('hello')
+              </script>
             </div>
           </div>
         </div>
