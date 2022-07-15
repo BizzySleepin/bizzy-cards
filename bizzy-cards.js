@@ -1053,11 +1053,25 @@ class gaugeCard extends LitElement {
         .gauge--background {
           z-index: 0;
           position: absolute;
-          width: 240px;
-          height: 120px;
+          width: 100%;
+          height: 100%;
           top: 0;
           background-color: #c5cae9;
           border-radius: 300px 300px 0 0;
+        }
+        .gauge--data {
+          z-index: 1;
+          position: absolute;
+          top: 100%;
+          height: 100%;
+          width: 100%;
+          margin-left: auto;
+          margin-right: auto;
+          background-color: #3f51b5;
+          border-radius: 0 0 300px 300px;
+          transition: transform 1s ease-in-out;
+          transform-origin: center top;
+          transform: rotate(var(--gauge-size, 0turn));
         }
         .gauge--center {
           z-index: 2;
@@ -1069,20 +1083,6 @@ class gaugeCard extends LitElement {
           margin-right: auto;
           background-color: var(--card-background-color, white);
           border-radius: 300px 300px 0 0;
-        }
-        .gauge--data {
-          z-index: 1;
-          position: absolute;
-          top: 120px;
-          height: 120px;
-          width: 240px;
-          margin-left: auto;
-          margin-right: auto;
-          background-color: #3f51b5;
-          border-radius: 0 0 300px 300px;
-          transition: transform 1s ease-in-out;
-          transform-origin: center top;
-          transform: rotate(var(--gauge-size, 0turn));
         }
       `,
     ]
