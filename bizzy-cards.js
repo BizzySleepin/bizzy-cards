@@ -1010,7 +1010,11 @@ class gaugeCard extends LitElement {
   }
 
   render() {
-    const getGaugeSize = (x) => -0.5 + x * 0.005 + 'turn'
+    const getGaugeSize = (x) => {
+      return setTimeout(function () {
+        return -0.5 + x * 0.005 + 'turn'
+      }, 1000)
+    }
 
     return html`
       <ha-card>
