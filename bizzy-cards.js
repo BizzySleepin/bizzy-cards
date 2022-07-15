@@ -1048,10 +1048,6 @@ class gaugeCard extends LitElement {
           left: 50%;
           overflow: hidden;
           text-align: center;
-          -webkit-transform: translateX(-50%);
-          -moz-transform: translateX(-50%);
-          -ms-transform: translateX(-50%);
-          -o-transform: translateX(-50%);
           transform: translateX(-50%);
         }
 
@@ -1070,10 +1066,6 @@ class gaugeCard extends LitElement {
           margin-left: auto;
           margin-right: auto;
           border-radius: 300px 300px 0 0;
-          -webkit-transform-origin: center bottom;
-          -moz-transform-origin: center bottom;
-          -ms-transform-origin: center bottom;
-          -o-transform-origin: center bottom;
           transform-origin: center bottom;
         }
 
@@ -1110,17 +1102,9 @@ class gaugeCard extends LitElement {
           -ms-transition: transform 1s ease-in-out;
           -o-transition: transform 1s ease-in-out;
           transition: transform 1s ease-in-out;
-          -webkit-transform: rotate(-0.5turn);
-          -moz-transform: rotate(-0.5turn);
-          -ms-transform: rotate(-0.5turn);
-          -o-transform: rotate(-0.5turn);
           transform: rotate(-0.5turn);
         }
         .gauge--data {
-          -webkit-transform: rotate(var(--gauge-size));
-          -moz-transform: rotate(var(--gauge-size));
-          -ms-transform: rotate(var(--gauge-size));
-          -o-transform: rotate(var(--gauge-size));
           transform: rotate(var(--gauge-size));
         }
       `,
