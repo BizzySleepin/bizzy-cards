@@ -1101,7 +1101,7 @@ class gaugeCard extends LitElement {
           transform: rotate(-0.5turn);
         }
         .gauge--data {
-          transform: rotate(var(--gauge-size));
+          transform: rotate(var(--gauge-size, -0.5turn));
         }
       `,
     ]
