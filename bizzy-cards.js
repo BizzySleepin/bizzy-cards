@@ -1040,7 +1040,7 @@ class gaugeCard extends LitElement {
           height: calc(120px);
         }
         .gauge--container {
-          --gauge-size: 60px;
+          --gauge-size: 90px;
           position: absolute;
           width: var(--gauge-size);
           height: calc(var(--gauge-size) / 2);
@@ -1068,7 +1068,7 @@ class gaugeCard extends LitElement {
           width: 100%;
           margin-left: auto;
           margin-right: auto;
-          background-color: #3f51b5;
+          background-color: rgb(61, 90, 254);
           border-radius: 0 0 300px 300px;
           transition: transform 1s ease-in-out;
           transform-origin: center top;
