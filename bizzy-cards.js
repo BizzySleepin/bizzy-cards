@@ -1017,7 +1017,7 @@ class gaugeCard extends LitElement {
             <div class="gauge--container">
               <div class="gauge--background"></div>
               <div class="gauge--center"></div>
-              <div class="gauge--data" style="--gauge-size: ${40 * 0.005 + 'turn'}"></div>
+              <div class="gauge--data" style="--gauge-value: ${40 * 0.005 + 'turn'}"></div>
             </div>
           </div>
         </div>
@@ -1040,9 +1040,10 @@ class gaugeCard extends LitElement {
           height: calc(120px);
         }
         .gauge--container {
+          --gauge-size: 240px;
           position: absolute;
-          width: 240px;
-          height: 120px;
+          width: var(--gauge-size);
+          height: calc(var(--gauge-size) / 2);
           margin: 0;
           padding: 0;
           left: 50%;
@@ -1071,15 +1072,15 @@ class gaugeCard extends LitElement {
           border-radius: 0 0 300px 300px;
           transition: transform 1s ease-in-out;
           transform-origin: center top;
-          transform: rotate(var(--gauge-size, 0turn));
+          transform: rotate(var(--gauge-value, 0turn));
         }
         .gauge--center {
           z-index: 2;
           position: absolute;
-          width: 144px;
-          height: 72px;
-          top: 48px;
-          margin-left: 48px;
+          width: calc(var(--gauge-size) * 0.6);
+          height: calc(var(--gauge-size) * 0.3);
+          top: calc(var(--gauge-size) * 0.2);
+          margin-left: calc(var(--gauge-size) * 0.2);
           margin-right: auto;
           background-color: var(--card-background-color, white);
           border-radius: 300px 300px 0 0;
