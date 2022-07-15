@@ -1010,7 +1010,7 @@ class gaugeCard extends LitElement {
   }
 
   render() {
-    const getGaugeSize = async (x) => {
+    const getGaugeSize = (x) => {
       function delay(time) {
         return new Promise((resolve) => setTimeout(resolve, time))
       }
