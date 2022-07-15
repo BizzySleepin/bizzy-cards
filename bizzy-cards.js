@@ -1010,8 +1010,6 @@ class gaugeCard extends LitElement {
   }
 
   render() {
-    const getGaugeSize = (x) => -0.5 + x * 0.005 + 'turn'
-
     return html`
       <ha-card>
         <div>
@@ -1019,10 +1017,7 @@ class gaugeCard extends LitElement {
             <div class="gauge--container">
               <div class="gauge--background"></div>
               <div class="gauge--center"></div>
-              <div class="gauge--data" style="--gauge-size: ${getGaugeSize(90)}"></div>
-              <script>
-                console.log('hello')
-              </script>
+              <div class="gauge--data" style="--gauge-size: ${100 * 0.005 + 'turn'}"></div>
             </div>
           </div>
         </div>
@@ -1078,15 +1073,16 @@ class gaugeCard extends LitElement {
         .gauge--data {
           z-index: 1;
           position: absolute;
+          top: 120px;
           height: 120px;
           width: 240px;
           margin-left: auto;
           margin-right: auto;
           background-color: #3f51b5;
-          border-radius: 300px 300px 0 0;
+          border-radius: 0 0 300px 300px;
           transition: transform 1s ease-in-out;
-          transform-origin: center bottom;
-          transform: rotate(var(--gauge-size, -0.5turn));
+          transform-origin: center top;
+          transform: rotate(var(--gauge-size, 0turn));
         }
       `,
     ]
