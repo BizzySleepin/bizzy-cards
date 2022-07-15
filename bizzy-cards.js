@@ -1014,7 +1014,6 @@ class gaugeCard extends LitElement {
       function delay(time) {
         return new Promise((resolve) => setTimeout(resolve, time))
       }
-
       await delay(1000)
       return -0.5 + x * 0.005 + 'turn'
     }
