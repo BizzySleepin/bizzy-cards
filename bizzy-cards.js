@@ -1039,68 +1039,50 @@ class gaugeCard extends LitElement {
         }
         .gauge {
           position: relative;
+          height: calc(120px);
         }
-
         .gauge--container {
+          position: absolute;
+          width: 240px;
+          height: 120px;
           margin: 0;
           padding: 0;
-          position: absolute;
           left: 50%;
           overflow: hidden;
           text-align: center;
           transform: translateX(-50%);
         }
-
         .gauge--background {
           z-index: 0;
           position: absolute;
-          background-color: #c5cae9;
+          width: 240px;
+          height: 120px;
           top: 0;
+          background-color: #c5cae9;
           border-radius: 300px 300px 0 0;
         }
-
-        .gauge--data {
-          z-index: 1;
-          position: absolute;
-          background-color: #3f51b5;
-          margin-left: auto;
-          margin-right: auto;
-          border-radius: 300px 300px 0 0;
-          transform-origin: center bottom;
-        }
-
         .gauge--center {
           z-index: 2;
           position: absolute;
-          background-color: var(--card-background-color, white);
-          margin-right: auto;
-          border-radius: 300px 300px 0 0;
-        }
-
-        .gauge {
-          height: calc(120px);
-        }
-        .gauge--container {
-          width: 240px;
-          height: 120px;
-        }
-        .gauge--background {
-          width: 240px;
-          height: 120px;
-        }
-        .gauge--center {
           width: 144px;
           height: 72px;
           top: 48px;
           margin-left: 48px;
+          margin-right: auto;
+          background-color: var(--card-background-color, white);
+          border-radius: 300px 300px 0 0;
         }
         .gauge--data {
+          z-index: 1;
+          position: absolute;
           height: 120px;
           width: 240px;
+          margin-left: auto;
+          margin-right: auto;
+          background-color: #3f51b5;
+          border-radius: 300px 300px 0 0;
           transition: transform 1s ease-in-out;
-          transform: rotate(-0.5turn);
-        }
-        .gauge--data {
+          transform-origin: center bottom;
           transform: rotate(var(--gauge-size, -0.5turn));
         }
       `,
