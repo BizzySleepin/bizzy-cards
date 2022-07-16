@@ -992,6 +992,63 @@ class personCard extends LitElement {
 }
 
 customElements.define('person-card', personCard)
+class verticalEntityCard extends LitElement {
+  static get properties() {
+    return {
+      hass: {},
+      config: {},
+    }
+  }
+
+  script() {
+    return
+  }
+
+  render() {
+    const stateObj = this.hass.states[this.config.entity]
+    const title = this.config.title || stateObj.attributes.friendly_name || 'Unknown'
+    const icon = this.config.icon || stateObj.attributes.icon || 'mdi:help'
+    const state = stateObj.state || 'Unavailable'
+    return html`
+      <ha-card>
+        <div class="shape">
+          <ha-icon icon="${icon}"></ha-icon>
+        </div>
+        <div class="container center">
+          <div class="primary">${title}</div>
+          <div class="secondary">${state}</div>
+        </div>
+      </ha-card>
+    `
+  }
+
+  setConfig(config) {
+    this.config = config
+  }
+
+  static get styles() {
+    return [
+      commonStyles,
+      css`
+        ha-card {
+          padding: 12px;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: flex-start;
+          flex-direction: column;
+        }
+        img {
+          border-radius: 50%;
+          height: 100%;
+          width: 100%;
+        }
+      `,
+    ]
+  }
+}
+
+customElements.define('vertical-entity-card', verticalEntityCard)
 
 class gaugeCard extends LitElement {
   static get properties() {
