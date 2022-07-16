@@ -1055,14 +1055,13 @@ class gaugeCard extends LitElement {
           align-items: center;
         }
         .gauge {
+          --gauge-size: 84px;
           position: relative;
-          height: calc(120px);
+          height: calc(var(--gauge-size) / 2);
         }
         .gauge--container {
-          --gauge-size: 84px;
           position: absolute;
           width: var(--gauge-size);
-          height: calc(var(--gauge-size) / 2);
           margin: 0;
           padding: 0;
           left: 50%;
