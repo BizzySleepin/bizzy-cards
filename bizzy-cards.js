@@ -1089,16 +1089,9 @@ class gaugeCard extends LitElement {
           margin-right: auto;
           background-color: var(--card-background-color, white);
           border-radius: 300px 300px 0 0;
-        }
-        .gauge--icon {
-          z-index: 3;
-          position: absolute;
-          width: calc(var(--gauge-size) * 0.6);
-          height: calc(var(--gauge-size) * 0.3);
-          top: calc(var(--gauge-size) * 0.2);
-          margin-left: calc(var(--gauge-size) * 0.2);
-          margin-right: auto;
-          border-radius: 300px 300px 0 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
       `,
     ]
