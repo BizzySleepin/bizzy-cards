@@ -1142,11 +1142,11 @@ class gaugeCard extends LitElement {
           top: calc(var(--gauge-size) * 0.4);
           left: calc(var(--gauge-size) * 0.4);
           background-color: var(--card-background-color, white);
+          padding-top: calc(var(--gauge-size) / 10);
           border-radius: 300px 300px 0 0;
           display: flex;
           justify-content: center;
           align-items: center;
-          padding-top: calc(var(--gauge-size) / 10);
         }
       `,
     ]
