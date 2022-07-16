@@ -1060,6 +1060,7 @@ class gaugeCard extends LitElement {
           height: var(--gauge-size);
         }
         .gauge--container {
+          --mdc-icon-size: calc(var(--gauge-size) / 1.5);
           position: absolute;
           width: calc(var(--gauge-size) * 2);
           height: 100%;
@@ -1106,7 +1107,7 @@ class gaugeCard extends LitElement {
           display: flex;
           justify-content: center;
           align-items: center;
-          padding-top: 4px;
+          padding-top: calc(var(--gauge-size) / 10);
         }
       `,
     ]
