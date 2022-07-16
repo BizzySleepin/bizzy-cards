@@ -1055,7 +1055,6 @@ class gaugeCard extends LitElement {
     return {
       hass: {},
       config: {},
-      cards: { type: Array, attribute: false },
     }
   }
 
@@ -1068,8 +1067,6 @@ class gaugeCard extends LitElement {
     const title = this.config.title || stateObj.attributes.friendly_name || 'Unknown'
     const icon = this.config.icon || stateObj.attributes.icon || 'mdi:help'
     const state = stateObj.state || 0
-    console.log(this.cards)
-    console.log(this.hass)
     return html`
       <ha-card>
         <div class="gauge" style="--gauge-value: ${state * 0.005 + 'turn'}">
@@ -1120,7 +1117,7 @@ class gaugeCard extends LitElement {
           width: 100%;
           height: 100%;
           top: 0;
-          background-color: #c5cae9;
+          background-color: var(rgba(var(--color-theme), 0.05), rgba(51, 51, 51, 0.05));
           border-radius: 300px 300px 0 0;
         }
         .gauge--data {
@@ -1143,11 +1140,11 @@ class gaugeCard extends LitElement {
           top: calc(var(--gauge-size) * 0.4);
           left: calc(var(--gauge-size) * 0.4);
           background-color: var(--card-background-color, white);
-          padding-top: calc(var(--gauge-size) / 10);
           border-radius: 300px 300px 0 0;
           display: flex;
           justify-content: center;
           align-items: center;
+          padding-top: calc(var(--gauge-size) / 10);
         }
       `,
     ]
