@@ -1008,7 +1008,7 @@ class verticalEntityCard extends LitElement {
     const stateObj = this.hass.states[this.config.entity]
     const title = this.config.title || stateObj.attributes.friendly_name || 'Unknown'
     const icon = this.config.icon || stateObj.attributes.icon || 'mdi:help'
-    const state = this.config.hideState ? '' : stateObj.state || 'Unavailable'
+    const state = this.config.state || stateObj.state || 'Unavailable'
     return html`
       <ha-card>
         <div class="shape">
