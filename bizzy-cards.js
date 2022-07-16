@@ -1016,10 +1016,12 @@ class gaugeCard extends LitElement {
           <div class="gauge" id="gauge">
             <div class="gauge--container">
               <div class="gauge--background"></div>
-              <div class="gauge--icon">
-                <ha-icon icon="mdi:gas-station"></ha-icon>
+
+              <div class="gauge--center">
+                <div class="gauge--icon">
+                  <ha-icon icon="mdi:gas-station"></ha-icon>
+                </div>
               </div>
-              <div class="gauge--center"></div>
               <div class="gauge--data" style="--gauge-value: ${40 * 0.005 + 'turn'}"></div>
             </div>
           </div>
