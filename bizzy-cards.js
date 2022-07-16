@@ -304,7 +304,7 @@ export const commonStyles = [
       flex: 1 1 0%;
       margin-left: 12px;
     }
-    .container.vertical {
+    .container.center {
       margin-top: 6px;
       margin-left: 0px;
       align-items: center;
@@ -341,7 +341,7 @@ const handleAction = (config) => {
     ev.detail = config
     return ev
   }
-  console.log(config)
+
   const hass = document.querySelector('home-assistant')
   switch (config.action) {
     case 'more-info':
@@ -957,7 +957,7 @@ class personCard extends LitElement {
             <ha-icon icon="${badge}"></ha-icon>
           </div>
         </div>
-        <div class="container vertical">
+        <div class="container center">
           <div class="primary">${name}</div>
           <div class="secondary">${zone}</div>
         </div>
@@ -1006,24 +1006,31 @@ class gaugeCard extends LitElement {
   }
 
   render() {
+    const stateObj = this.hass.states[this.config.entity]
+    const title = this.config.title || stateObj.attributes.friendly_name || 'Unknown'
+    const icon = this.config.icon || stateObj.attributes.icon || 'mdi:help'
+    const state = stateObj.state || 0
     return html`
       <ha-card>
-        <div class="gauge" style="--gauge-value: ${40 * 0.005 + 'turn'}">
+        <div class="gauge" style="--gauge-value: ${state * 0.005 + 'turn'}">
           <div class="gauge--background"></div>
           <div class="gauge--data"></div>
           <div class="gauge--center">
-            <ha-icon icon="mdi:gas-station"></ha-icon>
+            <ha-icon icon="${icon}"></ha-icon>
           </div>
         </div>
-        <div class="container vertical">
-          <div class="primary">Fuel</div>
-          <div class="secondary">60%</div>
+        <div class="container center">
+          <div class="primary">${title}</div>
+          <div class="secondary">${state}%</div>
         </div>
       </ha-card>
     `
   }
 
   setConfig(config) {
+    if (!config.entity) {
+      throw new Error('You need to define an entity')
+    }
     this.config = config
   }
 
