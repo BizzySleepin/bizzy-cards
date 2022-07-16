@@ -145,14 +145,6 @@ export const iconHeaderStyles = css`
     justify-content: flex-start;
     width: 100%;
   }
-  .container {
-    display: flex;
-    margin-left: 12px;
-    flex-basis: 0%;
-    flex-direction: column;
-    flex-grow: 1;
-    flex-shrink: 1;
-  }
 `
 export const imageHeaderStyles = css`
   ha-card {
@@ -305,6 +297,17 @@ export const commonStyles = [
       opacity: 0.25;
       margin-left: 8px;
       margin-right: 8px;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 0%;
+      margin-left: 12px;
+    }
+    .container.vertical {
+      margin-top: 6px;
+      margin-left: 0px;
+      align-items: center;
     }
     .primary,
     .secondary {
@@ -954,7 +957,7 @@ class personCard extends LitElement {
             <ha-icon icon="${badge}"></ha-icon>
           </div>
         </div>
-        <div class="state-box">
+        <div class="container vertical">
           <div class="primary">${name}</div>
           <div class="secondary">${zone}</div>
         </div>
@@ -977,13 +980,6 @@ class personCard extends LitElement {
           align-items: center;
           justify-content: flex-start;
           flex-direction: column;
-        }
-        .state-box {
-          margin-top: 6px;
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
         }
         img {
           border-radius: 50%;
@@ -1019,7 +1015,7 @@ class gaugeCard extends LitElement {
             <ha-icon icon="mdi:gas-station"></ha-icon>
           </div>
         </div>
-        <div class="state-box">
+        <div class="container vertical">
           <div class="primary">Fuel</div>
           <div class="secondary">60%</div>
         </div>
@@ -1042,13 +1038,6 @@ class gaugeCard extends LitElement {
           align-items: center;
           justify-content: flex-start;
           flex-direction: column;
-        }
-        .state-box {
-          margin-top: 6px;
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
         }
         .gauge {
           --gauge-size: 42px;
