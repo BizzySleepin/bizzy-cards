@@ -1090,8 +1090,8 @@ class gaugeCard extends LitElement {
           background-color: var(--card-background-color, white);
           border-radius: 300px 300px 0 0;
           display: flex;
-          align-items: center;
           justify-content: center;
+          align-items: center;
         }
       `,
     ]
