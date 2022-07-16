@@ -1069,6 +1069,7 @@ class gaugeCard extends LitElement {
     const icon = this.config.icon || stateObj.attributes.icon || 'mdi:help'
     const state = stateObj.state || 0
     console.log(this.cards)
+    console.log(this.hass)
     return html`
       <ha-card>
         <div class="gauge" style="--gauge-value: ${state * 0.005 + 'turn'}">
