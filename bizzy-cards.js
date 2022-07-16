@@ -1016,9 +1016,7 @@ class gaugeCard extends LitElement {
           <div class="gauge--background"></div>
           <div class="gauge--data"></div>
           <div class="gauge--center">
-            <div class="gauge--icon">
-              <ha-icon icon="mdi:gas-station"></ha-icon>
-            </div>
+            <ha-icon icon="mdi:gas-station"></ha-icon>
           </div>
         </div>
         <div class="state-box">
@@ -1058,10 +1056,7 @@ class gaugeCard extends LitElement {
           position: relative;
           height: var(--gauge-size);
           width: calc(var(--gauge-size) * 2);
-          margin: 0;
-          padding: 0;
           overflow: hidden;
-          text-align: center;
         }
         .gauge--background {
           z-index: 0;
@@ -1078,8 +1073,6 @@ class gaugeCard extends LitElement {
           top: 100%;
           height: 100%;
           width: 100%;
-          margin-left: auto;
-          margin-right: auto;
           background-color: rgb(61, 90, 254);
           border-radius: 0 0 300px 300px;
           transition: transform 1s ease-in-out;
@@ -1092,8 +1085,7 @@ class gaugeCard extends LitElement {
           width: calc(var(--gauge-size) * 1.2);
           height: calc(var(--gauge-size) * 0.6);
           top: calc(var(--gauge-size) * 0.4);
-          margin-left: calc(var(--gauge-size) * 0.4);
-          margin-right: auto;
+          left: calc(var(--gauge-size) * 0.4);
           background-color: var(--card-background-color, white);
           border-radius: 300px 300px 0 0;
           display: flex;
