@@ -1012,19 +1012,20 @@ class gaugeCard extends LitElement {
   render() {
     return html`
       <ha-card>
-        <div>
-          <div class="gauge" id="gauge">
-            <div class="gauge--container">
-              <div class="gauge--background"></div>
-
-              <div class="gauge--center">
-                <div class="gauge--icon">
-                  <ha-icon icon="mdi:gas-station"></ha-icon>
-                </div>
+        <div class="gauge" id="gauge">
+          <div class="gauge--container">
+            <div class="gauge--background"></div>
+            <div class="gauge--data" style="--gauge-value: ${40 * 0.005 + 'turn'}"></div>
+            <div class="gauge--center">
+              <div class="gauge--icon">
+                <ha-icon icon="mdi:gas-station"></ha-icon>
               </div>
-              <div class="gauge--data" style="--gauge-value: ${40 * 0.005 + 'turn'}"></div>
             </div>
           </div>
+        </div>
+        <div class="state-box">
+          <div class="primary">Fuel</div>
+          <div class="secondary">60%</div>
         </div>
       </ha-card>
     `
@@ -1039,6 +1040,19 @@ class gaugeCard extends LitElement {
       commonStyles,
       css`
         ha-card {
+          padding: 12px;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: flex-start;
+          flex-direction: column;
+        }
+        .state-box {
+          margin-top: 12px;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         }
         .gauge {
           position: relative;
