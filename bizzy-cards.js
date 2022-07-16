@@ -979,7 +979,7 @@ class personCard extends LitElement {
           flex-direction: column;
         }
         .state-box {
-          margin-top: 12px;
+          margin-top: 6px;
           width: 100%;
           display: flex;
           flex-direction: column;
@@ -1012,14 +1012,12 @@ class gaugeCard extends LitElement {
   render() {
     return html`
       <ha-card>
-        <div class="gauge" id="gauge">
-          <div class="gauge--container">
-            <div class="gauge--background"></div>
-            <div class="gauge--data" style="--gauge-value: ${40 * 0.005 + 'turn'}"></div>
-            <div class="gauge--center">
-              <div class="gauge--icon">
-                <ha-icon icon="mdi:gas-station"></ha-icon>
-              </div>
+        <div class="gauge--container">
+          <div class="gauge--background"></div>
+          <div class="gauge--data" style="--gauge-value: ${40 * 0.005 + 'turn'}"></div>
+          <div class="gauge--center">
+            <div class="gauge--icon">
+              <ha-icon icon="mdi:gas-station"></ha-icon>
             </div>
           </div>
         </div>
@@ -1048,22 +1046,21 @@ class gaugeCard extends LitElement {
           flex-direction: column;
         }
         .state-box {
-          margin-top: 12px;
+          margin-top: 6px;
           width: 100%;
           display: flex;
           flex-direction: column;
           align-items: center;
         }
         .gauge {
-          --gauge-size: 42px;
           position: relative;
-          height: var(--gauge-size);
         }
         .gauge--container {
+          --gauge-size: 42px;
           --mdc-icon-size: calc(var(--gauge-size) / 1.5);
           position: absolute;
+          height: var(--gauge-size);
           width: calc(var(--gauge-size) * 2);
-          height: 100%;
           margin: 0;
           padding: 0;
           left: 50%;
