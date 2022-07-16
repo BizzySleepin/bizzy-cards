@@ -1062,6 +1062,7 @@ class gaugeCard extends LitElement {
         .gauge--container {
           position: absolute;
           width: var(--gauge-size);
+          height: 100%;
           margin: 0;
           padding: 0;
           left: 50%;
