@@ -1055,6 +1055,7 @@ class gaugeCard extends LitElement {
     return {
       hass: {},
       config: {},
+      cards: { type: Array, attribute: false },
     }
   }
 
@@ -1067,6 +1068,7 @@ class gaugeCard extends LitElement {
     const title = this.config.title || stateObj.attributes.friendly_name || 'Unknown'
     const icon = this.config.icon || stateObj.attributes.icon || 'mdi:help'
     const state = stateObj.state || 0
+    console.log(cards)
     return html`
       <ha-card>
         <div class="gauge" style="--gauge-value: ${state * 0.005 + 'turn'}">
