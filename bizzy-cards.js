@@ -976,7 +976,6 @@ class personCard extends LitElement {
         ha-card {
           padding: 12px;
           display: flex;
-          flex-direction: row;
           align-items: center;
           justify-content: flex-start;
           flex-direction: column;
@@ -1033,7 +1032,6 @@ class verticalEntityCard extends LitElement {
         ha-card {
           padding: 12px;
           display: flex;
-          flex-direction: row;
           align-items: center;
           justify-content: flex-start;
           flex-direction: column;
@@ -1098,7 +1096,6 @@ class gaugeCard extends LitElement {
         ha-card {
           padding: 12px;
           display: flex;
-          flex-direction: row;
           align-items: center;
           justify-content: flex-start;
           flex-direction: column;
@@ -1117,7 +1114,7 @@ class gaugeCard extends LitElement {
           width: 100%;
           height: 100%;
           top: 0;
-          background-color: var(rgba(var(--color-theme), 0.05), rgba(51, 51, 51, 0.05));
+          background-color: rgba(var(--color-theme), 0.05);
           border-radius: 300px 300px 0 0;
         }
         .gauge--data {
@@ -1152,3 +1149,178 @@ class gaugeCard extends LitElement {
 }
 
 customElements.define('gauge-card', gaugeCard)
+
+class carCard extends LitElement {
+  static get properties() {
+    return {
+      hass: {},
+      config: {},
+    }
+  }
+
+  script() {
+    return
+  }
+
+  render() {
+    const stateObj = this.hass.states[this.config.entity]
+
+    return html`
+      <ha-card>
+        <div class="flex column">
+          <div class="shape">
+            <ha-icon icon="${icon}"></ha-icon>
+          </div>
+          <div class="container center">
+            <div class="primary">${title}</div>
+            <div class="secondary">${state}</div>
+          </div>
+        </div>
+        <div class="flex column">
+          <div class="gauge" style="--gauge-value: ${state * 0.005 + 'turn'}">
+            <div class="gauge--background"></div>
+            <div class="gauge--data"></div>
+            <div class="gauge--center">
+              <ha-icon icon="${icon}"></ha-icon>
+            </div>
+          </div>
+          <div class="container center">
+            <div class="primary">${title}</div>
+            <div class="secondary">${state}%</div>
+          </div>
+        </div>
+        <div class="flex column">
+          <div class="shape">
+            <ha-icon icon="${icon}"></ha-icon>
+          </div>
+          <div class="container center">
+            <div class="primary">${title}</div>
+            <div class="secondary">${state}</div>
+          </div>
+        </div>
+      </ha-card>
+    `
+  }
+
+  setConfig(config) {
+    if (!config.entity) {
+      throw new Error('You need to define an entity')
+    }
+    this.config = config
+  }
+
+  static get styles() {
+    return [
+      commonStyles,
+      css`
+        ha-card {
+          padding: 12px;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: flex-start;
+        }
+        .flex {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+        }
+        .flex.column {
+          flex-direction: column;
+        }
+        .gauge {
+          --gauge-size: 42px;
+          --mdc-icon-size: calc(var(--gauge-size) / 1.5);
+          position: relative;
+          height: var(--gauge-size);
+          width: calc(var(--gauge-size) * 2);
+          overflow: hidden;
+        }
+        .gauge--background {
+          z-index: 0;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          background-color: rgba(var(--color-theme), 0.05);
+          border-radius: 300px 300px 0 0;
+        }
+        .gauge--data {
+          z-index: 1;
+          position: absolute;
+          top: 100%;
+          height: 100%;
+          width: 100%;
+          background-color: rgb(61, 90, 254);
+          border-radius: 0 0 300px 300px;
+          transition: transform 1s ease-in-out;
+          transform-origin: center top;
+          transform: rotate(var(--gauge-value, 0turn));
+        }
+        .gauge--center {
+          z-index: 2;
+          position: absolute;
+          width: calc(var(--gauge-size) * 1.2);
+          height: calc(var(--gauge-size) * 0.6);
+          top: calc(var(--gauge-size) * 0.4);
+          left: calc(var(--gauge-size) * 0.4);
+          background-color: var(--card-background-color, white);
+          border-radius: 300px 300px 0 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding-top: calc(var(--gauge-size) / 10);
+        }
+      `,
+    ]
+  }
+}
+
+customElements.define('car-card', carCard)
+class testCard extends LitElement {
+  static get properties() {
+    return {
+      hass: {},
+      config: {},
+    }
+  }
+
+  script() {
+    return
+  }
+
+  render() {
+    const element = window.document.createElement('custom:vertical-entity-card')
+    element.setConfig({
+      entity: 'lock.ford_escape_doorlock',
+      state: 'Hold to Unlock',
+      title: 'Doors',
+    })
+
+    return html` <ha-card> ${element} </ha-card> `
+  }
+
+  setConfig(config) {
+    if (!config.entity) {
+      throw new Error('You need to define an entity')
+    }
+    this.config = config
+  }
+
+  static get styles() {
+    return [
+      commonStyles,
+      css`
+        ha-card {
+          padding: 12px;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: flex-start;
+        }
+      `,
+    ]
+  }
+}
+
+customElements.define('test-card', testCard)
